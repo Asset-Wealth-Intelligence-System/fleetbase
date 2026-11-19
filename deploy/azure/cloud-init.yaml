@@ -1,0 +1,70 @@
+#cloud-config
+# Fleetbase single-VM bootstrap (Ubuntu 24.04). Placeholders are filled by provision-azure.ps1.
+package_update: true
+package_upgrade: false
+packages:
+  - ca-certificates
+  - curl
+  - git
+  - gnupg
+  - openssl
+  - unattended-upgrades
+
+swap:
+  filename: /swapfile
+  size: 2G
+  maxsize: 2G
+
+write_files:
+  - path: /opt/fleetbase-bootstrap/Caddyfile.template
+    permissions: "0644"
+    encoding: b64
+    content: __CADDYFILE_B64__
+  - path: /opt/fleetbase-bootstrap/fleetbase-azure-setup.sh
+    permissions: "0755"
+    encoding: b64
+    content: __SETUP_B64__
+  - path: /opt/fleetbase-bootstrap/bootstrap.sh
+    permissions: "0755"
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+      exec > >(tee -a /var/log/fleetbase-setup.log) 2>&1
+      echo "=== bootstrap start $(date -Is) ==="
+
+      # First boot often holds the apt lock (unattended-upgrades); wait for it.
+      wait_apt() { while fuser /var/lib/dpkg/lock-frontend /var/lib/apt/lists/lock >/dev/null 2>&1; do sleep 5; done; }
+
+      # Docker CE + compose plugin from Docker's repository (compose >= 2.24 needed for !override)
+      install -m 0755 -d /etc/apt/keyrings
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+      chmod a+r /etc/apt/keyrings/docker.asc
+      . /etc/os-release
+      echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu ${VERSION_CODENAME} stable" > /etc/apt/sources.list.d/docker.list
+      wait_apt; apt-get update -y
+      wait_apt; DEBIAN_FRONTEND=noninteractive apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+      systemctl enable --now docker
+      usermod -aG docker __ADMIN_USER__ || true
+
+      # Log rotation for containers
+      cat > /etc/docker/daemon.json <<'JSON'
+      {"log-driver":"json-file","log-opts":{"max-size":"20m","max-file":"3"}}
+      JSON
+      systemctl restart docker
+
+      # Fleetbase
+      if [[ ! -d /opt/fleetbase/.git ]]; then
+        git clone --depth 1 --branch "__REPO_BRANCH__" "__REPO_URL__" /opt/fleetbase
+      fi
+      mkdir -p /opt/fleetbase/deploy/azure
+      # Injected copies are a fallback for a checkout that does not carry deploy/azure yet.
+      [[ -f /opt/fleetbase/deploy/azure/Caddyfile.template ]] || cp /opt/fleetbase-bootstrap/Caddyfile.template /opt/fleetbase/deploy/azure/Caddyfile.template
+      [[ -f /opt/fleetbase/deploy/azure/fleetbase-azure-setup.sh ]] || cp /opt/fleetbase-bootstrap/fleetbase-azure-setup.sh /opt/fleetbase/deploy/azure/fleetbase-azure-setup.sh
+      chmod +x /opt/fleetbase/deploy/azure/fleetbase-azure-setup.sh
+      /opt/fleetbase/deploy/azure/fleetbase-azure-setup.sh "__FQDN__" "__ACME_EMAIL__" "__APP_NAME__"
+
+      touch /var/lib/fleetbase-bootstrap.done
+      echo "=== bootstrap done $(date -Is) ==="
+
+runcmd:
+  - [ bash, -c, "/opt/fleetbase-bootstrap/bootstrap.sh" ]

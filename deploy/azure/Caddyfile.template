@@ -1,0 +1,31 @@
+# Caddy reverse proxy for Fleetbase on a single Azure VM.
+# One hostname, three TLS ports, one automatically issued certificate
+# (Let's Encrypt first, ZeroSSL as fallback).
+#
+#   https://__FQDN__        -> console (Ember SPA served by nginx in the console container)
+#   https://__FQDN__:8000   -> API (FrankenPHP/Octane in the application container)
+#   https://__FQDN__:38000  -> SocketCluster websocket server
+{
+	email __ACME_EMAIL__
+}
+
+https://__FQDN__ {
+	encode zstd gzip
+	reverse_proxy console:4200
+}
+
+https://__FQDN__:8000 {
+	encode zstd gzip
+	# The Host header is passed through unchanged (FQDN:8000) so Laravel builds
+	# absolute URLs (for example the Navigator app link) with the right port.
+	reverse_proxy application:8000 {
+		transport http {
+			read_timeout 600s
+			write_timeout 600s
+		}
+	}
+}
+
+https://__FQDN__:38000 {
+	reverse_proxy socket:8000
+}
