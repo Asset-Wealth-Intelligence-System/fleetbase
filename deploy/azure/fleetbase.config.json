@@ -1,0 +1,8 @@
+{
+  "API_HOST": "https://api.distribution.unitedops.app",
+  "API_SECURE": "true",
+  "SOCKETCLUSTER_HOST": "api.distribution.unitedops.app",
+  "SOCKETCLUSTER_PATH": "/socketcluster/",
+  "SOCKETCLUSTER_PORT": "443",
+  "SOCKETCLUSTER_SECURE": "true"
+}

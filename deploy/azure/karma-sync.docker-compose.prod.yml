@@ -1,0 +1,250 @@
+# Production stack for the EC2 host. Self-contained: does NOT use
+# docker-compose.override.yml (that's local-dev only). Run with:
+#
+#   docker compose -f docker-compose.prod.yml pull
+#   docker compose -f docker-compose.prod.yml up -d
+#
+# The app image is built by CI and pulled from GHCR; nothing is built here.
+# `restart: always` keeps every service running 24/7 across crashes & reboots.
+
+name: ul-karma-sync
+
+x-app-env: &app_env
+  DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-sync}:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-sync}
+  REDIS_URL: redis://redis:6379/0
+  CELERY_BROKER_URL: redis://redis:6379/1
+  CELERY_RESULT_BACKEND: redis://redis:6379/2
+  APP_SECRET_KEY: ${APP_SECRET_KEY:?set APP_SECRET_KEY}
+  ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+  ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@unitedsoftware.com}
+  SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-true}
+  ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD}
+  KARMA_BASE_URL: ${KARMA_BASE_URL:-https://karma.online/apiv2}
+  UL_DEFAULT_BASE_URL: ${UL_DEFAULT_BASE_URL:-https://app.unitedlogistics.com.do/api/v1}
+  AGL_BASE_URL: ${AGL_BASE_URL:-https://apiclient.dev.dc1.aglrd.com}
+  AGL_PROJECT_IDS: ${AGL_PROJECT_IDS:-3592,3593}
+  SYNC_INTERVAL_MINUTES: ${SYNC_INTERVAL_MINUTES:-10}
+  LOCATION_SYNC_INTERVAL_SECONDS: ${LOCATION_SYNC_INTERVAL_SECONDS:-30}
+  AGL_LOCATION_SYNC_INTERVAL_SECONDS: ${AGL_LOCATION_SYNC_INTERVAL_SECONDS:-30}
+  CUSTOMER_SYNC_LOCK_TTL: ${CUSTOMER_SYNC_LOCK_TTL:-900}
+  LOCATION_SYNC_LOCK_TTL: ${LOCATION_SYNC_LOCK_TTL:-25}
+  AGL_LOCATION_SYNC_LOCK_TTL: ${AGL_LOCATION_SYNC_LOCK_TTL:-8}
+  TRIPS_LOOKBACK_DAYS: ${TRIPS_LOOKBACK_DAYS:-7}
+  EVENTS_BULK_BATCH_SIZE: ${EVENTS_BULK_BATCH_SIZE:-1000}
+  EVENTS_MAX_PER_RUN: ${EVENTS_MAX_PER_RUN:-50000}
+  BACKFILL_EVENTS_MAX_PER_RUN: ${BACKFILL_EVENTS_MAX_PER_RUN:-2000000}
+  BACKFILL_LOCK_TTL: ${BACKFILL_LOCK_TTL:-21600}
+  BACKFILL_HTTP_TIMEOUT_SECONDS: ${BACKFILL_HTTP_TIMEOUT_SECONDS:-180}
+  RECONCILE_EVENTS_INTERVAL_HOURS: ${RECONCILE_EVENTS_INTERVAL_HOURS:-3}
+  RECONCILE_EVENTS_LOOKBACK_HOURS: ${RECONCILE_EVENTS_LOOKBACK_HOURS:-48}
+
+x-app-depends: &app_depends
+  postgres:
+    condition: service_healthy
+  redis:
+    condition: service_healthy
+
+# The CI pipeline overrides APP_IMAGE with an immutable :<git-sha> tag.
+x-app-image: &app_image ${APP_IMAGE:-ghcr.io/asset-wealth-intelligence-system/united-logistics-sync:latest}
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ul-karma-sync-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sync}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-sync}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # No host port published: Postgres is only reachable on the internal network.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sync} -d ${POSTGRES_DB:-sync}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: ul-karma-sync-redis
+    restart: always
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "no"]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Caddy terminates TLS and reverse-proxies to the web app.
+  # It auto-obtains a Let's Encrypt cert for $SITE_ADDRESS on startup, so the
+  # dashboard is served over real, browser-trusted HTTPS with no domain to buy
+  # (sslip.io maps <dashed-ip>.sslip.io -> the IP automatically).
+  caddy:
+    image: caddy:2-alpine
+    container_name: ul-karma-sync-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:?set SITE_ADDRESS (e.g. 16-59-174-43.sslip.io)}
+    # The United Fleetbase stack (/opt/united-fleetbase) publishes its ports on the
+    # docker bridge gateway only; Caddy reaches them through host.docker.internal.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    volumes:
+      - caddydata:/data
+      - caddyconfig:/config
+    depends_on:
+      - web
+
+  web:
+    image: *app_image
+    container_name: ul-karma-sync-web
+    restart: always
+    environment: *app_env
+    depends_on: *app_depends
+    # No host port: only Caddy can reach the app, over the internal network.
+    expose:
+      - "8000"
+    command: ["./scripts/start-web.sh"]
+
+  worker:
+    image: *app_image
+    container_name: ul-karma-sync-worker
+    restart: always
+    environment: *app_env
+    depends_on:
+      <<: *app_depends
+      web:
+        condition: service_started
+    command: ["./scripts/start-worker.sh"]
+    healthcheck:
+      disable: true
+
+  agl-worker:
+    image: *app_image
+    container_name: ul-karma-sync-agl-worker
+    restart: always
+    environment: *app_env
+    depends_on:
+      <<: *app_depends
+      web:
+        condition: service_started
+    command: ["./scripts/start-agl-worker.sh"]
+    healthcheck:
+      disable: true
+
+  beat:
+    image: *app_image
+    container_name: ul-karma-sync-beat
+    restart: always
+    environment: *app_env
+    depends_on:
+      <<: *app_depends
+      web:
+        condition: service_started
+    command: ["./scripts/start-beat.sh"]
+    healthcheck:
+      disable: true
+
+  # United Petroleum TopKAT fuel sync (HO_DATA SQL Servers -> UL Fuel API).
+  # The databases are only reachable over the United Petroleum VPN, so this
+  # container brings up its own OpenVPN tunnel (scoped to this container only)
+  # before starting the sync. Secrets live on the host under ./topkat/ and are
+  # written there by the deploy pipeline from GitHub secrets.
+  # Dashboard has no auth: bound to localhost only, reach it with
+  #   ssh -L 8090:127.0.0.1:8090 <vm>   then open http://localhost:8090
+  topkat:
+    image: ${TOPKAT_IMAGE:-ghcr.io/asset-wealth-intelligence-system/united-petroleum-topkat-sync:latest}
+    container_name: ul-topkat-sync
+    restart: always
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    env_file:
+      - ./topkat/topkat.env
+    environment:
+      PORT: "8080"
+    volumes:
+      - ./topkat/vpn:/vpn:ro
+      - topkat-state:/app/state
+    ports:
+      - "127.0.0.1:8090:8080"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8080/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 120s
+
+  # Nightly logical backups of Postgres -> ./backups on the host.
+  # Keeps 7 daily, 4 weekly, 6 monthly dumps. Restore with:
+  #   gunzip -c backups/daily/<file>.sql.gz | docker exec -i ul-karma-sync-postgres psql -U <user> -d <db>
+  backup:
+    image: prodrigestivill/postgres-backup-local:16-alpine
+    container_name: ul-karma-sync-backup
+    restart: always
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: ${POSTGRES_DB:-sync}
+      POSTGRES_USER: ${POSTGRES_USER:-sync}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      SCHEDULE: "@daily"
+      BACKUP_KEEP_DAYS: 7
+      BACKUP_KEEP_WEEKS: 4
+      BACKUP_KEEP_MONTHS: 6
+      HEALTHCHECK_PORT: 8080
+    volumes:
+      - ./backups:/backups
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+configs:
+  caddyfile:
+    # $$ escapes Compose interpolation so Caddy receives a literal {$SITE_ADDRESS}
+    # and resolves the env var itself at runtime.
+    content: |
+      {$$SITE_ADDRESS} {
+          encode zstd gzip
+          reverse_proxy web:8000
+      }
+
+      # United Fleetbase (console + API) hosted on the same VM, see /opt/united-fleetbase
+      distribution.unitedops.app, fleet.20-7-12-37.sslip.io {
+          encode zstd gzip
+          reverse_proxy host.docker.internal:4200
+      }
+
+      api.distribution.unitedops.app, api-fleet.20-7-12-37.sslip.io {
+          encode zstd gzip
+          request_body {
+              max_size 600MB
+          }
+          handle /socketcluster/* {
+              reverse_proxy host.docker.internal:38000
+          }
+          handle {
+              reverse_proxy host.docker.internal:8001
+          }
+      }
+
+volumes:
+  pgdata:
+    name: ul-karma-sync-pgdata
+  redisdata:
+    name: ul-karma-sync-redisdata
+  caddydata:
+    name: ul-karma-sync-caddydata
+  caddyconfig:
+    name: ul-karma-sync-caddyconfig
+  topkat-state:
+    name: ul-topkat-sync-state

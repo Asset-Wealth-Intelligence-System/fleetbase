@@ -1,0 +1,97 @@
+name: united
+
+x-api: &api
+  image: fleetbase/fleetbase-api@sha256:c42abdbc031ace4ca1fd525b81d4389508c048bac52d23b9090cbcaeb77c00c4
+  restart: unless-stopped
+  env_file: .env
+  volumes:
+    - ./api:/fleetbase/api
+    - ./packages:/fleetbase/packages
+  depends_on:
+    database: { condition: service_healthy }
+    cache: { condition: service_healthy }
+  logging:
+    driver: json-file
+    options: { max-size: "20m", max-file: "3" }
+
+services:
+  database:
+    image: mysql:8.0-oracle
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password --innodb-buffer-pool-size=256M --performance-schema=OFF --max-connections=80
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: fleetbase
+      MYSQL_USER: fleetbase
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "2" }
+
+  cache:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: redis-server --maxmemory 128mb --maxmemory-policy allkeys-lru --save 60 1000
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  socket:
+    image: socketcluster/socketcluster:v17.4.0
+    restart: unless-stopped
+    ports:
+      - "172.17.0.1:38000:8000"
+    environment:
+      SOCKETCLUSTER_WORKERS: 1
+      SOCKETCLUSTER_BROKERS: 1
+      SOCKETCLUSTER_OPTIONS: '{"origins":"https://distribution.unitedops.app:*,https://api.distribution.unitedops.app:*"}'
+
+  application:
+    <<: *api
+    ports:
+      - "172.17.0.1:8001:8000"
+    command: ["sh", "-c", "php artisan octane:frankenphp --max-requests=500 --workers=2 --port=8000 --host=0.0.0.0"]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 90s
+
+  queue:
+    <<: *api
+    command: ["php", "artisan", "queue:work", "--tries=3", "--timeout=300", "--sleep=3", "--max-jobs=500"]
+    healthcheck:
+      disable: true
+
+  scheduler:
+    <<: *api
+    command: ["go-crond", "--verbose", "root:./crontab"]
+    healthcheck:
+      disable: true
+
+  console:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "172.17.0.1:4200:4200"
+    volumes:
+      - ./console-dist:/usr/share/nginx/html:ro
+      - ./console-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./navigator:/usr/share/nginx/navigator:ro
+
+volumes:
+  mysql_data:
+  redis_data:
