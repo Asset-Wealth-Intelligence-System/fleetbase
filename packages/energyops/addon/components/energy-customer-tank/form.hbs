@@ -1,0 +1,76 @@
+<div class="form-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.tank.fields.place"}} @wrapperClass="col-span-2" @required={{true}}>
+                <ModelSelect
+                    @modelName="place"
+                    @selectedModel={{this.resource.place}}
+                    @placeholder={{t "energyops.common.select-place"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setPlace}}
+                    @disabled={{or this.placeLocked (cannot-write this.resource schema="energy-ops")}}
+                    as |model|
+                >
+                    {{model.name}} <span class="text-xs text-gray-500 ml-1">{{model.address}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.product"}} @wrapperClass="col-span-2" @required={{true}}>
+                <ModelSelect
+                    @modelName="energy-product"
+                    @selectedModel={{this.resource.product}}
+                    @placeholder={{t "energyops.common.select-product"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setProduct}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.name"}} @required={{true}}>
+                <Input @value={{this.resource.name}} @type="text" class="w-full form-input" placeholder={{t "energyops.tank.fields.name-placeholder"}} disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.serial"}}>
+                <Input @value={{this.resource.serial_number}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.type"}}>
+                <Select
+                    @options={{this.tankTypeOptions}}
+                    @optionLabel="label"
+                    @optionValue="value"
+                    @value={{this.resource.tank_type}}
+                    @onSelect={{fn (mut this.resource.tank_type)}}
+                    @placeholder={{t "energyops.tank.fields.type"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    class="w-full"
+                />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.unit"}}>
+                <Select @options={{this.unitOptions}} @value={{this.resource.unit}} @onSelect={{fn (mut this.resource.unit)}} @placeholder={{t "energyops.common.unit"}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.capacity"}} @required={{true}}>
+                <Input @value={{this.resource.capacity_volume}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.safe-fill"}}>
+                <Input @value={{this.resource.safe_fill_percent}} @type="number" min="1" max="100" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.last-known"}}>
+                <Input @value={{this.resource.last_known_volume}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.tank.fields.reorder-point"}}>
+                <Input @value={{this.resource.reorder_point}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.common.status"}}>
+                <Select @options={{this.statusOptions}} @value={{this.resource.status}} @onSelect={{fn (mut this.resource.status)}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.ullage"}}</div>
+                <div class="field-value font-semibold">{{format-number this.resource.computedUllage maximumFractionDigits=1}} {{or this.resource.unit "L"}}</div>
+            </div>
+        </div>
+    </ContentPanel>
+</div>

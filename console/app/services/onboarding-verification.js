@@ -10,6 +10,7 @@ import { later } from '@ember/runloop';
  * do it.
  */
 export default class OnboardingVerificationService extends Service {
+    @service intl;
     @service fetch;
     @service notifications;
     @service modalsManager;
@@ -46,20 +47,20 @@ export default class OnboardingVerificationService extends Service {
 
     @action resendBySms() {
         this.modalsManager.show('modals/verify-by-sms', {
-            title: 'Verify Account by Phone',
-            acceptButtonText: 'Send',
+            title: this.intl.t('literal.console.verify-account-by-phone'),
+            acceptButtonText: this.intl.t('literal.console.send'),
             phone: this.currentUser.phone,
             confirm: async (modal) => {
                 modal.startLoading();
                 const phone = modal.getOption('phone');
                 if (!phone) {
-                    this.notifications.error('No phone number provided.');
+                    this.notifications.error(this.intl.t('literal.console.no-phone-number-provided'));
                     return modal.stopLoading();
                 }
 
                 try {
                     await this.fetch.post('onboard/send-verification-sms', { phone, session: this.session });
-                    this.notifications.success('Verification code SMS sent!');
+                    this.notifications.success(this.intl.t('literal.console.verification-code-sms-sent'));
                     modal.done();
                 } catch (error) {
                     this.notifications.serverError(error);
@@ -71,20 +72,20 @@ export default class OnboardingVerificationService extends Service {
 
     @action resendEmail() {
         this.modalsManager.show('modals/resend-verification-email', {
-            title: 'Resend Verification Code',
-            acceptButtonText: 'Send',
+            title: this.intl.t('literal.console.resend-verification-code'),
+            acceptButtonText: this.intl.t('literal.console.send'),
             email: this.currentUser.email,
             confirm: async (modal) => {
                 modal.startLoading();
                 const email = modal.getOption('email');
                 if (!email) {
-                    this.notifications.error('No email address provided.');
+                    this.notifications.error(this.intl.t('literal.console.no-email-address-provided'));
                     return modal.stopLoading();
                 }
 
                 try {
                     await this.fetch.post('onboard/send-verification-email', { email, session: this.session });
-                    this.notifications.success('Verification code email sent!');
+                    this.notifications.success(this.intl.t('literal.console.verification-code-email-sent'));
                     modal.done();
                 } catch (error) {
                     this.notifications.serverError(error);

@@ -1,0 +1,21 @@
+[
+  { "ParameterKey": "Project", "ParameterValue": "unitedfb" },
+  { "ParameterKey": "EnvironmentType", "ParameterValue": "production" },
+  { "ParameterKey": "ApiSubdomain", "ParameterValue": "api" },
+  { "ParameterKey": "ConsoleSubdomain", "ParameterValue": "console" },
+  { "ParameterKey": "SocketSubdomain", "ParameterValue": "socket" },
+  { "ParameterKey": "DatabaseInstanceType", "ParameterValue": "db.t3.small" },
+  { "ParameterKey": "CacheInstanceType", "ParameterValue": "cache.t3.small" },
+  { "ParameterKey": "ApiDesiredCount", "ParameterValue": "3" },
+  { "ParameterKey": "ApiMaxCapacity", "ParameterValue": "10" },
+  { "ParameterKey": "EventsDesiredCount", "ParameterValue": "2" },
+  { "ParameterKey": "SchedulerDesiredCount", "ParameterValue": "1" },
+  { "ParameterKey": "SocketDesiredCount", "ParameterValue": "2" },
+  { "ParameterKey": "DatabaseAllocatedStorage", "ParameterValue": "100" },
+  { "ParameterKey": "DatabaseMaxAllocatedStorage", "ParameterValue": "500" },
+  { "ParameterKey": "DatabaseBackupRetentionPeriod", "ParameterValue": "14" },
+  { "ParameterKey": "DatabaseMultiAZ", "ParameterValue": "true" },
+  { "ParameterKey": "LogRetentionDays", "ParameterValue": "90" },
+  { "ParameterKey": "EnableDetailedMonitoring", "ParameterValue": "true" },
+  { "ParameterKey": "EnableVPCFlowLogs", "ParameterValue": "true" }
+]

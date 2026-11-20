@@ -1,0 +1,14 @@
+{{#if this.canSee}}
+    <ContentPanel @title={{t "energyops.fleet-ops.vehicle-panel-title"}} @titleIcon="gas-pump" @open={{true}} @wrapperClass="bordered-top" ...attributes>
+        {{#if this.vehicleIsSaved}}
+            {{#if this.load.isRunning}}
+                <div class="flex items-center justify-center py-6"><Spinner /></div>
+            {{else}}
+                <EnergyVehicleProfile::Form @resource={{this.profile}} @vehicle={{this.vehicle}} @onSaved={{this.onProfileSaved}} @embedded={{true}} />
+                <EnergyCompartment::Editor @owner={{this.compartmentOwner}} @compartments={{this.compartments}} @onChange={{this.onCompartmentsChanged}} class="mt-4" />
+            {{/if}}
+        {{else}}
+            <p class="text-xs text-gray-500">{{t "energyops.fleet-ops.save-vehicle-first"}}</p>
+        {{/if}}
+    </ContentPanel>
+{{/if}}

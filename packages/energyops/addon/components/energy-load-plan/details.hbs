@@ -1,0 +1,166 @@
+<div class="details-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.id"}}</div>
+                <div class="field-value"><ClickToCopy @value={{this.resource.public_id}}>{{this.resource.public_id}}</ClickToCopy></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.status"}}</div>
+                <div class="field-value"><Badge @status={{this.resource.status}} /></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.vehicle"}}</div>
+                <div class="field-value">
+                    {{#if this.resource.vehicle}}
+                        <a href="javascript:;" class="text-blue-500 hover:underline" {{on "click" (fn (transition-to "fleet.index.details" this.resource.vehicle))}}>{{this.resource.vehicleName}}</a>
+                    {{else}}
+                        -
+                    {{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.operation"}}</div>
+                <div class="field-value">{{n-a this.resource.operationName}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.depot"}}</div>
+                <div class="field-value">
+                    {{#if this.resource.depot}}
+                        <a href="javascript:;" class="text-blue-500 hover:underline" {{on "click" this.viewDepot}}>{{this.resource.depotName}}</a>
+                    {{else}}
+                        -
+                    {{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.planned"}}</div>
+                <div class="field-value">{{format-number this.resource.plannedVolume maximumFractionDigits=1}} L</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.loaded"}}</div>
+                <div class="field-value">{{format-number this.resource.loadedVolume maximumFractionDigits=1}} L</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.packed-at"}}</div>
+                <div class="field-value">{{n-a this.resource.packedAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.loaded-at"}}</div>
+                <div class="field-value">{{n-a this.resource.loadedAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.closed-at"}}</div>
+                <div class="field-value">{{n-a this.resource.closedAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.fields.orders"}}</div>
+                <div class="field-value flex flex-wrap gap-1">
+                    {{#each this.orderIds as |orderId|}}
+                        <Badge @status="info" @hideStatusDot={{true}}>{{orderId}}</Badge>
+                    {{else}}
+                        -
+                    {{/each}}
+                </div>
+            </div>
+            {{#if this.resource.meta.trip_number}}
+                <div class="field-info-container">
+                    <div class="field-name">{{t "energyops.load-plan.trip" number=this.resource.meta.trip_number}}</div>
+                    <div class="field-value">{{if this.resource.meta.reload (t "energyops.load-plan.reload") "-"}}</div>
+                </div>
+            {{/if}}
+        </div>
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.load-plan.proof.title"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 text-xs dark:text-gray-100 mb-3">
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.proof.invoice-number"}}</div>
+                <div class="field-value">{{n-a this.loadProof.invoice_number}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.proof.ticket-number"}}</div>
+                <div class="field-value">{{n-a this.loadProof.ticket_number}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.load-plan.proof.notes"}}</div>
+                <div class="field-value">{{n-a this.loadProof.notes}}</div>
+            </div>
+        </div>
+        <EnergyFleetOps::ProofFiles @files={{this.resource.proofFiles}} @emptyText={{t "energyops.load-plan.proof.no-files"}} />
+    </ContentPanel>
+
+    <EnergyCompartment::Schematic @compartments={{this.compartments}} @lines={{this.lines}} @owner={{this.resource.vehicle}} class="mt-4" />
+
+    <ContentPanel @title={{t "energyops.load-plan.lines"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        {{#if this.lines.length}}
+            <table class="energy-table w-full text-xs">
+                <thead>
+                    <tr class="text-left text-gray-500">
+                        <th class="py-1 pr-2">{{t "energyops.common.sequence"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.resource.compartment"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.common.order"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.loaded"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.common.variance"}}</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                    {{#each this.lines as |line|}}
+                        <tr>
+                            <td class="py-1 pr-2 font-mono">{{line.sequence}}</td>
+                            <td class="py-1 pr-2 font-semibold">{{n-a line.compartmentCode}}</td>
+                            <td class="py-1 pr-2">{{n-a line.productName}}</td>
+                            <td class="py-1 pr-2">{{n-a line.orderId}}</td>
+                            <td class="py-1 pr-2 text-right">{{format-number line.planned_volume maximumFractionDigits=1}}</td>
+                            <td class="py-1 pr-2 text-right">{{if (is-not-empty line.loaded_volume) (format-number line.loaded_volume maximumFractionDigits=1) "-"}}</td>
+                            <td class="py-1 text-right {{if (lt line.variance 0) 'text-red-500' (if (gt line.variance 0) 'text-green-600')}}">{{if (is-not-empty line.variance) (format-number line.variance maximumFractionDigits=1) "-"}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p class="text-xs text-gray-500">{{t "energyops.load-plan.no-lines"}}</p>
+        {{/if}}
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.load-plan.draws"}} @open={{false}} @wrapperClass="bordered-top mt-4">
+        {{#if this.draws.length}}
+            <table class="energy-table w-full text-xs">
+                <thead>
+                    <tr class="text-left text-gray-500">
+                        <th class="py-1 pr-2">{{t "energyops.common.sequence"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.common.order"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.resource.compartment"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.common.metered"}}</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                    {{#each this.draws as |draw|}}
+                        <tr>
+                            <td class="py-1 pr-2 font-mono">{{draw.sequence}}</td>
+                            <td class="py-1 pr-2">{{n-a draw.orderId}}</td>
+                            <td class="py-1 pr-2 font-semibold">{{n-a draw.compartmentCode}}</td>
+                            <td class="py-1 pr-2">{{n-a draw.productName}}</td>
+                            <td class="py-1 pr-2 text-right">{{format-number draw.planned_qty maximumFractionDigits=1}}</td>
+                            <td class="py-1 text-right">{{if draw.isDelivered (format-number draw.metered_qty maximumFractionDigits=1) "-"}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p class="text-xs text-gray-500">{{t "energyops.load-plan.no-draws"}}</p>
+        {{/if}}
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.load-plan.tickets"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <EnergyDeliveryTicket::List @tickets={{this.tickets}} @emptyText={{t "energyops.load-plan.no-tickets"}} />
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.unload.for-load-plan"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <EnergyUnload::List @unloads={{this.unloads}} @loading={{this.loadUnloads.isRunning}} @emptyText={{t "energyops.unload.none-for-plan"}} />
+    </ContentPanel>
+</div>

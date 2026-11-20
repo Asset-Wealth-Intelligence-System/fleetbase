@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 
 export default class AdminWidgetListPanelComponent extends Component {
+    @service intl;
     @service fetch;
     @service router;
 
@@ -21,7 +22,7 @@ export default class AdminWidgetListPanelComponent extends Component {
     }
 
     get title() {
-        return this.args.options?.title ?? this.data?.title ?? 'Admin Summary';
+        return this.args.options?.title ?? this.data?.title ?? this.intl.t('literal.console.admin-summary');
     }
 
     get subtitle() {
@@ -37,7 +38,7 @@ export default class AdminWidgetListPanelComponent extends Component {
     }
 
     get emptyText() {
-        return this.data?.empty ?? 'No items require attention.';
+        return this.data?.empty ?? this.intl.t('literal.console.no-items-require-attention');
     }
 
     get drilldownRoute() {
@@ -87,7 +88,7 @@ export default class AdminWidgetListPanelComponent extends Component {
             this.data = yield this.fetch.get(this.endpoint);
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load dashboard widget.';
+            this.error = error?.message ?? this.intl.t('literal.console.unable-to-load-dashboard-widget');
         }
     }
 }

@@ -1,0 +1,23 @@
+{{energy-on-change this.sync this.dropoffId this.configId}}
+{{#if this.canSee}}
+    {{#if this.receivingHours}}
+        <ContentPanel @title={{t "energyops.order.schedule.title"}} @titleIcon="clock" @open={{true}} @wrapperClass="mt-4" ...attributes>
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs">
+                <div class="text-gray-600 dark:text-gray-300">
+                    <span class="font-semibold">{{this.dropoff.name}}</span>
+                    {{t "energyops.order.schedule.receives-between" start=(or this.receivingHours.start "--:--") end=(or this.receivingHours.end "--:--")}}
+                    {{#if this.prefilledFromDropoff}}
+                        <Badge @status="info" @hideStatusDot={{true}} class="ml-2">{{t "energyops.order.schedule.prefilled"}}</Badge>
+                    {{/if}}
+                </div>
+                <div class="flex items-center space-x-2">
+                    <Button @size="xs" @icon="clock-rotate-left" @text={{t "energyops.order.schedule.apply"}} @onClick={{fn this.applyReceivingHours true}} />
+                    {{#if this.hasTimeWindow}}
+                        <Button @size="xs" @icon="eraser" @text={{t "energyops.order.schedule.clear"}} @onClick={{this.clearTimeWindow}} />
+                    {{/if}}
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">{{t "energyops.order.schedule.help"}}</p>
+        </ContentPanel>
+    {{/if}}
+{{/if}}

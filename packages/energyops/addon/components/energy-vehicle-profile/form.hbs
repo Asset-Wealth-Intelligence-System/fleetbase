@@ -1,0 +1,84 @@
+<ContentPanel
+    @title={{t "energyops.vehicle-profile.title"}}
+    @open={{true}}
+    @wrapperClass="bordered-top"
+    @actionButtons={{if @hideSave (array) (array (hash type="primary" size="xs" icon="save" text=(t "common.save") isLoading=this.save.isRunning disabled=(not this.canSave) permission="energy-ops update energy-vehicle-profile" onClick=(perform this.save)))}}
+    ...attributes
+>
+    {{#if this.resource}}
+        {{#if this.resource.isNew}}
+            <p class="text-xs text-gray-500 mb-3">{{t "energyops.vehicle-profile.none"}}</p>
+        {{/if}}
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.vehicle-profile.fields.operation"}} @wrapperClass="col-span-2" @required={{true}}>
+                <ModelSelect
+                    @modelName="energy-operation"
+                    @selectedModel={{this.resource.operation}}
+                    @placeholder={{t "energyops.common.select-operation"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setOperation}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    {{model.displayName}}
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.vehicle-profile.fields.default-depot"}} @wrapperClass="col-span-2" @helpText={{t "energyops.vehicle-profile.fields.default-depot-help"}}>
+                <ModelSelect
+                    @modelName="place"
+                    @selectedModel={{this.resource.default_depot}}
+                    @query={{hash type="depot"}}
+                    @placeholder={{t "energyops.common.select-depot"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{this.setDefaultDepot}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.name}}</span> <span class="text-gray-500 ml-1">{{model.address}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <div class="col-span-2">
+                <Toggle @isToggled={{this.resource.is_tractor}} @onToggle={{fn this.toggle "is_tractor"}} @label={{t "energyops.vehicle-profile.fields.is-tractor"}} @disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </div>
+            {{#if this.resource.is_tractor}}
+                <InputGroup @name={{t "energyops.vehicle-profile.fields.coupled-asset"}} @wrapperClass="col-span-2">
+                    <ModelSelect
+                        @modelName="asset"
+                        @selectedModel={{this.resource.coupled_asset}}
+                        @placeholder={{t "energyops.common.select-asset"}}
+                        @triggerClass="form-select form-input"
+                        @infiniteScroll={{false}}
+                        @renderInPlace={{true}}
+                        @allowClear={{true}}
+                        @onChange={{this.setCoupledAsset}}
+                        @disabled={{cannot-write this.resource schema="energy-ops"}}
+                        as |model|
+                    >
+                        {{model.name}} <span class="text-gray-500 ml-1">{{model.code}}</span>
+                    </ModelSelect>
+                </InputGroup>
+            {{/if}}
+            <InputGroup @name={{t "energyops.vehicle-profile.fields.max-payload"}}>
+                <Input @value={{this.resource.max_payload_kg}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.vehicle-profile.fields.pump-rate"}}>
+                <Input @value={{this.resource.pump_rate_lpm}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <div class="flex items-end pb-1">
+                <Toggle @isToggled={{this.resource.has_meter}} @onToggle={{fn this.toggle "has_meter"}} @label={{t "energyops.vehicle-profile.fields.has-meter"}} @disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </div>
+            {{#if this.resource.has_meter}}
+                <InputGroup @name={{t "energyops.vehicle-profile.fields.meter-serial"}}>
+                    <Input @value={{this.resource.meter_serial}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+                </InputGroup>
+            {{/if}}
+        </div>
+    {{else}}
+        <Spinner />
+    {{/if}}
+</ContentPanel>

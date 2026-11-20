@@ -1,0 +1,17 @@
+<Layout::Resource::Tabular
+    @resource="vehicle"
+    @controller={{this}}
+    @title={{t "energyops.fleet.title"}}
+    @data={{@model}}
+    @columns={{this.columns}}
+    @actionButtons={{this.actionButtons}}
+    @selectable={{false}}
+    @searchQuery={{this.query}}
+    @onSearch={{perform this.compartmentActions.controllerSearchTask this}}
+    @page={{this.page}}
+    @onPageChange={{fn (mut this.page)}}
+    @emptyStateTitle={{t "energyops.fleet.title"}}
+    @emptyStateDescription={{t "energyops.fleet.subtitle"}}
+    @emptyStateIcon="truck-moving"
+/>
+{{outlet}}

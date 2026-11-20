@@ -1,0 +1,74 @@
+<div class="p-4 space-y-4 text-xs">
+    <p class="text-gray-500">{{t "energyops.load-plan.add-orders-help"}}</p>
+
+    <div class="rounded border border-gray-200 dark:border-gray-700 p-3">
+        <div class="flex items-center justify-between mb-2">
+            <span class="font-semibold uppercase text-gray-500">{{t "energyops.load-plan.on-board-stock"}}</span>
+            {{#if this.loadStock.isRunning}}
+                <Spinner class="text-gray-400" />
+            {{else}}
+                <span class="font-mono font-semibold">{{format-number this.totalAvailableLiters maximumFractionDigits=1}} L</span>
+            {{/if}}
+        </div>
+        {{#if this.stock.length}}
+            <table class="w-full">
+                <thead>
+                    <tr class="text-left text-gray-500">
+                        <th class="py-1">{{t "energyops.resource.compartment"}}</th>
+                        <th class="py-1">{{t "energyops.resource.product"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.load-plan.residual"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.load-plan.committed"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.load-plan.available"}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.stock as |row|}}
+                        <tr class="border-t border-gray-100 dark:border-gray-800">
+                            <td class="py-1 font-mono">{{row.compartment_name}}</td>
+                            <td class="py-1">{{n-a row.product_code}}</td>
+                            <td class="py-1 text-right font-mono">{{format-number row.residual_liters maximumFractionDigits=1}}</td>
+                            <td class="py-1 text-right font-mono text-gray-500">{{format-number row.committed_liters maximumFractionDigits=1}}</td>
+                            <td class="py-1 text-right font-mono font-semibold">{{format-number row.available_liters maximumFractionDigits=1}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else if (not this.loadStock.isRunning)}}
+            <p class="text-gray-400">{{t "energyops.load-plan.on-board-stock-empty"}}</p>
+        {{/if}}
+    </div>
+
+    <InputGroup @name={{t "energyops.load-plan.orders"}}>
+        <ModelSelect
+            @modelName="order"
+            @query={{hash status="created,pending" sort="-created_at"}}
+            @placeholder={{t "energyops.common.select-order"}}
+            @triggerClass="form-select form-input"
+            @infiniteScroll={{false}}
+            @renderInPlace={{true}}
+            @onChange={{this.addOrder}}
+            as |model|
+        >
+            <span class="font-mono font-semibold">{{model.public_id}}</span>
+            <span class="text-gray-500 ml-2">{{model.tracking_number.tracking_number}} · {{model.status}}</span>
+        </ModelSelect>
+        <div class="flex flex-wrap gap-1 mt-2">
+            {{#each this.selection.orders as |order|}}
+                <span class="inline-flex items-center px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-100">
+                    <span class="font-mono">{{order.public_id}}</span>
+                    <button type="button" class="ml-1 hover:text-red-500" {{on "click" (fn this.removeOrder order)}}><FaIcon @icon="times" @size="xs" /></button>
+                </span>
+            {{/each}}
+        </div>
+    </InputGroup>
+
+    {{#if this.selection.orders.length}}
+        <div class="flex items-center justify-between rounded px-3 py-2 {{if this.exceedsStock 'bg-red-50 text-red-700 dark:bg-red-900 dark:text-red-100' 'bg-gray-50 text-gray-700 dark:bg-gray-800 dark:text-gray-100'}}">
+            <span>{{t "energyops.load-plan.add-orders-requested"}}</span>
+            <span class="font-mono font-semibold">{{format-number this.requestedLiters maximumFractionDigits=1}} L</span>
+        </div>
+        {{#if this.exceedsStock}}
+            <p class="text-red-600">{{t "energyops.load-plan.add-orders-exceeds"}}</p>
+        {{/if}}
+    {{/if}}
+</div>

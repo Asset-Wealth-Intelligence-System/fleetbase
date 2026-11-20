@@ -5,6 +5,7 @@ const CONTEXT_PREFIX = 'onboarding:context:';
 const KEYS_INDEX = `${CONTEXT_PREFIX}__keys__`;
 
 export default class OnboardingContextService extends Service {
+    @service intl;
     @service appCache;
     @service notifications;
     @tracked data = {};
@@ -82,13 +83,10 @@ export default class OnboardingContextService extends Service {
      */
     _notifyUser() {
         if (this.notifications) {
-            this.notifications.warning(
-                'Your browser storage is full. Your onboarding progress will be saved temporarily but may be lost if you close this tab. Please complete the onboarding process in this session.',
-                {
-                    timeout: 10000,
-                    clearDuration: 300,
-                }
-            );
+            this.notifications.warning(this.intl.t('literal.console.your-browser-storage-is-full-your-onboarding-pro-38afd'), {
+                timeout: 10000,
+                clearDuration: 300,
+            });
         }
     }
 

@@ -6,6 +6,7 @@ import { debug } from '@ember/debug';
 import { task } from 'ember-concurrency';
 
 export default class ConsoleSettingsIndexController extends Controller {
+    @service intl;
     /**
      * Inject the `currentUser` service
      *
@@ -63,7 +64,7 @@ export default class ConsoleSettingsIndexController extends Controller {
 
         try {
             yield this.model.save();
-            this.notifications.success('Organization changes successfully saved.');
+            this.notifications.success(this.intl.t('literal.console.organization-changes-successfully-saved'));
         } catch (error) {
             debug(`Unable to save organization settings : ${error.message}`);
         }

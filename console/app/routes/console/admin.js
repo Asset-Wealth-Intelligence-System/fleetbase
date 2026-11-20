@@ -2,6 +2,7 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class ConsoleAdminRoute extends Route {
+    @service intl;
     @service currentUser;
     @service notifications;
     @service router;
@@ -9,7 +10,7 @@ export default class ConsoleAdminRoute extends Route {
     beforeModel() {
         if (!this.currentUser.isAdmin) {
             return this.router.transitionTo('console').then(() => {
-                this.notifications.error('You do not have authorization to access admin!');
+                this.notifications.error(this.intl.t('literal.console.you-do-not-have-authorization-to-access-admin'));
             });
         }
     }

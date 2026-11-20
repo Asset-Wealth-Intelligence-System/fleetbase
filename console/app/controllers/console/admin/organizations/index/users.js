@@ -68,56 +68,58 @@ export default class ConsoleAdminOrganizationsIndexUsersController extends Contr
      *
      * @memberof ConsoleAdminOrganizationsIndexUsersController
      */
-    columns = [
-        {
-            label: this.intl.t('common.name'),
-            valuePath: 'name',
-        },
-        {
-            label: this.intl.t('common.role'),
-            valuePath: 'roleName',
-        },
-        {
-            label: this.intl.t('common.phone'),
-            valuePath: 'phone',
-        },
-        {
-            label: this.intl.t('common.email'),
-            valuePath: 'email',
-        },
-        {
-            label: this.intl.t('common.status'),
-            valuePath: 'status',
-            cellComponent: 'table/cell/status',
-        },
-        {
-            label: '',
-            cellComponent: 'table/cell/dropdown',
-            ddButtonText: false,
-            ddButtonIcon: 'ellipsis-h',
-            ddButtonIconPrefix: 'fas',
-            ddMenuLabel: 'User Actions',
-            cellClassNames: 'overflow-visible',
-            wrapperClass: 'flex items-center justify-end mx-2',
-            width: '9%',
-            actions: [
-                {
-                    label: 'Impersonate',
-                    icon: 'user-secret',
-                    fn: this.impersonateUser,
-                },
-                {
-                    label: 'Change Password',
-                    icon: 'lock-open',
-                    fn: this.changeUserPassword,
-                },
-            ],
-            sortable: false,
-            filterable: false,
-            resizable: false,
-            searchable: false,
-        },
-    ];
+    get columns() {
+        return [
+            {
+                label: this.intl.t('common.name'),
+                valuePath: 'name',
+            },
+            {
+                label: this.intl.t('common.role'),
+                valuePath: 'roleName',
+            },
+            {
+                label: this.intl.t('common.phone'),
+                valuePath: 'phone',
+            },
+            {
+                label: this.intl.t('common.email'),
+                valuePath: 'email',
+            },
+            {
+                label: this.intl.t('common.status'),
+                valuePath: 'status',
+                cellComponent: 'table/cell/status',
+            },
+            {
+                label: '',
+                cellComponent: 'table/cell/dropdown',
+                ddButtonText: false,
+                ddButtonIcon: 'ellipsis-h',
+                ddButtonIconPrefix: 'fas',
+                ddMenuLabel: this.intl.t('literal.console.user-actions'),
+                cellClassNames: 'overflow-visible',
+                wrapperClass: 'flex items-center justify-end mx-2',
+                width: '9%',
+                actions: [
+                    {
+                        label: this.intl.t('literal.console.impersonate'),
+                        icon: 'user-secret',
+                        fn: this.impersonateUser,
+                    },
+                    {
+                        label: this.intl.t('literal.console.change-password'),
+                        icon: 'lock-open',
+                        fn: this.changeUserPassword,
+                    },
+                ],
+                sortable: false,
+                filterable: false,
+                resizable: false,
+                searchable: false,
+            },
+        ];
+    }
 
     /**
      * Impersonate the selected user.

@@ -1,0 +1,122 @@
+<div class="form-wrapper" ...attributes>
+    <ContentPanel @title={{t "energyops.ticket.fields.order"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.ticket.fields.order"}} @wrapperClass="col-span-2" @required={{true}}>
+                <ModelSelect
+                    @modelName="order"
+                    @selectedModel={{this.resource.order}}
+                    @query={{hash sort="-created_at"}}
+                    @placeholder={{t "energyops.common.select-order"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setOrder}}
+                    @disabled={{or this.orderLocked (cannot-write this.resource schema="energy-ops")}}
+                    as |model|
+                >
+                    <span class="font-mono font-semibold">{{model.public_id}}</span>
+                    <span class="text-gray-500 ml-2">{{model.status}}</span>
+                </ModelSelect>
+            </InputGroup>
+
+            <InputGroup @name={{t "energyops.ticket.stop-draw"}} @wrapperClass="col-span-2" @helpText={{t "energyops.ticket.stop-draw-help"}}>
+                {{#if this.loadDraws.isRunning}}
+                    <Spinner @loadingMessage={{t "common.loading"}} />
+                {{else if this.draws.length}}
+                    <Select
+                        @options={{this.draws}}
+                        @optionLabel="label"
+                        @optionValue="id"
+                        @value={{this.resource.stop_draw_uuid}}
+                        @onSelect={{this.setDrawById}}
+                        @placeholder={{t "energyops.common.select-compartment"}}
+                        @disabled={{cannot-write this.resource schema="energy-ops"}}
+                        class="w-full"
+                    />
+                {{else}}
+                    <p class="text-gray-500">{{t "energyops.load-plan.none-for-order"}}</p>
+                {{/if}}
+            </InputGroup>
+
+            <InputGroup @name={{t "energyops.ticket.fields.product"}} @required={{true}}>
+                <ModelSelect
+                    @modelName="energy-product"
+                    @selectedModel={{this.resource.product}}
+                    @placeholder={{t "energyops.common.select-product"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setProduct}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+                </ModelSelect>
+            </InputGroup>
+
+            <InputGroup @name={{t "energyops.ticket.fields.compartment"}}>
+                <ModelSelect
+                    @modelName="energy-compartment"
+                    @selectedModel={{this.resource.compartment}}
+                    @placeholder={{t "energyops.common.select-compartment"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setCompartment}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.ownerName}}</span>
+                </ModelSelect>
+            </InputGroup>
+
+            <InputGroup @name={{t "energyops.ticket.fields.customer-tank"}} @wrapperClass="col-span-2">
+                <ModelSelect
+                    @modelName="energy-customer-tank"
+                    @selectedModel={{this.resource.customer_tank}}
+                    @placeholder={{t "energyops.common.select-tank"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setTank}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.name}}</span> <span class="text-gray-500 ml-1">{{model.placeName}}</span>
+                </ModelSelect>
+            </InputGroup>
+        </div>
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.ticket.metering"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.ticket.fields.planned"}}>
+                <Input @value={{this.resource.planned_qty}} @type="number" step="0.1" min="0" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.metered"}} @required={{true}}>
+                <Input @value={{this.resource.metered_qty}} @type="number" step="0.1" min="0" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.unit"}}>
+                <Select @options={{this.unitOptions}} @value={{this.resource.unit}} @onSelect={{fn (mut this.resource.unit)}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.variance-reason"}}>
+                <Input @value={{this.resource.variance_reason}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.meter-start"}}>
+                <Input @value={{this.resource.meter_start}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.meter-end"}}>
+                <Input @value={{this.resource.meter_end}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.seal-in"}}>
+                <Input @value={{this.resource.seal_in}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.seal-out"}}>
+                <Input @value={{this.resource.seal_out}} @type="text" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.ticket.fields.invoice-number"}} @helpText={{t "energyops.ticket.fields.invoice-number-help"}}>
+                <Input @value={{this.resource.invoice_number}} @type="text" class="w-full form-input" placeholder="Factura #" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+        </div>
+    </ContentPanel>
+</div>

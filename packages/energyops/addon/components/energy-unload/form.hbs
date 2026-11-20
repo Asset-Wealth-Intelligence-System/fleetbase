@@ -1,0 +1,128 @@
+<div class="p-4 text-xs space-y-4" ...attributes>
+    <p class="text-gray-500">{{t "energyops.unload.form-help"}}</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 no-input-group-padding">
+        <InputGroup @name={{t "energyops.unload.fields.vehicle"}}>
+            <ModelSelect
+                @modelName="vehicle"
+                @selectedModel={{this.draft.vehicle}}
+                @placeholder={{t "energyops.common.select-vehicle"}}
+                @triggerClass="form-select form-input form-input-sm"
+                @infiniteScroll={{false}}
+                @renderInPlace={{true}}
+                @onChange={{this.setVehicle}}
+                as |model|
+            >
+                {{or model.displayName model.display_name model.name}}
+            </ModelSelect>
+        </InputGroup>
+
+        <InputGroup @name={{t "energyops.unload.fields.inventory-place"}} @helpText={{t "energyops.unload.inventory-place-help"}}>
+            <ModelSelect
+                @modelName="place"
+                @selectedModel={{this.draft.inventory_place}}
+                @query={{hash type="inventory"}}
+                @placeholder={{t "energyops.common.select-inventory-place"}}
+                @triggerClass="form-select form-input form-input-sm"
+                @infiniteScroll={{false}}
+                @renderInPlace={{true}}
+                @onChange={{this.setInventoryPlace}}
+                as |model|
+            >
+                <span class="font-semibold">{{model.name}}</span> <span class="text-gray-500 ml-1">{{model.address}}</span>
+            </ModelSelect>
+        </InputGroup>
+
+        <InputGroup @name={{t "energyops.unload.fields.unloaded-at"}} @helpText={{t "energyops.unload.unloaded-at-help"}}>
+            <input type="datetime-local" class="w-full form-input form-input-sm" value={{this.unloadedAtValue}} {{on "change" this.setUnloadedAt}} />
+        </InputGroup>
+
+        <InputGroup @name={{t "energyops.unload.fields.load-plan"}}>
+            <div class="form-input form-input-sm bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 font-mono">{{n-a this.draft.load_plan_id}}</div>
+        </InputGroup>
+    </div>
+
+    <div>
+        <div class="flex items-center justify-between mb-1">
+            <span class="font-semibold uppercase text-gray-500">{{t "energyops.unload.lines"}}</span>
+            {{#if this.unloadActions.prefill.isRunning}}<Spinner class="text-gray-400" />{{/if}}
+        </div>
+        {{#if this.lines.length}}
+            <table class="energy-table w-full">
+                <thead>
+                    <tr class="text-left text-gray-500">
+                        <th class="py-1 pr-2">{{t "energyops.resource.compartment"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.unload.fields.before"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.unload.fields.unloaded"}}</th>
+                        <th class="py-1 text-right">{{t "energyops.unload.fields.remaining"}}</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                    {{#each this.lines as |line|}}
+                        <tr>
+                            <td class="py-1 pr-2 font-semibold">{{or line.compartment_code line.compartment_name}}</td>
+                            <td class="py-1 pr-2">{{n-a line.product_name}}</td>
+                            <td class="py-1 pr-2 text-right font-mono">{{format-number line.before_volume maximumFractionDigits=1}} {{line.unit}}</td>
+                            <td class="py-1 pr-2 text-right">
+                                <input type="number" min="0" step="0.1" class="form-input form-input-sm w-24 text-right" value={{line.unloaded_volume}} {{on "input" (fn this.setLineVolume line "unloaded_volume")}} aria-label={{t "energyops.unload.fields.unloaded"}} />
+                            </td>
+                            <td class="py-1 text-right">
+                                <input type="number" min="0" step="0.1" class="form-input form-input-sm w-24 text-right" value={{line.remaining_volume}} {{on "input" (fn this.setLineVolume line "remaining_volume")}} aria-label={{t "energyops.unload.fields.remaining"}} />
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="font-semibold border-t border-gray-200 dark:border-gray-700">
+                        <td class="py-1 pr-2" colspan="2">{{t "common.total"}}</td>
+                        <td class="py-1 pr-2 text-right font-mono">{{format-number this.draft.total_before_volume maximumFractionDigits=1}}</td>
+                        <td class="py-1 pr-2 text-right font-mono">{{format-number this.totalUnloaded maximumFractionDigits=1}}</td>
+                        <td class="py-1 text-right font-mono">{{format-number this.totalRemaining maximumFractionDigits=1}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        {{else if this.draft.vehicle}}
+            {{#unless this.unloadActions.prefill.isRunning}}
+                <p class="text-gray-400 italic">{{t "energyops.unload.no-compartments"}}</p>
+            {{/unless}}
+        {{else}}
+            <p class="text-gray-400 italic">{{t "energyops.unload.select-vehicle-first"}}</p>
+        {{/if}}
+    </div>
+
+    <InputGroup @name={{t "energyops.common.notes"}}>
+        <textarea class="w-full form-input form-input-sm" rows="2" value={{this.draft.notes}} {{on "input" this.setNotes}}></textarea>
+    </InputGroup>
+
+    <div class="rounded border border-dashed border-gray-300 dark:border-gray-700 p-3 space-y-3">
+        <div class="flex items-center font-semibold text-gray-700 dark:text-gray-200">
+            <FaIcon @icon="camera" class="mr-1" />
+            {{t "energyops.unload.proof.title"}}
+        </div>
+        <p class="text-gray-500">{{t "energyops.unload.proof.help"}}</p>
+
+        <div class="flex items-center space-x-2">
+            <Select @options={{this.proofTypeOptions}} @optionLabel="label" @optionValue="value" @value={{this.proofType}} @onSelect={{this.setProofType}} class="form-select-sm" aria-label={{t "energyops.unload.proof.type"}} />
+            <FileUpload @name="unload-proof" @for="unload-proof" @accept={{join "," this.acceptedFileTypes}} @multiple={{true}} @onFileAdded={{perform this.queueFile}}>
+                <a tabindex={{0}} class="btn btn-magic btn-xs cursor-pointer">
+                    <FaIcon @icon="paperclip" class="mr-1" />
+                    {{t "energyops.unload.proof.attach"}}
+                </a>
+            </FileUpload>
+        </div>
+
+        {{#if this.uploadQueue.length}}
+            <div class="space-y-1">
+                {{#each this.uploadQueue as |file|}}
+                    <div class="flex items-center justify-between bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 py-1 px-2 rounded">
+                        <div class="text-blue-900 dark:text-blue-100 truncate">{{truncate-filename file.name 40}}</div>
+                        <div class="flex items-center"><Spinner class="mr-2" /><span class="font-bold">{{round file.progress}}%</span></div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+
+        <EnergyFleetOps::ProofFiles @files={{this.files}} @onRemove={{perform this.removeFile}} @emptyText={{t "energyops.unload.proof.none"}} />
+    </div>
+</div>

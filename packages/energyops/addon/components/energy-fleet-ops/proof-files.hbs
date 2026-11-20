@@ -1,0 +1,27 @@
+{{#if @files.length}}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2" ...attributes>
+        {{#each @files as |file|}}
+            <div class="rounded border border-gray-200 dark:border-gray-700 p-2 flex flex-col gap-1 text-xs">
+                {{#if file.isImage}}
+                    <a href={{file.url}} target="_blank" rel="noopener noreferrer" class="block">
+                        <img src={{file.url}} alt={{file.original_filename}} class="w-full h-24 object-cover rounded" />
+                    </a>
+                {{else}}
+                    <div class="w-full h-24 rounded bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-gray-400">
+                        <FaIcon @icon="file-lines" @size="2x" />
+                    </div>
+                {{/if}}
+                <div class="flex items-center justify-between gap-1">
+                    <Badge @status="info" @hideStatusDot={{true}}>{{t (concat "energyops.proof-type." file.type) default=file.type}}</Badge>
+                    {{#if @onRemove}}
+                        <button type="button" class="text-red-500 hover:text-red-700" aria-label={{t "common.remove"}} {{on "click" (fn @onRemove file)}}><FaIcon @icon="trash" @size="xs" /></button>
+                    {{/if}}
+                </div>
+                <a href={{file.url}} target="_blank" rel="noopener noreferrer" class="truncate text-blue-500 hover:underline" title={{file.original_filename}}>{{truncate-filename file.original_filename 22}}</a>
+                <span class="text-gray-400">{{file.createdAt}}</span>
+            </div>
+        {{/each}}
+    </div>
+{{else}}
+    <p class="text-xs text-gray-500" ...attributes>{{or @emptyText (t "energyops.common.no-files")}}</p>
+{{/if}}

@@ -45,3 +45,45 @@
 [submodule "packages/ai"]
 	path = packages/ai
 	url = git@github.com:fleetbase/ai.git
+[submodule "packages/packages/ai"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/ai.git
+	branch = united
+[submodule "packages/packages/core-api"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/core-api.git
+	branch = united
+[submodule "packages/packages/customer-portal"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/customer-portal.git
+	branch = united
+[submodule "packages/packages/dev-engine"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/dev-engine.git
+	branch = united
+[submodule "packages/packages/ember-core"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/ember-core.git
+	branch = united
+[submodule "packages/packages/ember-ui"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/ember-ui.git
+	branch = united
+[submodule "packages/packages/fleetbase-extensions-indexer"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/fleetbase-extensions-indexer.git
+	branch = united
+[submodule "packages/packages/fleetops"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/fleetops.git
+	branch = united
+[submodule "packages/packages/fleetops-data"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/fleetops-data.git
+	branch = united
+[submodule "packages/packages/iam-engine"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/iam-engine.git
+	branch = united
+[submodule "packages/packages/ledger"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/ledger.git
+	branch = united
+[submodule "packages/packages/pallet"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/pallet.git
+	branch = united
+[submodule "packages/packages/registry-bridge"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/registry-bridge.git
+	branch = united
+[submodule "packages/packages/storefront"]
+	url = https://github.com/Asset-Wealth-Intelligence-System/packages/storefront.git
+	branch = united

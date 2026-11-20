@@ -1,0 +1,27 @@
+import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+
+export default class OperationsIndexEditRoute extends Route {
+    @service store;
+    @service notifications;
+    @service hostRouter;
+    @service abilities;
+    @service intl;
+
+    @action error(error) {
+        this.notifications.serverError(error);
+        return this.hostRouter.transitionTo('console.energy-ops.operations.index');
+    }
+
+    beforeModel() {
+        if (this.abilities.cannot('energy-ops update energy-operation')) {
+            this.notifications.warning(this.intl.t('common.unauthorized-access'));
+            return this.hostRouter.transitionTo('console.energy-ops.operations.index');
+        }
+    }
+
+    model({ public_id }) {
+        return this.store.findRecord('energy-operation', public_id);
+    }
+}

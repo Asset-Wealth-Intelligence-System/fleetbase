@@ -1,0 +1,86 @@
+<ContentPanel
+    @title={{t "energyops.compartment.title"}}
+    @open={{true}}
+    @wrapperClass="bordered-top"
+    @titleStatusRight={{if this.sortedCompartments.length "info"}}
+    @titleStatusRightText={{if this.sortedCompartments.length (concat (format-number this.totalCapacity) " " this.unit)}}
+    @actionButtons={{array (hash type="primary" size="xs" icon="plus" text=(t "energyops.compartment.add") permission="energy-ops create energy-compartment" disabled=(not this.ownerIsSaved) onClick=this.add)}}
+    ...attributes
+>
+    {{#if this.load.isRunning}}
+        <div class="flex justify-center py-6"><Spinner /></div>
+    {{else if (not this.ownerIsSaved)}}
+        <p class="text-xs text-gray-500">{{t "energyops.compartment.empty-owner"}}</p>
+    {{else if this.sortedCompartments.length}}
+        <p class="text-xs text-gray-400 mb-2">{{t "energyops.compartment.reorder-help"}}</p>
+        <div class="energy-compartment-list divide-y divide-gray-200 dark:divide-gray-700 border border-gray-200 dark:border-gray-700 rounded-md overflow-hidden text-xs">
+            {{#each this.sortedCompartments as |compartment|}}
+                {{! template-lint-disable no-invalid-interactive }}
+                <div
+                    class="energy-compartment-row flex items-center px-2 py-2 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 {{if (eq this.dragging compartment) 'opacity-50'}}"
+                    draggable={{if this.canEdit "true" "false"}}
+                    {{on "dragstart" (fn this.dragStart compartment)}}
+                    {{on "dragover" this.dragOver}}
+                    {{on "drop" (fn this.drop compartment)}}
+                >
+                    <div class="w-6 text-gray-400 cursor-move flex-shrink-0"><FaIcon @icon="grip-vertical" /></div>
+                    <div class="w-8 flex-shrink-0 font-mono font-semibold text-gray-700 dark:text-gray-200">{{compartment.sequence}}</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-semibold">{{compartment.code}}</span>
+                            <span class="text-gray-500 truncate">{{compartment.name}}</span>
+                            {{#if compartment.requires_flush}}
+                                <Badge @status="warning" @hideStatusDot={{true}}>{{t "energyops.compartment.requires-flush"}}</Badge>
+                            {{/if}}
+                        </div>
+                        <div class="text-gray-500 mt-0.5 flex items-center space-x-3">
+                            <span>{{format-number compartment.capacity_volume}} {{compartment.unit}} · {{compartment.max_fill_percent}}%</span>
+                            {{#if compartment.dedicated_product}}
+                                <span><FaIcon @icon="lock" @size="xs" class="mr-1" />{{compartment.dedicated_product.code}}</span>
+                            {{/if}}
+                            {{#if compartment.last_product}}
+                                <span>{{t "energyops.compartment.last-product"}}: {{compartment.last_product.code}}</span>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="w-32 px-2 flex-shrink-0">
+                        <Cell::EnergyFillLevel @value={{compartment.fillPercent}} />
+                    </div>
+                    <div class="flex items-center space-x-1 flex-shrink-0">
+                        <Button @icon="arrow-up" @size="xs" @helpText={{t "literal.energyops.move-up"}} @onClick={{fn this.move compartment -1}} @permission="energy-ops update energy-compartment" />
+                        <Button @icon="arrow-down" @size="xs" @helpText={{t "literal.energyops.move-down"}} @onClick={{fn this.move compartment 1}} @permission="energy-ops update energy-compartment" />
+                        <DropdownButton @icon="ellipsis-h" @size="xs" @renderInPlace={{true}} as |dd|>
+                            <div class="next-dd-menu mt-1 mx-0">
+                                <div class="px-1">
+                                    <a href="javascript:;" class="next-dd-item" {{on "click" (dropdown-fn dd (fn this.edit compartment))}}>
+                                        <div class="w-6"><FaIcon @icon="pencil" /></div>
+                                        <span>{{t "common.edit"}}</span>
+                                    </a>
+                                </div>
+                                <div class="px-1">
+                                    <a href="javascript:;" class="next-dd-item" {{on "click" (dropdown-fn dd (fn this.flush compartment))}}>
+                                        <div class="w-6"><FaIcon @icon="droplet-slash" /></div>
+                                        <span>{{t "energyops.compartment.flush"}}</span>
+                                    </a>
+                                </div>
+                                <div class="next-dd-menu-seperator"></div>
+                                <div class="px-1">
+                                    <a href="javascript:;" class="next-dd-item text-red-500" {{on "click" (dropdown-fn dd (fn this.remove compartment))}}>
+                                        <div class="w-6"><FaIcon @icon="trash" /></div>
+                                        <span>{{t "energyops.compartment.delete"}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </DropdownButton>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        <div class="flex items-center justify-end space-x-4 text-xs text-gray-500 mt-2">
+            <span>{{t "energyops.compartment.total-capacity"}}: <strong>{{format-number this.totalCapacity}} {{this.unit}}</strong></span>
+            <span>{{t "energyops.compartment.safe-capacity"}}: <strong>{{format-number this.safeCapacity maximumFractionDigits=0}} {{this.unit}}</strong></span>
+        </div>
+    {{else}}
+        <p class="text-xs text-gray-500">{{t "energyops.compartment.empty"}}</p>
+    {{/if}}
+</ContentPanel>

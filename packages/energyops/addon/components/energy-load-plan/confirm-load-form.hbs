@@ -1,0 +1,95 @@
+<div class="p-4 text-xs space-y-4">
+    <p class="text-gray-500">{{t "energyops.load-plan.confirm-load-help"}}</p>
+
+    <InputGroup @name={{t "energyops.load-plan.fields.depot"}} @helpText={{t "energyops.load-plan.depot-help"}}>
+        <ModelSelect
+            @modelName="place"
+            @selectedModel={{this.data.depot}}
+            @query={{hash type="depot"}}
+            @placeholder={{t "energyops.common.select-depot"}}
+            @triggerClass="form-select form-input form-input-sm"
+            @infiniteScroll={{false}}
+            @renderInPlace={{true}}
+            @allowClear={{true}}
+            @onChange={{this.setDepot}}
+            as |model|
+        >
+            <span class="font-semibold">{{model.name}}</span> <span class="text-gray-500 ml-1">{{model.address}}</span>
+        </ModelSelect>
+    </InputGroup>
+
+    <table class="energy-table w-full">
+        <thead>
+            <tr class="text-left text-gray-500">
+                <th class="py-1 pr-2">{{t "energyops.resource.compartment"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.common.order"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                <th class="py-1 text-right">{{t "energyops.common.loaded"}}</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {{#each this.lines as |line|}}
+                <tr>
+                    <td class="py-1 pr-2 font-semibold">{{n-a line.compartmentCode}}</td>
+                    <td class="py-1 pr-2">{{n-a line.productName}}</td>
+                    <td class="py-1 pr-2 font-mono">{{n-a line.orderId}}</td>
+                    <td class="py-1 pr-2 text-right">{{format-number line.planned_volume maximumFractionDigits=1}}</td>
+                    <td class="py-1 text-right">
+                        <input type="number" min="0" step="0.1" class="form-input form-input-sm w-28 text-right" value={{get this.data.actuals line.id}} {{on "input" (fn this.setActual line)}} aria-label={{t "energyops.common.loaded"}} />
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="rounded border border-dashed border-gray-300 dark:border-gray-700 p-3 space-y-3">
+        <div class="flex items-center font-semibold text-gray-700 dark:text-gray-200">
+            <FaIcon @icon="file-invoice" class="mr-1" />
+            {{t "energyops.load-plan.proof.title"}}
+        </div>
+        <p class="text-gray-500">{{t "energyops.load-plan.proof.help"}}</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 no-input-group-padding">
+            <InputGroup @name={{t "energyops.load-plan.proof.invoice-number"}}>
+                <input type="text" class="w-full form-input form-input-sm" value={{this.proof.invoice_number}} {{on "input" (fn this.setProofField "invoice_number")}} placeholder={{t "energyops.load-plan.proof.invoice-number-placeholder"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.load-plan.proof.ticket-number"}}>
+                <input type="text" class="w-full form-input form-input-sm" value={{this.proof.ticket_number}} {{on "input" (fn this.setProofField "ticket_number")}} placeholder={{t "energyops.load-plan.proof.ticket-number-placeholder"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.common.notes"}} @wrapperClass="md:col-span-2">
+                <textarea class="w-full form-input form-input-sm" rows="2" value={{this.proof.notes}} {{on "input" (fn this.setProofField "notes")}}></textarea>
+            </InputGroup>
+        </div>
+
+        <div class="flex items-center space-x-2">
+            <Select @options={{this.proofTypeOptions}} @optionLabel="label" @optionValue="value" @value={{this.proofType}} @onSelect={{this.setProofType}} class="form-select-sm" aria-label={{t "energyops.load-plan.proof.type"}} />
+            <FileUpload @name="load-proof" @for="load-proof" @accept={{join "," this.acceptedFileTypes}} @multiple={{true}} @onFileAdded={{perform this.queueFile}}>
+                <a tabindex={{0}} class="btn btn-magic btn-xs cursor-pointer">
+                    <FaIcon @icon="camera" class="mr-1" />
+                    {{t "energyops.load-plan.proof.attach"}}
+                </a>
+            </FileUpload>
+        </div>
+
+        {{#if this.uploadQueue.length}}
+            <div class="space-y-1">
+                {{#each this.uploadQueue as |file|}}
+                    <div class="flex items-center justify-between bg-blue-50 dark:bg-blue-900 border border-blue-200 dark:border-blue-800 py-1 px-2 rounded">
+                        <div class="text-blue-900 dark:text-blue-100 truncate">{{truncate-filename file.name 40}}</div>
+                        <div class="flex items-center"><Spinner class="mr-2" /><span class="font-bold">{{round file.progress}}%</span></div>
+                    </div>
+                {{/each}}
+            </div>
+        {{/if}}
+
+        {{#if this.files.length}}
+            <div class="grid grid-cols-3 md:grid-cols-4 gap-2">
+                {{#each this.files as |file|}}
+                    <File @file={{file}} @onDelete={{perform this.removeFile}} />
+                {{/each}}
+            </div>
+        {{else}}
+            <p class="text-gray-400 italic">{{t "energyops.load-plan.proof.none"}}</p>
+        {{/if}}
+    </div>
+</div>

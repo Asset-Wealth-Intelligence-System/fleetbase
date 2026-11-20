@@ -1,0 +1,29 @@
+<div class="next-sidebar-search-container px-3 pb-2">
+    <Button
+        @type="primary"
+        @icon="boxes-packing"
+        @text={{t "energyops.load-plan.pack-orders"}}
+        @wrapperClass="w-full"
+        @permission="energy-ops pack energy-load-plan"
+        @onClick={{this.loadPlanActions.packOrders}}
+        class="w-full justify-center"
+    />
+</div>
+
+<Layout::Sidebar::Item @route={{concat this.routePrefix "home"}} @icon="gauge-high">
+    {{t "energyops.nav.dashboard"}}
+</Layout::Sidebar::Item>
+
+{{#each this.sections as |section|}}
+    <Layout::Sidebar::Panel @title={{section.title}} @titleIcon={{section.icon}} @open={{true}}>
+        {{#each section.items as |item|}}
+            <Layout::Sidebar::Item @route={{concat this.routePrefix item.route}} @icon={{item.icon}} @permission={{item.permission}}>
+                {{item.label}}
+            </Layout::Sidebar::Item>
+        {{/each}}
+    </Layout::Sidebar::Panel>
+{{/each}}
+
+<Layout::Sidebar::Item @onClick={{this.openSettings}} @icon="gear">
+    {{t "energyops.nav.settings"}}
+</Layout::Sidebar::Item>

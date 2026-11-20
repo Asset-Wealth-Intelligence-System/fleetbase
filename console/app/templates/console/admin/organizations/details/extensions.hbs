@@ -8,9 +8,9 @@
                     <FaIcon @icon="puzzle-piece" />
                 </div>
                 <div class="min-w-0">
-                    <h2 class="text-sm font-semibold text-gray-900 dark:text-white">Installed Extensions</h2>
+                    <h2 class="text-sm font-semibold text-gray-900 dark:text-white">{{t "literal.console.installed-extensions"}}</h2>
                     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                        Extension footprint for this organization. Package-specific controls can mount additional panels through the admin registry.
+                        {{t "literal.console.extension-footprint-for-this-organization-packag-13cad"}}
                     </p>
                 </div>
             </div>
@@ -42,7 +42,7 @@
             </div>
         {{else}}
             <div class="mt-4 rounded-md border border-dashed border-gray-200 p-5 text-center text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400">
-                No organization-specific extensions are installed.
+                {{t "literal.console.no-organization-specific-extensions-are-installe-89c9a"}}
             </div>
         {{/if}}
     </section>

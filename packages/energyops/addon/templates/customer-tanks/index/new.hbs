@@ -1,0 +1,12 @@
+<Layout::Resource::Panel
+    @resource={{this.tank}}
+    @controller={{this}}
+    @authSchema="energy-ops"
+    @headerTitle={{t "common.create-a-new-resource" resource=(lowercase (t "energyops.resource.customer-tank"))}}
+    @saveTask={{this.save}}
+    @onPressCancel={{transition-to "customer-tanks.index"}}
+    @onOverlayReady={{fn (mut this.overlay)}}
+>
+    <EnergyCustomerTank::Form @resource={{this.tank}} @controller={{this}} />
+    <Spacer @height="200px" />
+</Layout::Resource::Panel>

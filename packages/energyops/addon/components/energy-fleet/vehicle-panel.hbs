@@ -1,0 +1,16 @@
+<div class="energy-vehicle-panel h-full flex flex-col" ...attributes>
+    <TabNavigation @tabs={{this.tabs}} @activeTabId={{this.currentTab}} @onTabChange={{this.onTabChange}} @style="github" @size="md" @tablistClass="pl-2 bg-white dark:bg-gray-900" @contentClass="scrollable p-4">
+        {{#if this.load.isRunning}}
+            <div class="flex items-center justify-center py-12"><Spinner /></div>
+        {{else if (eq this.currentTab "profile")}}
+            <EnergyVehicleProfile::Form @resource={{this.profile}} @vehicle={{this.vehicle}} @onSaved={{this.onProfileSaved}} />
+        {{else if (eq this.currentTab "compartments")}}
+            <EnergyCompartment::Editor @owner={{this.compartmentOwner}} @compartments={{this.compartments}} @onChange={{this.onCompartmentsChanged}} />
+        {{else if (eq this.currentTab "schematic")}}
+            <EnergyCompartment::Schematic @compartments={{this.compartments}} @owner={{this.compartmentOwner}} />
+            <EnergyCompartment::Inventory @compartments={{this.compartments}} class="mt-4" />
+        {{else if (eq this.currentTab "load-history")}}
+            <EnergyLoadPlan::History @loadPlans={{this.loadPlans}} />
+        {{/if}}
+    </TabNavigation>
+</div>

@@ -1,0 +1,63 @@
+<div class="details-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.code"}}</div>
+                <div class="field-value flex items-center space-x-2">
+                    <span class="inline-block w-3 h-3 rounded-full" style={{html-safe (concat "background:" (or this.resource.color "#94a3b8"))}}></span>
+                    <span>{{n-a this.resource.code}}</span>
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.common.name"}}</div>
+                <div class="field-value">{{n-a this.resource.name}}</div>
+            </div>
+            <div class="field-info-container col-span-2">
+                <div class="field-name">{{t "energyops.product.fields.operation"}}</div>
+                <div class="field-value">
+                    {{#if this.resource.operation}}
+                        <a href="javascript:;" class="text-blue-500 hover:underline" {{on "click" (fn this.operationActions.panel.view this.resource.operation)}}>{{this.resource.operation.displayName}}</a>
+                    {{else}}
+                        -
+                    {{/if}}
+                </div>
+            </div>
+            <div class="field-info-container col-span-2">
+                <div class="field-name">{{t "energyops.product.fields.description"}}</div>
+                <div class="field-value">{{n-a this.resource.description}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.density"}}</div>
+                <div class="field-value">{{n-a this.resource.density}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.default-unit"}}</div>
+                <div class="field-value">{{n-a this.resource.default_unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.un-number"}}</div>
+                <div class="field-value">{{n-a this.resource.un_number}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.hazmat-class"}}</div>
+                <div class="field-value">{{n-a this.resource.hazmat_class}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.product.fields.skill"}}</div>
+                <div class="field-value">{{n-a this.resource.skill}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.common.status"}}</div>
+                <div class="field-value"><Badge @status={{this.resource.status}} /></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.created-at"}}</div>
+                <div class="field-value">{{n-a this.resource.createdAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.id"}}</div>
+                <div class="field-value"><ClickToCopy @value={{this.resource.public_id}}>{{this.resource.public_id}}</ClickToCopy></div>
+            </div>
+        </div>
+    </ContentPanel>
+</div>

@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { isArray } from '@ember/array';
 
 export default class ConsoleAdminBrandingController extends Controller {
+    @service intl;
     /**
      * Inject the `fetch` service.
      *
@@ -103,7 +104,7 @@ export default class ConsoleAdminBrandingController extends Controller {
         return this.model
             .save()
             .then(() => {
-                this.notifications.success('Branding settings saved.');
+                this.notifications.success(this.intl.t('literal.console.branding-settings-saved'));
 
                 // if logo url is null
                 if (this.model.logo_url === null) {

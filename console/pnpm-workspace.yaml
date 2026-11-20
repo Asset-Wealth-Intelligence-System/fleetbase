@@ -1,3 +1,16 @@
+packages:
+  - "../packages/ember-core"
+  - "../packages/ember-ui"
+  - "../packages/fleetops"
+  - "../packages/energyops"
+  - "../packages/fleetops-data"
+  - "../packages/iam-engine"
+  - "../packages/storefront"
+  - "../packages/dev-engine"
+  - "../packages/ai"
+  - "../packages/customer-portal"
+  - "../packages/ledger"
+  - "../packages/registry-bridge"
 linkWorkspacePackages: deep
 preferWorkspacePackages: true
 publicHoistPattern:
@@ -5,9 +18,9 @@ publicHoistPattern:
   - "*ember-ui*"
   - "*fleetops-data*"
 overrides:
-  "@fleetbase/fleetops-data": "^0.1.40"
-  "@fleetbase/ember-core": "^0.3.24"
-  "@fleetbase/ember-ui": "^0.3.41"
+  "@fleetbase/fleetops-data": "workspace:*"
+  "@fleetbase/ember-core": "workspace:*"
+  "@fleetbase/ember-ui": "workspace:*"
 allowBuilds:
   "@fortawesome/fontawesome-common-types": false
   "@fortawesome/fontawesome-svg-core": false
@@ -16,4 +29,4 @@ allowBuilds:
   core-js: false
   fsevents: false
 minimumReleaseAgeExclude:
-  - '@fleetbase/fleetops-engine@0.6.63'
+  - "@fleetbase/fleetops-engine@0.6.63"

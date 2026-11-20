@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { task } from 'ember-concurrency';
 
 export default class OnboardVerifyEmailController extends AuthVerificationController {
+    @service intl;
     @service fetch;
     @service notifications;
     @service session;
@@ -19,10 +20,10 @@ export default class OnboardVerifyEmailController extends AuthVerificationContro
         try {
             const { status, token } = yield this.fetch.post('onboard/verify-email', { session: this.hello, code: this.code });
             if (status === 'ok') {
-                this.notifications.success('Email successfully verified!');
+                this.notifications.success(this.intl.t('literal.console.email-successfully-verified'));
 
                 if (token) {
-                    this.notifications.info('Welcome to Fleetbase!');
+                    this.notifications.info(this.intl.t('literal.console.welcome-to-fleetbase'));
                     this.session.manuallyAuthenticate(token);
 
                     return this.router.transitionTo('console');

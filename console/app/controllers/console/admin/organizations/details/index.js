@@ -1,6 +1,8 @@
 import Controller from '@ember/controller';
 
+import { inject as service } from '@ember/service';
 export default class ConsoleAdminOrganizationsDetailsIndexController extends Controller {
+    @service intl;
     get organization() {
         return this.model;
     }
@@ -22,7 +24,7 @@ export default class ConsoleAdminOrganizationsDetailsIndexController extends Con
     }
 
     get ownerState() {
-        return this.owner ? 'Assigned' : 'Missing';
+        return this.owner ? this.intl.t('literal.console.assigned') : this.intl.t('literal.console.missing');
     }
 
     get statusLabel() {
@@ -30,36 +32,36 @@ export default class ConsoleAdminOrganizationsDetailsIndexController extends Con
     }
 
     get onboardingState() {
-        return this.organization?.onboarding_completed ? 'Complete' : 'Incomplete';
+        return this.organization?.onboarding_completed ? this.intl.t('literal.console.complete') : this.intl.t('literal.console.incomplete');
     }
 
     get metrics() {
         return [
             {
-                label: 'Users',
+                label: this.intl.t('literal.console.users'),
                 value: this.organization?.users_count ?? 0,
-                caption: 'Organization members',
+                caption: this.intl.t('literal.console.organization-members'),
                 icon: 'users',
                 accentClass: 'admin-organization-kpi-accent-blue',
             },
             {
-                label: 'Owner',
+                label: this.intl.t('literal.console.owner'),
                 value: this.ownerState,
-                caption: this.ownerEmail ?? 'Needs assignment',
+                caption: this.ownerEmail ?? this.intl.t('literal.console.needs-assignment'),
                 icon: this.owner ? 'user-check' : 'user-slash',
                 accentClass: this.owner ? 'admin-organization-kpi-accent-green' : 'admin-organization-kpi-accent-amber',
             },
             {
-                label: 'Onboarding',
+                label: this.intl.t('literal.console.onboarding'),
                 value: this.onboardingState,
-                caption: this.organization?.onboarding_completed ? 'Ready for operations' : 'Needs review',
+                caption: this.organization?.onboarding_completed ? this.intl.t('literal.console.ready-for-operations') : this.intl.t('literal.console.needs-review'),
                 icon: this.organization?.onboarding_completed ? 'circle-check' : 'triangle-exclamation',
                 accentClass: this.organization?.onboarding_completed ? 'admin-organization-kpi-accent-green' : 'admin-organization-kpi-accent-amber',
             },
             {
-                label: 'Status',
+                label: this.intl.t('literal.console.status'),
                 value: this.statusLabel,
-                caption: 'Platform access',
+                caption: this.intl.t('literal.console.platform-access'),
                 icon: this.statusLabel === 'active' ? 'shield-check' : 'circle-exclamation',
                 accentClass: this.statusLabel === 'active' ? 'admin-organization-kpi-accent-green' : 'admin-organization-kpi-accent-rose',
             },

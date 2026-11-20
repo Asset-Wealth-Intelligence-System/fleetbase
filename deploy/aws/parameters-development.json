@@ -1,0 +1,16 @@
+[
+  { "ParameterKey": "Project", "ParameterValue": "unitedfb" },
+  { "ParameterKey": "EnvironmentType", "ParameterValue": "development" },
+  { "ParameterKey": "DatabaseInstanceType", "ParameterValue": "db.t3.micro" },
+  { "ParameterKey": "CacheInstanceType", "ParameterValue": "cache.t3.micro" },
+  { "ParameterKey": "ApiDesiredCount", "ParameterValue": "1" },
+  { "ParameterKey": "EventsDesiredCount", "ParameterValue": "1" },
+  { "ParameterKey": "SchedulerDesiredCount", "ParameterValue": "1" },
+  { "ParameterKey": "SocketDesiredCount", "ParameterValue": "1" },
+  { "ParameterKey": "DatabaseAllocatedStorage", "ParameterValue": "20" },
+  { "ParameterKey": "DatabaseMaxAllocatedStorage", "ParameterValue": "50" },
+  { "ParameterKey": "DatabaseBackupRetentionPeriod", "ParameterValue": "3" },
+  { "ParameterKey": "LogRetentionDays", "ParameterValue": "7" },
+  { "ParameterKey": "EnableDetailedMonitoring", "ParameterValue": "false" },
+  { "ParameterKey": "EnableVPCFlowLogs", "ParameterValue": "false" }
+]

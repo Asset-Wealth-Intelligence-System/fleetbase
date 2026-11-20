@@ -1,0 +1,18 @@
+<Layout::Resource::Tabular
+    @resource="energy-unload"
+    @controller={{this}}
+    @title={{t "energyops.nav.unloads"}}
+    @data={{@model}}
+    @columns={{this.columns}}
+    @actionButtons={{this.actionButtons}}
+    @bulkActions={{this.bulkActions}}
+    @searchQuery={{this.query}}
+    @onSearch={{perform this.unloadActions.controllerSearchTask this}}
+    @page={{this.page}}
+    @onPageChange={{fn (mut this.page)}}
+    @emptyStateTitle={{t "energyops.nav.unloads"}}
+    @emptyStateDescription={{t "energyops.unload.empty-help"}}
+    @emptyStateIcon="arrow-down"
+    @emptyStateAction={{hash label=(t "energyops.unload.register") onClick=this.unloadActions.transition.create}}
+/>
+{{outlet}}

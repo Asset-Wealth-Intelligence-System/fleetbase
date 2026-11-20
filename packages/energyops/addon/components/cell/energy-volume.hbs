@@ -1,0 +1,8 @@
+<span class="{{@column.cellClassNames}}">
+    {{#if (is-not-empty @value)}}
+        {{format-number @value maximumFractionDigits=2}}
+        <span class="text-gray-500 ml-0.5">{{or (get @row (or @column.unitPath "unit")) @column.unit "L"}}</span>
+    {{else}}
+        -
+    {{/if}}
+</span>

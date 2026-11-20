@@ -1,0 +1,29 @@
+FROM node:22.22.0-alpine3.22
+
+RUN apk --no-cache upgrade && \
+    apk add --no-cache bash curl git python3 make g++ && \
+    rm -rf /var/cache/apk/*
+
+WORKDIR /console
+
+RUN mkdir -p ~/.pnpm
+ENV PNPM_HOME=/root/.pnpm
+ENV PATH=/root/.pnpm/bin:$PATH
+
+ARG DISABLE_FLEETBASE_ATTRIBUTION=false
+ENV DISABLE_FLEETBASE_ATTRIBUTION=$DISABLE_FLEETBASE_ATTRIBUTION
+
+RUN npm install -g ember-cli pnpm
+
+# Build from repo root so local packages/fleetops links resolve.
+COPY console/package.json console/pnpm-lock.yaml console/pnpm-workspace.yaml ./
+COPY console/.npmr[c] ./
+COPY packages /packages
+
+RUN pnpm install
+
+COPY console /console
+
+EXPOSE 4200
+
+CMD ["pnpm", "run", "start:dev", "--", "--host", "0.0.0.0"]

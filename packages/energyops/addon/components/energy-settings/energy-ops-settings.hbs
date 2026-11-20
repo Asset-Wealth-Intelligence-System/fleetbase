@@ -1,0 +1,90 @@
+<div class="energy-ops-settings space-y-6" ...attributes>
+    {{#if this.load.isRunning}}
+        <div class="flex items-center justify-center py-12"><Spinner /></div>
+    {{else}}
+        <ContentPanel @title={{t "energyops.settings.title"}} @titleIcon="gas-pump" @open={{true}} @wrapperClass="bordered-classic" @actionButtons={{array (hash text=(t "common.save-changes") type="primary" icon="save" size="xs" onClick=(perform this.save) isLoading=this.save.isRunning permission="energy-ops update settings")}}>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{{t "energyops.settings.help"}}</p>
+            <InputGroup @name={{t "energyops.settings.enable"}} @helpText={{t "energyops.settings.enable-help"}}>
+                <Toggle @isToggled={{this.enabled}} @onToggle={{fn (mut this.enabled)}} @label={{t "energyops.settings.enable"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.engine"}} @helpText={{t "energyops.settings.engine-help"}}>
+                <Toggle @isToggled={{this.usesCompartmentEngine}} @onToggle={{this.toggleEngine}} @label={{t "energyops.settings.engine"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.auto-allocate"}} @helpText={{t "energyops.settings.auto-allocate-help"}}>
+                <Toggle @isToggled={{this.autoAllocateOnCreate}} @onToggle={{fn (mut this.autoAllocateOnCreate)}} @label={{t "energyops.settings.auto-allocate"}} />
+            </InputGroup>
+        </ContentPanel>
+
+        <ContentPanel @title={{t "energyops.settings.safety"}} @open={{true}} @wrapperClass="bordered-classic">
+            <InputGroup @name={{t "energyops.settings.surge"}} @helpText={{t "energyops.settings.surge-help"}}>
+                <Toggle @isToggled={{this.surgeBand}} @onToggle={{fn (mut this.surgeBand)}} @label={{t "energyops.settings.surge"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.axle"}} @helpText={{t "energyops.settings.axle-help"}}>
+                <Toggle @isToggled={{this.axleBalance}} @onToggle={{fn (mut this.axleBalance)}} @label={{t "energyops.settings.axle"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.require-load-proof"}} @helpText={{t "energyops.settings.require-load-proof-help"}}>
+                <Toggle @isToggled={{this.requireLoadProof}} @onToggle={{fn (mut this.requireLoadProof)}} @label={{t "energyops.settings.require-load-proof"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.require-unload-proof"}} @helpText={{t "energyops.settings.require-unload-proof-help"}}>
+                <Toggle @isToggled={{this.requireUnloadProof}} @onToggle={{fn (mut this.requireUnloadProof)}} @label={{t "energyops.settings.require-unload-proof"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.settings.variance-threshold"}} @helpText={{t "energyops.settings.variance-threshold-help"}}>
+                <Input @type="number" @value={{this.varianceThreshold}} min="0" max="1" step="0.01" class="w-full form-input" />
+            </InputGroup>
+        </ContentPanel>
+
+        <ContentPanel @title={{t "energyops.settings.sites"}} @open={{true}} @wrapperClass="bordered-classic">
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{{t "energyops.settings.sites-help"}}</p>
+            <InputGroup @name={{t "energyops.settings.inventory-place"}} @helpText={{t "energyops.settings.inventory-place-help"}}>
+                <ModelSelect
+                    @modelName="place"
+                    @selectedModel={{this.inventoryPlace}}
+                    @query={{hash type="inventory"}}
+                    @placeholder={{t "energyops.common.select-inventory-place"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{this.setInventoryPlace}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.name}}</span> <span class="text-gray-500 ml-1">{{model.address}}</span>
+                </ModelSelect>
+            </InputGroup>
+        </ContentPanel>
+
+        <ContentPanel @title={{t "energyops.settings.order-configs"}} @open={{true}} @wrapperClass="bordered-classic" @actionButtons={{array (hash text=(t "energyops.settings.install-configs") icon="plus" size="xs" onClick=(perform this.installOrderConfigs) isLoading=this.installOrderConfigs.isRunning permission="energy-ops update settings")}}>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{{t "energyops.settings.order-configs-help"}}</p>
+            {{#if this.orderConfigs.length}}
+                <ul class="text-xs divide-y divide-gray-200 dark:divide-gray-700">
+                    {{#each this.orderConfigs as |config|}}
+                        <li class="py-2 flex items-center justify-between">
+                            <span class="font-semibold">{{config.name}}</span>
+                            <span class="font-mono text-gray-500">{{config.namespace}}</span>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <p class="text-xs text-gray-500">{{t "energyops.settings.no-order-configs"}}</p>
+            {{/if}}
+        </ContentPanel>
+
+        <ContentPanel @title={{t "energyops.settings.summary"}} @open={{true}} @wrapperClass="bordered-classic">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-xs">
+                {{#each (array
+                    (hash label=(t "energyops.nav.operations") value=this.summary.operations)
+                    (hash label=(t "energyops.nav.products") value=this.summary.products)
+                    (hash label=(t "energyops.home.compartments") value=this.summary.compartments)
+                    (hash label=(t "energyops.nav.customer-tanks") value=this.summary.customer_tanks)
+                    (hash label=(t "energyops.nav.load-plans") value=this.summary.load_plans_total)
+                    (hash label=(t "energyops.nav.delivery-tickets") value=this.summary.tickets_total)
+                ) as |tile|}}
+                    <div class="rounded border border-gray-200 dark:border-gray-700 p-3">
+                        <div class="text-gray-500">{{tile.label}}</div>
+                        <div class="text-lg font-semibold dark:text-gray-100">{{format-number (or tile.value 0)}}</div>
+                    </div>
+                {{/each}}
+            </div>
+        </ContentPanel>
+    {{/if}}
+</div>

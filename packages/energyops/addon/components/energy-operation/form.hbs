@@ -1,0 +1,68 @@
+<div class="form-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.operation.fields.code"}} @required={{true}}>
+                <Input @value={{this.resource.code}} @type="text" class="w-full form-input uppercase" placeholder={{t "energyops.operation.fields.code-placeholder"}} disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.common.name"}} @required={{true}}>
+                <Input @value={{this.resource.name}} @type="text" class="w-full form-input" placeholder={{t "energyops.operation.fields.name-placeholder"}} disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.operation.fields.family"}}>
+                <Select
+                    @options={{this.familyOptions}}
+                    @optionLabel="label"
+                    @optionValue="value"
+                    @value={{this.resource.family}}
+                    @onSelect={{fn (mut this.resource.family)}}
+                    @placeholder={{t "energyops.operation.fields.family"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    class="w-full"
+                />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.operation.fields.unit"}}>
+                <Select @options={{this.unitOptions}} @value={{this.resource.unit}} @onSelect={{fn (mut this.resource.unit)}} @placeholder={{t "energyops.common.unit"}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.operation.fields.depot"}} @wrapperClass="col-span-2">
+                <ModelSelect
+                    @modelName="place"
+                    @selectedModel={{this.resource.depot}}
+                    @placeholder={{t "energyops.common.select-place"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{this.setDepot}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    {{model.name}} <span class="text-xs text-gray-500 ml-1">{{model.address}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.operation.fields.service-seconds"}}>
+                <Input @value={{this.resource.default_service_seconds}} @type="number" min="0" step="60" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.common.status"}}>
+                <Select @options={{this.statusOptions}} @value={{this.resource.status}} @onSelect={{fn (mut this.resource.status)}} @placeholder={{t "energyops.common.status"}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+        </div>
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.nav.dispatch"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <div class="space-y-3 text-xs">
+            <Toggle
+                @isToggled={{this.resource.allow_split_delivery}}
+                @onToggle={{fn this.toggle "allow_split_delivery"}}
+                @label={{t "energyops.operation.fields.allow-split"}}
+                @helpText={{t "energyops.operation.fields.allow-split-help"}}
+                @disabled={{cannot-write this.resource schema="energy-ops"}}
+            />
+            <Toggle
+                @isToggled={{this.resource.block_over_ullage}}
+                @onToggle={{fn this.toggle "block_over_ullage"}}
+                @label={{t "energyops.operation.fields.block-over-ullage"}}
+                @helpText={{t "energyops.operation.fields.block-over-ullage-help"}}
+                @disabled={{cannot-write this.resource schema="energy-ops"}}
+            />
+        </div>
+    </ContentPanel>
+</div>

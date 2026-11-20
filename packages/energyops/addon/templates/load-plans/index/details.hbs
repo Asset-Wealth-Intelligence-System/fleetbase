@@ -1,0 +1,13 @@
+<Layout::Resource::Panel
+    @resource={{@model}}
+    @controller={{this}}
+    @authSchema="energy-ops"
+    @headerTitle={{concat (t "energyops.resource.load-plan") " " @model.public_id}}
+    @actionButtons={{this.actionButtons}}
+    @onPressCancel={{transition-to "load-plans.index"}}
+    @onOverlayReady={{fn (mut this.overlay)}}
+    @width="720px"
+>
+    <EnergyLoadPlan::Details @resource={{@model}} @controller={{this}} />
+    <Spacer @height="200px" />
+</Layout::Resource::Panel>

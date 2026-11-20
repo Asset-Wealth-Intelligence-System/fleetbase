@@ -1,0 +1,17 @@
+<Layout::Resource::Tabular
+    @resource="energy-customer-tank"
+    @controller={{this}}
+    @title={{t "energyops.nav.customer-tanks"}}
+    @data={{@model}}
+    @columns={{this.columns}}
+    @actionButtons={{this.actionButtons}}
+    @bulkActions={{this.bulkActions}}
+    @searchQuery={{this.query}}
+    @onSearch={{perform this.customerTankActions.controllerSearchTask this}}
+    @page={{this.page}}
+    @onPageChange={{fn (mut this.page)}}
+    @emptyStateTitle={{t "energyops.nav.customer-tanks"}}
+    @emptyStateIcon="oil-can"
+    @emptyStateAction={{hash label=(t "common.new") onClick=this.customerTankActions.transition.create}}
+/>
+{{outlet}}

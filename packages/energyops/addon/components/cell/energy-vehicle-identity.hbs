@@ -1,0 +1,4 @@
+<div class="flex items-center space-x-2">
+    <Image src={{@row.photo_url}} @fallbackSrc={{config "defaultValues.vehicleImage"}} alt={{@row.displayName}} width="28" height="28" class="w-7 h-7 rounded-full shadow-sm flex-shrink-0" />
+    <a href="javascript:;" class="truncate {{if @column.action 'text-blue-500 hover:underline'}}" {{on "click" (fn (or @column.action (noop)) @row)}}>{{or @value @row.display_name @row.name @row.plate_number}}</a>
+</div>

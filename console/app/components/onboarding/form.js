@@ -9,6 +9,7 @@ import lookupValidator from 'ember-changeset-validations';
 import Changeset from 'ember-changeset';
 
 export default class OnboardingFormComponent extends Component {
+    @service intl;
     @service fetch;
     @service session;
     @service router;
@@ -50,7 +51,7 @@ export default class OnboardingFormComponent extends Component {
         try {
             const { status, skipVerification, token, session } = yield this.fetch.post('onboard/create-account', input);
             if (status !== 'success') {
-                this.notifications.error('Onboard failed');
+                this.notifications.error(this.intl.t('literal.console.onboard-failed'));
                 return;
             }
 
@@ -62,7 +63,7 @@ export default class OnboardingFormComponent extends Component {
                 this.session.isOnboarding().manuallyAuthenticate(token);
 
                 yield this.router.transitionTo('console');
-                return this.notifications.success('Welcome to Fleetbase!');
+                return this.notifications.success(this.intl.t('literal.console.welcome-to-fleetbase'));
             } else {
                 this.args.orchestrator.next();
                 this.urlSearchParams.setParamsToCurrentUrl({

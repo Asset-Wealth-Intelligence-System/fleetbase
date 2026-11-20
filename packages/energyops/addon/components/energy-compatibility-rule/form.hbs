@@ -1,0 +1,95 @@
+<div class="form-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <p class="text-xs text-gray-500 mb-3">{{t "energyops.compatibility.help"}}</p>
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.compatibility.fields.from-product"}}>
+                <ModelSelect
+                    @modelName="energy-product"
+                    @selectedModel={{this.resource.from_product}}
+                    @placeholder={{t "energyops.common.any"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{fn this.setRelation "from_product"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.to-product"}}>
+                <ModelSelect
+                    @modelName="energy-product"
+                    @selectedModel={{this.resource.to_product}}
+                    @placeholder={{t "energyops.common.any"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{fn this.setRelation "to_product"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.from-operation"}}>
+                <ModelSelect
+                    @modelName="energy-operation"
+                    @selectedModel={{this.resource.from_operation}}
+                    @placeholder={{t "energyops.common.any"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{fn this.setRelation "from_operation"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    {{model.displayName}}
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.to-operation"}}>
+                <ModelSelect
+                    @modelName="energy-operation"
+                    @selectedModel={{this.resource.to_operation}}
+                    @placeholder={{t "energyops.common.any"}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @allowClear={{true}}
+                    @onChange={{fn this.setRelation "to_operation"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    as |model|
+                >
+                    {{model.displayName}}
+                </ModelSelect>
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.action"}} @required={{true}}>
+                <Select
+                    @options={{this.actionOptions}}
+                    @optionLabel="label"
+                    @optionValue="value"
+                    @value={{this.resource.action}}
+                    @onSelect={{fn (mut this.resource.action)}}
+                    @placeholder={{t "energyops.compatibility.fields.action"}}
+                    @disabled={{cannot-write this.resource schema="energy-ops"}}
+                    class="w-full"
+                />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.flush-volume"}}>
+                <Input @value={{this.resource.flush_volume}} @type="number" min="0" step="1" class="w-full form-input" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compatibility.fields.notes"}} @wrapperClass="col-span-2">
+                <Textarea @value={{this.resource.notes}} class="w-full form-input" rows="2" disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.common.status"}}>
+                <Select @options={{this.statusOptions}} @value={{this.resource.status}} @onSelect={{fn (mut this.resource.status)}} @disabled={{cannot-write this.resource schema="energy-ops"}} class="w-full" />
+            </InputGroup>
+            <div class="flex items-end pb-1">
+                <Toggle @isToggled={{this.resource.same_family_only}} @onToggle={{fn this.toggle "same_family_only"}} @label={{t "energyops.compatibility.fields.same-family"}} @disabled={{cannot-write this.resource schema="energy-ops"}} />
+            </div>
+        </div>
+    </ContentPanel>
+</div>

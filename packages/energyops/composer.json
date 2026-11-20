@@ -1,0 +1,45 @@
+{
+    "name": "fleetbase/energyops-api",
+    "version": "0.0.1",
+    "description": "Compartmentalized oil and gas dispatch extension for Fleetbase",
+    "keywords": [
+        "fleetbase",
+        "fleetbase-extension",
+        "energy",
+        "oil-and-gas",
+        "glp",
+        "compartments",
+        "tank-dispatch"
+    ],
+    "license": "AGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "United Petroleum",
+            "email": "hello@fleetbase.io"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "fleetbase/core-api": "*",
+        "fleetbase/fleetops-api": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fleetbase\\EnergyOps\\": "server/src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fleetbase\\EnergyOps\\Providers\\EnergyOpsServiceProvider",
+                "Fleetbase\\EnergyOps\\Providers\\EventServiceProvider"
+            ]
+        },
+        "fleetbase": {
+            "order-config": "Fleetbase\\EnergyOps\\Support\\OrderConfig",
+            "sandbox-migrations": false
+        }
+    }
+}

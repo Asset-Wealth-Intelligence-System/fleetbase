@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
 
 export default class AdminWidgetKpiTileComponent extends Component {
+    @service intl;
     @service fetch;
 
     @tracked data = null;
@@ -19,7 +20,7 @@ export default class AdminWidgetKpiTileComponent extends Component {
     }
 
     get title() {
-        return this.args.options?.title ?? this.data?.title ?? 'Metric';
+        return this.args.options?.title ?? this.data?.title ?? this.intl.t('literal.console.metric');
     }
 
     get icon() {
@@ -47,7 +48,7 @@ export default class AdminWidgetKpiTileComponent extends Component {
     }
 
     get footnote() {
-        return this.args.options?.footnote ?? this.data?.footnote ?? 'vs previous 30d';
+        return this.args.options?.footnote ?? this.data?.footnote ?? this.intl.t('literal.console.vs-previous-30d');
     }
 
     get formattedValue() {
@@ -158,7 +159,7 @@ export default class AdminWidgetKpiTileComponent extends Component {
             this.data = yield this.fetch.get(`metrics/admin/kpis/${this.slug}`);
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load metric.';
+            this.error = error?.message ?? this.intl.t('literal.console.unable-to-load-metric');
         }
     }
 }

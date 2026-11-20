@@ -1,0 +1,37 @@
+<ContentPanel @title={{or @title (t "energyops.compartment.schematic")}} @open={{true}} @wrapperClass="bordered-top" ...attributes>
+    {{#if this.cells.length}}
+        <p class="text-xs text-gray-400 mb-3">{{t "energyops.compartment.schematic-help"}}</p>
+        <div class="energy-schematic">
+            <div class="energy-schematic-cab" title={{or @owner.displayName @owner.name}}><FaIcon @icon="truck-front" /></div>
+            <div class="energy-schematic-tank">
+                {{#each this.cells as |cell|}}
+                    <div class="energy-schematic-cell" style={{html-safe (concat "flex-basis:" cell.widthPercent "%")}} title="{{cell.compartment.code}} {{format-number cell.compartment.capacity_volume}} {{cell.compartment.unit}}">
+                        <div class="energy-schematic-fill" style={{html-safe (concat "height:" cell.fillPercent "%; background:" cell.color)}}></div>
+                        {{#if cell.plannedPercent}}
+                            <div class="energy-schematic-planned" style={{html-safe (concat "height:" cell.plannedPercent "%; border-color:" cell.color)}}></div>
+                        {{/if}}
+                        <div class="energy-schematic-label">
+                            <div class="font-semibold">{{cell.compartment.code}}</div>
+                            <div class="text-[10px] opacity-80">{{format-number cell.compartment.capacity_volume}} {{cell.compartment.unit}}</div>
+                            {{#if cell.productCode}}
+                                <div class="text-[10px] font-semibold">{{cell.productCode}}</div>
+                            {{/if}}
+                            {{#if cell.planned}}
+                                <div class="text-[10px]">{{t "energyops.common.planned"}} {{format-number cell.planned maximumFractionDigits=0}}</div>
+                            {{/if}}
+                        </div>
+                        {{#if cell.compartment.requires_flush}}
+                            <div class="energy-schematic-flag" title={{t "energyops.compartment.requires-flush"}}><FaIcon @icon="triangle-exclamation" @size="xs" /></div>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="flex items-center justify-between text-xs text-gray-500 mt-2">
+            <span>{{this.cells.length}} {{t "energyops.compartment.title"}}</span>
+            <span>{{t "energyops.compartment.total-capacity"}}: <strong>{{format-number this.totalCapacity}} {{or (get this.compartments "0.unit") "L"}}</strong></span>
+        </div>
+    {{else}}
+        <p class="text-xs text-gray-500">{{t "energyops.compartment.empty"}}</p>
+    {{/if}}
+</ContentPanel>

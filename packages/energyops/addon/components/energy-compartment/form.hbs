@@ -1,0 +1,72 @@
+<div class="form-wrapper energy-compartment-form" ...attributes>
+    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+        {{#unless this.ownerLocked}}
+            <InputGroup @name={{t "energyops.compartment.fields.owner-type"}}>
+                <Select
+                    @options={{this.ownerTypeOptions}}
+                    @optionLabel="label"
+                    @optionValue="value"
+                    @value={{this.resource.owner_type}}
+                    @onSelect={{fn (mut this.resource.owner_type)}}
+                    @placeholder={{t "energyops.compartment.fields.owner-type"}}
+                    class="w-full"
+                />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.compartment.fields.owner"}}>
+                <ModelSelect
+                    @modelName={{or this.resource.owner_type "vehicle"}}
+                    @placeholder={{if (eq this.resource.owner_type "asset") (t "energyops.common.select-asset") (t "energyops.common.select-vehicle")}}
+                    @triggerClass="form-select form-input"
+                    @infiniteScroll={{false}}
+                    @renderInPlace={{true}}
+                    @onChange={{this.setOwner}}
+                    as |model|
+                >
+                    {{or model.displayName model.display_name model.name}}
+                </ModelSelect>
+            </InputGroup>
+        {{/unless}}
+        <InputGroup @name={{t "energyops.compartment.fields.code"}} @required={{true}}>
+            <Input @value={{this.resource.code}} @type="text" class="w-full form-input" placeholder={{t "energyops.compartment.fields.code-placeholder"}} />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.name"}}>
+            <Input @value={{this.resource.name}} @type="text" class="w-full form-input" placeholder={{t "energyops.compartment.fields.name-placeholder"}} />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.capacity"}} @required={{true}}>
+            <Input @value={{this.resource.capacity_volume}} @type="number" min="0" step="1" class="w-full form-input" />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.unit"}}>
+            <Select @options={{this.unitOptions}} @value={{this.resource.unit}} @onSelect={{fn (mut this.resource.unit)}} class="w-full" />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.max-fill"}} @helpText={{t "energyops.compartment.fields.max-fill-help"}}>
+            <Input @value={{this.resource.max_fill_percent}} @type="number" min="1" max="100" step="1" class="w-full form-input" />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.common.sequence"}}>
+            <Input @value={{this.resource.sequence}} @type="number" min="1" step="1" class="w-full form-input" />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.dedicated-product"}} @helpText={{t "energyops.compartment.fields.dedicated-product-help"}} @wrapperClass="col-span-2">
+            <ModelSelect
+                @modelName="energy-product"
+                @selectedModel={{this.resource.dedicated_product}}
+                @placeholder={{t "energyops.common.none"}}
+                @triggerClass="form-select form-input"
+                @infiniteScroll={{false}}
+                @renderInPlace={{true}}
+                @allowClear={{true}}
+                @onChange={{this.setDedicatedProduct}}
+                as |model|
+            >
+                <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+            </ModelSelect>
+        </InputGroup>
+        <InputGroup @name={{t "energyops.compartment.fields.residual"}}>
+            <Input @value={{this.resource.residual_volume}} @type="number" min="0" step="1" class="w-full form-input" />
+        </InputGroup>
+        <InputGroup @name={{t "energyops.common.status"}}>
+            <Select @options={{this.statusOptions}} @value={{this.resource.status}} @onSelect={{fn (mut this.resource.status)}} class="w-full" />
+        </InputGroup>
+        <div class="col-span-2 pt-1">
+            <Toggle @isToggled={{this.resource.requires_flush}} @onToggle={{fn this.toggle "requires_flush"}} @label={{t "energyops.compartment.fields.requires-flush"}} />
+        </div>
+    </div>
+</div>

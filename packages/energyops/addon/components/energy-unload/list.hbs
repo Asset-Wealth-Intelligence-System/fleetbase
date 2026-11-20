@@ -1,0 +1,42 @@
+{{#if @loading}}
+    <div class="flex items-center justify-center py-4"><Spinner /></div>
+{{else if @unloads.length}}
+    <table class="energy-table w-full text-xs" ...attributes>
+        <thead>
+            <tr class="text-left text-gray-500">
+                <th class="py-1 pr-2">{{t "column.id"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.unload.fields.vehicle"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.unload.fields.inventory-place"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.unload.fields.unloaded"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.unload.fields.remaining"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.unload.fields.unloaded-at"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.unload.fields.proof"}}</th>
+                <th class="py-1">{{t "energyops.common.status"}}</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {{#each @unloads as |unload|}}
+                <tr class="{{if unload.isVoided 'opacity-50 line-through'}}">
+                    <td class="py-1 pr-2">
+                        <a href="javascript:;" class="font-mono text-blue-500 hover:underline" {{on "click" (fn this.unloadActions.panel.view unload)}}>{{unload.public_id}}</a>
+                    </td>
+                    <td class="py-1 pr-2 font-semibold">{{n-a unload.vehicleName}}</td>
+                    <td class="py-1 pr-2">{{n-a unload.inventoryPlaceName}}</td>
+                    <td class="py-1 pr-2 text-right font-mono">{{format-number unload.total_unloaded_volume maximumFractionDigits=1}} {{unload.unit}}</td>
+                    <td class="py-1 pr-2 text-right font-mono">{{format-number unload.total_remaining_volume maximumFractionDigits=1}} {{unload.unit}}</td>
+                    <td class="py-1 pr-2">{{n-a unload.unloadedAt}}</td>
+                    <td class="py-1 pr-2">
+                        {{#if unload.hasProof}}
+                            <Badge @status="success" @hideStatusDot={{true}}><FaIcon @icon="paperclip" @size="xs" class="mr-1" />{{unload.proofFiles.length}}</Badge>
+                        {{else}}
+                            <Badge @status="warning" @hideStatusDot={{true}}>{{t "energyops.unload.no-proof"}}</Badge>
+                        {{/if}}
+                    </td>
+                    <td class="py-1"><Badge @status={{unload.status}} /></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p class="text-xs text-gray-500">{{or @emptyText (t "energyops.unload.none")}}</p>
+{{/if}}

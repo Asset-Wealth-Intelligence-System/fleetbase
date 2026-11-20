@@ -59,3 +59,4 @@ builds/osx/frankenphp
 *.dll
 *.so
 *.dylib
+.cursor/

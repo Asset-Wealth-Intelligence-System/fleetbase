@@ -1,0 +1,64 @@
+<div class="details-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="mb-3">
+            <Cell::EnergyFillLevel @value={{@resource.fillPercent}} />
+            {{#if @resource.needsReorder}}
+                <div class="mt-2"><Badge @status="warning">{{t "energyops.tank.needs-reorder"}}</Badge></div>
+            {{/if}}
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.name"}}</div>
+                <div class="field-value">{{n-a @resource.name}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.serial"}}</div>
+                <div class="field-value">{{n-a @resource.serial_number}}</div>
+            </div>
+            <div class="field-info-container col-span-2">
+                <div class="field-name">{{t "energyops.tank.fields.place"}}</div>
+                <div class="field-value">{{n-a @resource.placeName}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.product"}}</div>
+                <div class="field-value">{{n-a @resource.productName}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.type"}}</div>
+                <div class="field-value"><Badge @status={{@resource.tank_type}} /></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.capacity"}}</div>
+                <div class="field-value">{{format-number @resource.capacity_volume}} {{@resource.unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.safe-fill"}}</div>
+                <div class="field-value">{{@resource.safe_fill_percent}}%</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.last-known"}}</div>
+                <div class="field-value">{{format-number @resource.last_known_volume}} {{@resource.unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.ullage"}}</div>
+                <div class="field-value font-semibold">{{format-number @resource.computedUllage maximumFractionDigits=1}} {{@resource.unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.reorder-point"}}</div>
+                <div class="field-value">{{n-a @resource.reorder_point}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.tank.fields.last-delivery"}}</div>
+                <div class="field-value">{{n-a @resource.lastDeliveryAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.common.status"}}</div>
+                <div class="field-value"><Badge @status={{@resource.status}} /></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.id"}}</div>
+                <div class="field-value"><ClickToCopy @value={{@resource.public_id}}>{{@resource.public_id}}</ClickToCopy></div>
+            </div>
+        </div>
+    </ContentPanel>
+</div>

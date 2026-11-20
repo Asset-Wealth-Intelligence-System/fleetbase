@@ -1,5 +1,8 @@
 # Ignore files not needed for docker to build microservice image
 node_modules/*
+packages/**/node_modules
+packages/**/dist
+packages/**/coverage
 postgres/*
 typings/*
 */.git*

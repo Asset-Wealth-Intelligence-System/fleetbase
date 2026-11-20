@@ -1,0 +1,21 @@
+<div class="energy-key-metrics" ...attributes>
+    {{#if @options}}
+        <div class="flex items-center justify-between mb-2 px-1">
+            <h3 class="text-sm font-semibold dark:text-gray-100">{{this.title}}</h3>
+            {{#if this.load.isRunning}}<Spinner />{{/if}}
+        </div>
+    {{/if}}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        {{#each this.tiles as |tile|}}
+            <a href="javascript:;" class="block rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 hover:border-blue-400 transition" {{on "click" (fn this.hostRouter.transitionTo tile.route)}}>
+                <div class="flex items-center justify-between text-gray-500 text-xs">
+                    <span>{{tile.label}}</span>
+                    <FaIcon @icon={{tile.icon}} class="{{if tile.danger 'text-red-500'}}" />
+                </div>
+                <div class="mt-1 text-xl font-semibold dark:text-gray-100 {{if tile.danger 'text-red-500'}}">
+                    {{format-number tile.value maximumFractionDigits=1}}{{#if tile.suffix}}<span class="text-xs text-gray-500 ml-1">{{tile.suffix}}</span>{{/if}}
+                </div>
+            </a>
+        {{/each}}
+    </div>
+</div>

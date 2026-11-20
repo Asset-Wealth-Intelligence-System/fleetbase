@@ -1,0 +1,61 @@
+<Layout::Section::Header
+    @title={{t "energyops.home.title"}}
+    @titleClass="whitespace-nowrap"
+    @subtitle={{t "energyops.home.subtitle"}}
+    @subtitleClass="ml-3 truncate text-xs text-gray-500 dark:text-gray-400"
+/>
+<Layout::Section::Body class="p-4 space-y-4">
+    <EnergyWidget::KeyMetrics @summary={{this.summary}} @variance={{this.variance}} />
+
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <div class="xl:col-span-2 space-y-4">
+            <EnergyLoadPlan::History
+                @loadPlans={{this.model.recentPlans}}
+                @title={{t "energyops.home.recent-plans"}}
+                @actionButtons={{array (hash text=(t "energyops.home.view-all") size="xs" onClick=this.loadPlanActions.transition.index)}}
+            />
+
+            <ContentPanel @title={{t "energyops.home.by-product"}} @open={{true}} @wrapperClass="bordered-top">
+                {{#if this.byProduct.length}}
+                    <table class="energy-table w-full text-xs">
+                        <thead>
+                            <tr class="text-left text-gray-500">
+                                <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                                <th class="py-1 pr-2 text-right">{{t "energyops.ticket.title"}}</th>
+                                <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                                <th class="py-1 pr-2 text-right">{{t "energyops.common.metered"}}</th>
+                                <th class="py-1 text-right">{{t "energyops.common.variance"}}</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                            {{#each this.byProduct as |row|}}
+                                <tr>
+                                    <td class="py-1 pr-2 font-semibold">{{row.product_name}}</td>
+                                    <td class="py-1 pr-2 text-right">{{row.tickets}}</td>
+                                    <td class="py-1 pr-2 text-right">{{format-number row.planned maximumFractionDigits=0}}</td>
+                                    <td class="py-1 pr-2 text-right">{{format-number row.metered maximumFractionDigits=0}}</td>
+                                    <td class="py-1 text-right {{if (lt row.variance 0) 'text-red-500' 'text-green-600'}}">{{format-number row.variance maximumFractionDigits=1}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                {{else}}
+                    <p class="text-xs text-gray-500">{{t "energyops.ticket.none-for-order"}}</p>
+                {{/if}}
+            </ContentPanel>
+        </div>
+
+        <ContentPanel @title={{t "energyops.home.getting-started"}} @open={{true}} @wrapperClass="bordered-top">
+            <ol class="space-y-2 text-xs">
+                {{#each this.steps as |step index|}}
+                    <li class="flex items-start space-x-2">
+                        <span class="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-white {{if step.done 'bg-green-500' 'bg-gray-400'}}">
+                            {{#if step.done}}<FaIcon @icon="check" @size="xs" />{{else}}{{add index 1}}{{/if}}
+                        </span>
+                        <a href="javascript:;" class="hover:underline {{if step.done 'text-gray-500' 'text-blue-500'}}" {{on "click" (fn this.hostRouter.transitionTo step.route)}}>{{t (concat "energyops.home." step.key)}}</a>
+                    </li>
+                {{/each}}
+            </ol>
+        </ContentPanel>
+    </div>
+</Layout::Section::Body>

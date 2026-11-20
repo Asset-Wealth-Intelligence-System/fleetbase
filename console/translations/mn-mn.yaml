@@ -1,6 +1,7 @@
 app:
   name: Fleetbase
 common:
+  search-input: Search input
   new: Шинэ
   create: Үүсгэх
   add: Нэмэх

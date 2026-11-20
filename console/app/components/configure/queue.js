@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class ConfigureQueueComponent extends Component {
+    @service intl;
     @service fetch;
     @service notifications;
     // The constructor performs loadConfigValues, which assigns this before anything can read it,
@@ -70,7 +71,7 @@ export default class ConfigureQueueComponent extends Component {
                 },
             })
             .then(() => {
-                this.notifications.success('Queue configuration saved.');
+                this.notifications.success(this.intl.t('literal.console.queue-configuration-saved'));
             })
             .finally(() => {
                 this.isLoading = false;

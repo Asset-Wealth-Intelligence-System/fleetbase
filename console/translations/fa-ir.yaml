@@ -1,6 +1,7 @@
 app:
   name: فلیت‌بیس
 common:
+  search-input: Search input
   new: جدید
   create: ایجاد
   add: افزودن

@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class ConfigureNotificationChannelsComponent extends Component {
+    @service intl;
     @service fetch;
     @service notifications;
     @service currentUser;
@@ -146,7 +147,7 @@ export default class ConfigureNotificationChannelsComponent extends Component {
                 firebase: firebaseConfig,
             })
             .then(() => {
-                this.notifications.success("Notification channel's configuration saved.");
+                this.notifications.success(this.intl.t('literal.console.notification-channel-s-configuration-saved'));
             })
             .finally(() => {
                 this.isLoading = false;

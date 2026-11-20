@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class ConfigureFilesystemComponent extends Component {
+    @service intl;
     @service fetch;
     @service notifications;
     @service currentUser;
@@ -71,7 +72,7 @@ export default class ConfigureFilesystemComponent extends Component {
                 gcsBucket: this.gcsBucket,
             })
             .then(() => {
-                this.notifications.success('Filesystem configuration saved.');
+                this.notifications.success(this.intl.t('literal.console.filesystem-configuration-saved'));
             })
             .finally(() => {
                 this.isLoading = false;

@@ -1,0 +1,8 @@
+{
+  "API_HOST": "https://api.unitedsoftware.lat",
+  "API_SECURE": "true",
+  "SOCKETCLUSTER_HOST": "api.unitedsoftware.lat",
+  "SOCKETCLUSTER_PATH": "/socketcluster/",
+  "SOCKETCLUSTER_PORT": "443",
+  "SOCKETCLUSTER_SECURE": "true"
+}

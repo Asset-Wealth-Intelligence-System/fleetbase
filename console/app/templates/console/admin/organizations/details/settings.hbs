@@ -4,31 +4,31 @@
     <section class="rounded-md border bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
         <div class="flex items-start justify-between gap-4">
             <div>
-                <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">Organization Settings</h2>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Core organization profile, phone, and currency fields.</p>
+                <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">{{t "literal.console.organization-settings"}}</h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{t "literal.console.core-organization-profile-phone-and-currency-fie-adf6b"}}</p>
             </div>
-            <Button @icon="edit" @text="Edit" @size="xs" @type="primary" @onClick={{this.editOrganization}} />
+            <Button @icon="edit" @text={{t "literal.console.edit"}} @size="xs" @type="primary" @onClick={{this.editOrganization}} />
         </div>
 
         <div class="mt-3 space-y-2 text-sm">
             <div class="flex justify-between gap-4">
-                <span class="text-gray-500 dark:text-gray-400">Name</span>
+                <span class="text-gray-500 dark:text-gray-400">{{t "literal.console.name"}}</span>
                 <span class="text-right font-medium text-gray-900 dark:text-white">{{@model.name}}</span>
             </div>
             <div class="flex justify-between gap-4">
-                <span class="text-gray-500 dark:text-gray-400">Description</span>
+                <span class="text-gray-500 dark:text-gray-400">{{t "literal.console.description"}}</span>
                 <span class="text-right font-medium text-gray-900 dark:text-white">{{n-a @model.description}}</span>
             </div>
             <div class="flex justify-between gap-4">
-                <span class="text-gray-500 dark:text-gray-400">Phone</span>
+                <span class="text-gray-500 dark:text-gray-400">{{t "literal.console.phone"}}</span>
                 <span class="text-right font-medium text-gray-900 dark:text-white">{{n-a @model.phone}}</span>
             </div>
             <div class="flex justify-between gap-4">
-                <span class="text-gray-500 dark:text-gray-400">Currency</span>
+                <span class="text-gray-500 dark:text-gray-400">{{t "literal.console.currency"}}</span>
                 <span class="text-right font-medium text-gray-900 dark:text-white">{{n-a @model.currency}}</span>
             </div>
             <div class="flex justify-between gap-4">
-                <span class="text-gray-500 dark:text-gray-400">Timezone</span>
+                <span class="text-gray-500 dark:text-gray-400">{{t "literal.console.timezone"}}</span>
                 <span class="text-right font-medium text-gray-900 dark:text-white">{{n-a @model.timezone}}</span>
             </div>
         </div>
@@ -39,39 +39,39 @@
     </RegistryYield>
 
     <section class="rounded-md border bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">Lifecycle Controls</h2>
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Status and onboarding changes are recorded in organization activity.</p>
+        <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">{{t "literal.console.lifecycle-controls"}}</h2>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{t "literal.console.status-and-onboarding-changes-are-recorded-in-or-79be8"}}</p>
 
         <div class="mt-4 space-y-3">
             <div class="flex items-center justify-between gap-4 rounded-md border border-gray-100 p-3 dark:border-gray-700">
                 <div>
-                    <div class="text-sm font-semibold text-gray-900 dark:text-white">Organization Status</div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400">Suspend, reactivate, or flag inactive access.</div>
+                    <div class="text-sm font-semibold text-gray-900 dark:text-white">{{t "literal.console.organization-status"}}</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">{{t "literal.console.suspend-reactivate-or-flag-inactive-access"}}</div>
                 </div>
                 <div class="flex flex-wrap justify-end gap-2">
-                    <Button @size="xs" @text="Activate" @icon="circle-check" @onClick={{fn this.setStatus "active"}} />
-                    <Button @size="xs" @text="Inactive" @icon="circle-pause" @onClick={{fn this.setStatus "inactive"}} />
-                    <Button @size="xs" @type="danger" @text="Suspend" @icon="ban" @onClick={{fn this.setStatus "suspended"}} />
+                    <Button @size="xs" @text={{t "literal.console.activate"}} @icon="circle-check" @onClick={{fn this.setStatus "active"}} />
+                    <Button @size="xs" @text={{t "literal.console.inactive"}} @icon="circle-pause" @onClick={{fn this.setStatus "inactive"}} />
+                    <Button @size="xs" @type="danger" @text={{t "literal.console.suspend"}} @icon="ban" @onClick={{fn this.setStatus "suspended"}} />
                 </div>
             </div>
 
             <div class="flex items-center justify-between gap-4 rounded-md border border-gray-100 p-3 dark:border-gray-700">
                 <div>
-                    <div class="text-sm font-semibold text-gray-900 dark:text-white">Onboarding State</div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400">Manually correct onboarding state for support workflows.</div>
+                    <div class="text-sm font-semibold text-gray-900 dark:text-white">{{t "literal.console.onboarding-state"}}</div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">{{t "literal.console.manually-correct-onboarding-state-for-support-wo-d03a7"}}</div>
                 </div>
                 <div class="flex flex-wrap justify-end gap-2">
-                    <Button @size="xs" @text="Mark Complete" @icon="circle-check" @onClick={{fn this.setOnboarding true}} />
-                    <Button @size="xs" @text="Mark Incomplete" @icon="triangle-exclamation" @onClick={{fn this.setOnboarding false}} />
+                    <Button @size="xs" @text={{t "literal.console.mark-complete"}} @icon="circle-check" @onClick={{fn this.setOnboarding true}} />
+                    <Button @size="xs" @text={{t "literal.console.mark-incomplete"}} @icon="triangle-exclamation" @onClick={{fn this.setOnboarding false}} />
                 </div>
             </div>
         </div>
     </section>
 
     <section class="rounded-md border bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
-        <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">Danger Zone</h2>
+        <h2 class="text-xs font-bold uppercase text-gray-900 dark:text-white">{{t "literal.console.danger-zone"}}</h2>
         <div class="mt-4 rounded-md border border-dashed border-gray-200 p-4 text-sm text-gray-500 dark:border-gray-700 dark:text-gray-400">
-            Destructive organization deletion and data purge actions remain intentionally unavailable until separate purge contracts and confirmation workflows are added.
+            {{t "literal.console.destructive-organization-deletion-and-data-purge-4db8a"}}
         </div>
     </section>
 </div>

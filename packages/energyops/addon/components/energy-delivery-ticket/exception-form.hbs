@@ -1,0 +1,16 @@
+<div class="p-4 text-xs space-y-3">
+    <p class="text-gray-500">{{t "energyops.ticket.exception-help"}}</p>
+    <div class="grid grid-cols-2 gap-2">
+        <div class="field-info-container">
+            <div class="field-name">{{t "column.id"}}</div>
+            <div class="field-value font-mono">{{@resource.ticket.public_id}}</div>
+        </div>
+        <div class="field-info-container">
+            <div class="field-name">{{t "energyops.ticket.fields.metered"}}</div>
+            <div class="field-value">{{format-number @resource.ticket.metered_qty maximumFractionDigits=1}} {{@resource.ticket.unit}}</div>
+        </div>
+    </div>
+    <InputGroup @name={{t "energyops.ticket.exception-reason"}}>
+        <Textarea @value={{@resource.reason}} class="w-full form-input" rows="3" placeholder={{t "energyops.ticket.exception-reason"}} />
+    </InputGroup>
+</div>

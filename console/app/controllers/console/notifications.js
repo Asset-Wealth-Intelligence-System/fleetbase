@@ -7,6 +7,7 @@ import { inject as service } from '@ember/service';
  * Controller for managing notifications.
  */
 export default class NotificationsController extends Controller {
+    @service intl;
     /**
      * Inject the `socket` service
      *
@@ -124,7 +125,7 @@ export default class NotificationsController extends Controller {
                 notifications: this.selected.map(({ id }) => id),
             })
             .then(() => {
-                this.notifications.success(`${this.selected.length} notifications deleted`);
+                this.notifications.success(this.intl.t('literal.console.notifications-deleted', { length: this.selected.length }));
                 this.universe.trigger('notifications.deleted', [...this.selected]);
                 this.selected.clear();
 
@@ -148,7 +149,7 @@ export default class NotificationsController extends Controller {
                 notifications: unreadSelectedNotifications.map(({ id }) => id),
             })
             .then(() => {
-                this.notifications.success(`${unreadSelectedNotifications.length} notifications marked as read`);
+                this.notifications.success(this.intl.t('literal.console.notifications-marked-as-read', { length: unreadSelectedNotifications.length }));
                 this.universe.trigger('notifications.read', [...unreadSelectedNotifications]);
                 this.selected.clear();
 
@@ -181,7 +182,7 @@ export default class NotificationsController extends Controller {
      */
     @action markNotificationAsRead(notification) {
         return notification.markAsRead().then(() => {
-            this.notifications.info('Notification marked as read.');
+            this.notifications.info(this.intl.t('literal.console.notification-marked-as-read'));
             this.universe.trigger('notifications.read', [notification]);
         });
     }

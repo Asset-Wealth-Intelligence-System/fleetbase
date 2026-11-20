@@ -1,0 +1,53 @@
+<ContentPanel @title={{or @title (t "energyops.compartment.title")}} @open={{true}} @wrapperClass="bordered-top" ...attributes>
+    {{#if this.compartments.length}}
+        <div class="overflow-x-auto">
+            <table class="energy-table w-full text-xs">
+                <thead>
+                    <tr class="text-left text-gray-500">
+                        <th class="py-1 pr-2">{{t "energyops.common.sequence"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.common.code"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.capacity"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.residual"}}</th>
+                        <th class="py-1 pr-2 text-right">{{t "energyops.common.available"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.common.fill"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.compartment.last-product"}}</th>
+                        <th class="py-1 pr-2">{{t "energyops.compartment.dedicated"}}</th>
+                        <th class="py-1">{{t "energyops.common.status"}}</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                    {{#each this.compartments as |compartment|}}
+                        <tr>
+                            <td class="py-1 pr-2 font-mono">{{compartment.sequence}}</td>
+                            <td class="py-1 pr-2 font-semibold">{{compartment.code}}</td>
+                            <td class="py-1 pr-2 text-right">{{format-number compartment.capacity_volume}} {{compartment.unit}}</td>
+                            <td class="py-1 pr-2 text-right">{{format-number compartment.residual_volume maximumFractionDigits=1}}</td>
+                            <td class="py-1 pr-2 text-right">{{format-number compartment.availableVolume maximumFractionDigits=1}}</td>
+                            <td class="py-1 pr-2 w-32"><Cell::EnergyFillLevel @value={{compartment.fillPercent}} /></td>
+                            <td class="py-1 pr-2">{{n-a compartment.last_product.code}}</td>
+                            <td class="py-1 pr-2">{{n-a compartment.dedicated_product.code}}</td>
+                            <td class="py-1">
+                                {{#if compartment.requires_flush}}
+                                    <Badge @status="warning" @hideStatusDot={{true}}>{{t "energyops.compartment.requires-flush"}}</Badge>
+                                {{else}}
+                                    <Badge @status={{compartment.status}} />
+                                {{/if}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot>
+                    <tr class="font-semibold border-t border-gray-200 dark:border-gray-700">
+                        <td class="py-1 pr-2" colspan="2">{{t "energyops.common.all"}}</td>
+                        <td class="py-1 pr-2 text-right">{{format-number this.totals.capacity}} {{this.unit}}</td>
+                        <td class="py-1 pr-2 text-right">{{format-number this.totals.residual maximumFractionDigits=1}}</td>
+                        <td class="py-1 pr-2 text-right">{{format-number this.totals.available maximumFractionDigits=1}}</td>
+                        <td colspan="4"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    {{else}}
+        <p class="text-xs text-gray-500">{{t "energyops.compartment.empty"}}</p>
+    {{/if}}
+</ContentPanel>

@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { task } from 'ember-concurrency';
 
 export default class ConfigureServicesComponent extends Component {
+    @service intl;
     @service fetch;
     @service notifications;
     @tracked isLoading = false;
@@ -149,8 +150,8 @@ export default class ConfigureServicesComponent extends Component {
             { key: 'vonage', name: 'Vonage' },
             { key: 'messagebird', name: 'MessageBird' },
             { key: 'aws_sns', name: 'AWS SNS' },
-            { key: 'smpp', name: 'SMPP Gateway' },
-            { key: 'custom_http', name: 'Custom HTTP Gateway' },
+            { key: 'smpp', name: this.intl.t('literal.console.smpp-gateway') },
+            { key: 'custom_http', name: this.intl.t('literal.console.custom-http-gateway') },
         ];
     }
 

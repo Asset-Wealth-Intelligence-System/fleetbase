@@ -1,0 +1,2677 @@
+app:
+  name: Fleetbase
+common:
+  search-input: Campo de búsqueda
+  new: Nuevo
+  create: Crear
+  add: Agregar
+  edit: Editar
+  update: Actualizar
+  save: Guardar
+  save-changes: Guardar Cambios
+  delete: Eliminar
+  delete-selected: Eliminar Seleccionados
+  delete-selected-count: Eliminar {count} Seleccionados
+  your-profile: Tu Perfil
+  date-of-birth: Fecha de Nacimiento
+  organization: Organización
+  two-factor: Dos Factores
+  remove: Remover
+  cancel: Cancelar
+  confirm: Confirmar
+  close: Cerrar
+  open: Abrir
+  view: Ver
+  preview: Vista previa
+  upload: Subir
+  download: Descargar
+  import: Importar
+  export: Exportar
+  print: Imprimir
+  duplicate: Duplicar
+  copy: Copiar
+  paste: Pegar
+  share: Compartir
+  refresh: Actualizar
+  reset: Restablecer
+  retry: Reintentar
+  back: Atrás
+  next: Siguiente
+  previous: Anterior
+  submit: Enviar
+  apply: Aplicar
+  continue: Continuar
+  proceed: Proceder
+  select: Seleccionar
+  deselect: Deseleccionar
+  search: Buscar
+  filter: Filtrar
+  sort: Ordenar
+  view-all: Ver Todo
+  clear: Limpiar
+  done: Hecho
+  finish: Finalizar
+  skip: Omitir
+  method: Método
+  bulk-delete: Eliminación Masiva
+  bulk-delete-resource: Eliminación Masiva de {resource}
+  bulk-cancel: Cancelación masiva
+  bulk-cancel-resource: Cancelación masiva de {resource}
+  bulk-actions: Acciones masivas
+  column: Columna
+  row: Fila
+  table: Tabla
+  list: Lista
+  grid: Cuadrícula
+  form: Formulario
+  field: Campo
+  section: Sección
+  panel: Panel
+  card: Tarjeta
+  tab: Pestaña
+  modal: Modal
+  dialog: Diálogo
+  menu: Menú
+  dropdown: Desplegable
+  tooltip: Información sobre herramientas
+  sidebar: Barra lateral
+  toolbar: Barra de herramientas
+  footer: Pie de página
+  header: Encabezado
+  title: Título
+  subtitle: Subtítulo
+  description: Descripción
+  placeholder: Marcador de posición
+  label: Etiqueta
+  button: Botón
+  icon: Ícono
+  avatar: Avatar
+  link: Enlace
+  badge: Insignia
+  tag: Etiqueta
+  banner: Banner
+  step: Paso
+  progress: Progreso
+  map: Mapa
+  board: Tablero
+  loading: Cargando
+  loading-resource: Cargando {resource}
+  saving: Guardando
+  processing: Procesando
+  fetching: Obteniendo
+  updating: Actualizando
+  uploading: Subiendo
+  completed: Completado
+  success: Éxito
+  failed: Fallido
+  error: Error
+  warning: Advertencia
+  info: Información
+  ready: Listo
+  activity: Actividad
+  active: Activo
+  inactive: Inactivo
+  enabled: Habilitado
+  disabled: Deshabilitado
+  online: En línea
+  offline: Desconectado
+  pending: Pendiente
+  archived: Archivado
+  hidden: Oculto
+  visible: Visible
+  empty: Vacío
+  not-found: No encontrado
+  no-results: Sin resultados
+  try-again: Intentar de nuevo
+  are-you-sure: ¿Estás seguro?
+  changes-saved: Cambios guardados correctamente.
+  saved-successfully: Cambios guardados correctamente.
+  field-saved: '{field} guardado correctamente.'
+  changes-discarded: Cambios descartados.
+  delete-confirm: ¿Estás seguro de que quieres eliminar este elemento?
+  action-successful: Acción completada con éxito.
+  action-failed: La acción ha fallado. Por favor, inténtalo de nuevo.
+  something-went-wrong: Algo salió mal.
+  please-wait: Por favor espera...
+  sign-in: Iniciar sesión
+  sign-out: Cerrar sesión
+  sign-up: Registrarse
+  log-in: Iniciar sesión
+  log-out: Cerrar sesión
+  register: Registrar
+  forgot-password: ¿Olvidaste tu contraseña?
+  reset-password: Restablecer contraseña
+  change-password: Cambiar contraseña
+  password: Contraseña
+  confirm-password: Confirmar contraseña
+  email: Correo electrónico
+  username: Nombre de usuario
+  remember-me: Recuérdame
+  welcome: Bienvenido
+  welcome-back: Bienvenido de nuevo
+  profile: Perfil
+  account: Cuenta
+  settings: Configuración
+  preferences: Preferencias
+  record: Registro
+  records: Registros
+  item: Elemento
+  items: Elementos
+  entry: Entrada
+  entries: Entradas
+  id: ID
+  name: Nombre
+  type: Tipo
+  category: Categoría
+  overview: Resumen
+  value: Valor
+  amount: Cantidad
+  price: Precio
+  quantity: Cantidad
+  status: Estado
+  date: Fecha
+  date-created: Fecha de creación
+  date-updated: Fecha de actualización
+  time: Hora
+  created-at: Creado en
+  updated-at: Actualizado en
+  expired-at: Expirado en
+  last-seen-at: Última vez visto en
+  last-modified: Última modificación
+  last-modified-data: 'Última modificación: {date}'
+  actions: Acciones
+  details: Detalles
+  notes: Notas
+  reference: Referencia
+  filter-by: Filtrar por
+  filter-by-field: Filtrar por {field}
+  sort-by: Ordenar por
+  ascending: Ascendente
+  descending: Descendente
+  all: Todos
+  none: Ninguno
+  select-all: Seleccionar todo
+  deselect-all: Deseleccionar todo
+  show-more: Mostrar más
+  show-less: Mostrar menos
+  page: Página
+  of: de
+  total: Total
+  items-per-page: Elementos por página
+  showing: Mostrando
+  to: a
+  results: Resultados
+  load-more: Cargar más
+  no-more-results: No hay más resultados
+  today: Hoy
+  yesterday: Ayer
+  tomorrow: Mañana
+  day: Día
+  week: Semana
+  month: Mes
+  year: Año
+  date-range: Rango de fechas
+  start-date: Fecha de inicio
+  end-date: Fecha de fin
+  time-zone: Zona horaria
+  system: Sistema
+  dashboard: Panel
+  home: Inicio
+  analytics: Analíticas
+  reports: Informes
+  logs: Registros
+  help: Ayuda
+  support: Soporte
+  contact: Contacto
+  documentation: Documentación
+  language: Idioma
+  timezone: Zona horaria
+  version: Versión
+  theme: Tema
+  light-mode: Modo claro
+  dark-mode: Modo oscuro
+  update-available: Actualización disponible
+  install-update: Instalar actualización
+  maintenance-mode: Modo mantenimiento
+  notification: Notificación
+  notifications: Notificaciones
+  mark-as-read: Marcar como leído
+  mark-all-as-read: Marcar todo como leído
+  clear-notifications: Limpiar notificaciones
+  company: Empresa
+  companies: Empresas
+  user: Usuario
+  users: Usuarios
+  role: Rol
+  roles: Roles
+  permission: Permiso
+  permissions: Permisos
+  group: Grupo
+  groups: Grupos
+  unauthorized: No autorizado
+  forbidden: Prohibido
+  resource-not-found: Recurso no encontrado
+  server-error: Error del servidor
+  validation-error: Error de validación
+  timeout-error: Tiempo de espera agotado
+  network-error: Error de red
+  unknown-error: Error desconocido
+  file: Archivo
+  files: Archivos
+  folder: Carpeta
+  folders: Carpetas
+  upload-file: Subir archivo
+  upload-files: Subir archivos
+  upload-image: Subir imagen
+  upload-image-supported: Soporta PNG, JPEG y GIF
+  choose-file: Elegir archivo
+  choose-files: Elegir archivos
+  drag-and-drop: Arrastrar y soltar
+  download-file: Descargar archivo
+  file-size: Tamaño del archivo
+  file-type: Tipo de archivo
+  confirm-delete: Confirmar eliminación
+  confirm-action: Confirmar acción
+  confirm-exit: Confirmar salida
+  confirm-and-save-changes: Confirmar y guardar cambios
+  are-you-sure-exit: ¿Estás seguro de que quieres salir?
+  unsaved-changes-warning: Tienes cambios sin guardar.
+  connected: Conectado
+  disconnected: Desconectado
+  reconnecting: Reconectando
+  connection-lost: Conexión perdida
+  connection-restored: Conexión restaurada
+  show: Mostrar
+  hide: Ocultar
+  expand: Expandir
+  collapse: Colapsar
+  enable: Habilitar
+  disable: Deshabilitar
+  minimize: Minimizar
+  maximize: Maximizar
+  restore: Restaurar
+  zoom-in: Acercar
+  zoom-out: Alejar
+  fullscreen: Pantalla completa
+  exit-fullscreen: Salir de pantalla completa
+  yes: "Sí"
+  no: "No"
+  ok: Aceptar
+  none-available: Ninguno disponible
+  default: Predeterminado
+  custom: Personalizado
+  general: General
+  advanced: Avanzado
+  placeholder-text: Introduce texto aquí...
+  learn-more: Aprender más
+  view-resource: Ver {resource}
+  view-resource-details: Ver detalles de {resource}
+  create-a-new-resource: Crear un nuevo {resource}
+  create-new-resource: Crear nuevo {resource}
+  search-resource: Buscar {resource}
+  new-resource: Nuevo {resource}
+  update-resource: Actualizar {resource}
+  save-resource-changes: Guardar cambios de {resource}
+  creating-resource: Creando {resource}
+  cancel-resource: Cancelar {resource}
+  delete-resource: Eliminar {resource}
+  delete-resource-name: 'Eliminar: {resourceName}'
+  delete-resource-named: Eliminar {resource} ({resourceName})
+  delete-resource-prompt: Esta acción no se puede deshacer. Una vez eliminado, el registro será eliminado permanentemente.
+  delete-cannot-be-undone: Esta acción no se puede deshacer. Una vez eliminado, el registro será eliminado permanentemente.
+  create-resource: Crear {resource}
+  edit-resource: Editar {resource}
+  edit-resource-details: Editar detalles de {resource}
+  edit-resource-type-name: 'Editar {resource}: {resourceName}'
+  edit-resource-name: 'Editar: {resourceName}'
+  config: Configuración
+  select-field: Seleccionar {field}
+  columns: Columnas
+  metadata: Metadatos
+  meta: Meta
+  resource-created-success: Nuevo {resource} creado con éxito.
+  resource-created-success-name: Nuevo {resource} ({resourceName}) creado con éxito.
+  resource-updated-success: '{resource} ({resourceName}) actualizado con éxito.'
+  resource-action-success: '{resource} ({resourceName}) {action} con éxito.'
+  resource-deleted-success: '{resource} ({resourceName}) eliminado con éxito.'
+  resource-deleted: '{resource} ({resourceName}) eliminado.'
+  continue-without-saving: ¿Continuar sin guardar?
+  continue-without-saving-prompt: Tienes cambios sin guardar en este {resource}. Continuar descartará esos cambios. Haz clic en Continuar para
+    proceder.
+  close-and-save: Cerrar y guardar
+  phone: Teléfono
+  resource-actions: '{resource} Acciones'
+  resource-location: Ubicación de {resource}
+  changelog: Registro de cambios
+  reload: Recargar
+resource:
+  alert: Alerta
+  alerts: Alertas
+  brand: Marca
+  brands: Marcas
+  category: Categoría
+  categories: Categorías
+  chat-attachment: Archivo adjunto de chat
+  chat-attachments: Archivos adjuntos de chat
+  chat-channel: Canal de chat
+  chat-channels: Canales de chat
+  chat-log: Registro de chat
+  chat-logs: Registros de chat
+  chat-message: Mensaje de chat
+  chat-messages: Mensajes de chat
+  chat-participant: Participante del chat
+  chat-participants: Participantes del chat
+  chat-receipt: Recibo de chat
+  chat-receipts: Recibos de chat
+  comment: Comentario
+  comments: Comentarios
+  company: Empresa
+  companies: Empresas
+  custom-field-value: Valor de campo personalizado
+  custom-field-values: Valores de campo personalizado
+  custom-field: Campo personalizado
+  custom-fields: Campos personalizados
+  dashboard-widget: Widget del panel
+  dashboard-widgets: Widgets del panel
+  dashboard: Panel
+  dashboards: Paneles
+  extension: Extensión
+  extensions: Extensiones
+  file: Archivo
+  files: Archivos
+  group: Grupo
+  groups: Grupos
+  notification: Notificación
+  notifications: Notificaciones
+  permission: Permiso
+  permissions: Permisos
+  policy: Política
+  policies: Políticas
+  report: Informe
+  reports: Informes
+  role: Rol
+  roles: Roles
+  setting: Configuración
+  settings: Configuraciones
+  transaction: Transacción
+  transactions: Transacciones
+  user-device: Dispositivo del usuario
+  user-devices: Dispositivos del usuario
+  user: Usuario
+  users: Usuarios
+  country: País
+dropzone:
+  file: archivo
+  drop-to-upload: Suelta para subir
+  invalid: Inválido
+  files-ready-for-upload: '{numOfFiles} listo(s) para subir.'
+  upload-images-videos: Subir imágenes y videos
+  upload-documents: Subir documentos
+  upload-documents-files: Subir documentos y archivos
+  upload-avatar-files: Subir avatares personalizados
+  dropzone-supported-images-videos: Arrastra y suelta archivos de imagen y video en esta zona
+  dropzone-supported-avatars: Arrastra y suelta archivos SVG o PNG
+  dropzone-supported-files: Arrastra y suelta archivos en esta zona
+  or-select-button-text: o selecciona archivos para subir.
+  upload-queue: Cola de subida
+  uploading: Subiendo...
+two-fa-enforcement-alert:
+  message: Para mejorar la seguridad de tu cuenta, tu organización requiere Autenticación de Dos Factores (2FA). Activa 2FA en la configuración
+    de tu cuenta para una capa adicional de protección.
+  button-text: Configurar 2FA
+comment-thread:
+  publish-comment-button-text: Publicar comentario
+  publish-reply-button-text: Publicar respuesta
+  reply-comment-button-text: Responder
+  edit-comment-button-text: Editar
+  delete-comment-button-text: Eliminar
+  comment-published-ago: hace {createdAgo}
+  comment-input-placeholder: Escribe un nuevo comentario...
+  comment-reply-placeholder: Escribe tu respuesta...
+  comment-input-empty-notification: No puedes publicar comentarios vacíos...
+  comment-min-length-notification: El comentario debe tener al menos 2 caracteres
+dashboard:
+  select-dashboard: Seleccionar Panel
+  create-new-dashboard: Crear nuevo Panel
+  create-a-new-dashboard: Crear un nuevo Panel
+  confirm-create-dashboard: ¡Crear Panel!
+  edit-layout: Editar diseño
+  add-widgets: Agregar widgets
+  delete-dashboard: Eliminar panel
+  save-dashboard: Guardar Panel
+  you-cannot-delete-this-dashboard: No puedes eliminar este panel.
+  are-you-sure-you-want-delete-dashboard: ¿Estás seguro de que quieres eliminar este {dashboardName}?
+dashboard-widget-panel:
+  widget-name: Widget {widgetName}
+  select-widgets: Seleccionar Widgets
+  close-and-save: Cerrar y Guardar
+  filter-widgets: Buscar widgets…
+  no-widgets-match: Ningún widget coincide con los filtros.
+  tab-all: Todos
+  tab-default: Recomendados
+  tab-added: En el tablero
+  badge-default: Predeterminado
+  add: Agregar
+  add-another: Agregar another
+filters-picker:
+  filters: Filtros
+  filter-data: Filtrar Datos
+visible-column-picker:
+  select-viewable-columns: Seleccionar columnas visibles
+  customize-columns: Personalizar Columnas
+component:
+  file:
+    dropdown-label: Acciones de archivo
+  import-modal:
+    loading-message: Procesando importación...
+    drop-upload: Suelta para subir
+    invalid: Inválido
+    ready-upload: listo para subir.
+    upload-spreadsheets: Subir Hojas de Cálculo
+    drag-drop: Arrastra y suelta archivos de hojas de cálculo en esta zona
+    button-text: o selecciona hojas de cálculo para subir
+    spreadsheets: hojas de cálculo
+    upload-queue: Cola de Subida
+  dropzone:
+    file: archivo
+    drop-to-upload: Suelta para subir
+    invalid: Inválido
+    files-ready-for-upload: '{numOfFiles} listo(s) para subir.'
+    upload-images-videos: Subir Imágenes y Videos
+    upload-documents: Subir Documentos
+    upload-documents-files: Subir Documentos y Archivos
+    upload-avatar-files: Subir Avatares Personalizados
+    dropzone-supported-images-videos: Arrastra y suelta archivos de imagen y video en esta zona
+    dropzone-supported-avatars: Arrastra y suelta archivos SVG o PNG
+    dropzone-supported-files: Arrastra y suelta archivos en esta zona
+    or-select-button-text: o selecciona archivos para subir.
+    upload-queue: Cola de Subida
+    uploading: Subiendo...
+  two-fa-enforcement-alert:
+    message: Para mejorar la seguridad de tu cuenta, tu organización requiere Autenticación de Dos Factores (2FA). Activa 2FA en la configuración
+      de tu cuenta para una capa adicional de protección.
+    button-text: Configurar 2FA
+  comment-thread:
+    publish-comment-button-text: Publicar comentario
+    publish-reply-button-text: Publicar respuesta
+    reply-comment-button-text: Responder
+    edit-comment-button-text: Editar
+    delete-comment-button-text: Eliminar
+    comment-published-ago: hace {createdAgo}
+    comment-input-placeholder: Escribe un nuevo comentario...
+    comment-reply-placeholder: Escribe tu respuesta...
+    comment-input-empty-notification: No puedes publicar comentarios vacíos...
+    comment-min-length-notification: El comentario debe tener al menos 2 caracteres
+  dashboard:
+    select-dashboard: Seleccionar panel
+    create-new-dashboard: Crear nuevo panel
+    create-a-new-dashboard: Crear un nuevo panel
+    confirm-create-dashboard: ¡Crear panel!
+    edit-layout: Editar diseño
+    add-widgets: Agregar widgets
+    delete-dashboard: Eliminar panel
+    save-dashboard: Guardar panel
+    you-cannot-delete-this-dashboard: No puedes eliminar este panel.
+    are-you-sure-you-want-delete-dashboard: ¿Estás seguro de que quieres eliminar {dashboardName}?
+    create-to-customize-hint: Crea un tablero para personalizar los widgets.
+  dashboard-widget-panel:
+    widget-name: Widget {widgetName}
+    select-widgets: Seleccionar widgets
+    close-and-save: Cerrar y guardar
+services:
+  dashboard-service:
+    create-dashboard-success-notification: Nuevo panel `{dashboardName}` creado con éxito.
+    delete-dashboard-success-notification: El panel `{dashboardName}` fue eliminado.
+auth:
+  verification:
+    header-title: Verificación de cuenta
+    title: Verifica tu dirección de correo electrónico
+    message-text: <strong>¡Casi terminado!</strong><br> Revisa tu correo para un código de verificación.
+    verification-code-text: Introduce el código de verificación que recibiste por correo.
+    verification-input-label: Código de verificación
+    verify-button-text: Verificar y continuar
+    didnt-receive-a-code: ¿No has recibido un código?
+    not-sent:
+      message: ¿No has recibido un código?
+      alternative-choice: Usa las opciones alternativas abajo para verificar tu cuenta.
+      resend-email: Reenviar correo
+      send-by-sms: Enviar por SMS
+  two-fa:
+    verify-code:
+      verification-code: Código de verificación
+      check-title: Revisa tu correo o teléfono
+      check-subtitle: Te hemos enviado un código de verificación. Introduce el código abajo para completar el proceso de inicio de sesión.
+      expired-help-text: Tu código de autenticación 2FA ha expirado. Puedes solicitar otro código si necesitas más tiempo.
+      resend-code: Reenviar código
+      verify-code: Verificar código
+      cancel-two-factor: Cancelar autenticación de dos factores
+      invalid-session-error-notification: Sesión inválida. Por favor, inténtalo de nuevo.
+      verification-successful-notification: ¡Verificación exitosa!
+      verification-code-expired-notification: El código de verificación ha expirado. Por favor, solicita uno nuevo.
+      verification-code-failed-notification: La verificación falló. Por favor, inténtalo de nuevo.
+    resend-code:
+      verification-code-resent-notification: Nuevo código de verificación enviado.
+      verification-code-resent-error-notification: Error al reenviar el código de verificación. Por favor, inténtalo de nuevo.
+  forgot-password:
+    success-message: ¡Revisa tu correo para continuar!
+    is-sent:
+      title: ¡Casi listo!
+      message: <strong>¡Revisa tu correo electrónico!</strong><br> Te hemos enviado un enlace mágico a tu correo que te permitirá restablecer
+        tu contraseña. El enlace expira en 15 minutos.
+    not-sent:
+      title: ¿Olvidaste tu contraseña?
+      message: <strong>No te preocupes, te respaldamos.</strong><br> Introduce el correo electrónico que usas para iniciar sesión en {appName}
+        y te enviaremos un enlace seguro para restablecer tu contraseña.
+    form:
+      email-label: Tu dirección de correo electrónico
+      submit-button: ¡OK, envíame un enlace mágico!
+      nevermind-button: No importa
+  login:
+    title: Inicia sesión en tu cuenta
+    no-identity-notification: ¿Olvidaste ingresar tu correo electrónico?
+    no-password-notification: ¿Olvidaste ingresar tu contraseña?
+    unverified-notification: Tu cuenta necesita ser verificada para continuar.
+    password-reset-required: Se requiere un restablecimiento de contraseña para continuar.
+    failed-attempt:
+      message: <strong>¿Olvidaste tu contraseña?</strong><br> Haz clic en el botón de abajo para restablecer tu contraseña.
+      button-text: ¡Ok, ayúdame a restablecerla!
+    form:
+      email-label: Correo electrónico
+      password-label: Contraseña
+      remember-me-label: Recuérdame
+      forgot-password-label: ¿Olvidaste tu contraseña?
+      sign-in-button: Iniciar sesión
+      create-account-button: Crear una nueva cuenta
+    slow-connection-message: Experimentando problemas de conectividad.
+  reset-password:
+    success-message: ¡Tu contraseña ha sido restablecida! Inicia sesión para continuar.
+    invalid-verification-code: Este enlace para restablecer la contraseña es inválido o ha expirado.
+    title: Restablece tu contraseña
+    form:
+      code:
+        label: Tu código de restablecimiento
+        help-text: El código de verificación que recibiste en tu correo electrónico.
+      password:
+        label: Nueva contraseña
+        help-text: Introduce una contraseña de al menos 6 caracteres para continuar.
+      confirm-password:
+        label: Confirma la nueva contraseña
+        help-text: Introduce una contraseña de al menos 6 caracteres para continuar.
+      submit-button: Restablecer contraseña
+      back-button: Volver
+  confirm-email-change:
+    success-message: Tu correo se actualizó.
+    invalid-verification-code: Este enlace de cambio de correo no es válido o expiró.
+    title: Confirmar cambio de correo
+    message-text: Confirma este cambio para actualizar el correo de inicio de sesión de tu cuenta Fleetbase.
+    form:
+      code:
+        label: Código de confirmación
+        help-text: El código de confirmación que llegó a tu correo.
+      submit-button: Confirmar cambio de correo
+      back-button: Atrás
+console:
+  create-or-join-organization:
+    modal-title: Crear o unirse a una organización
+    join-success-notification: ¡Te has unido a una nueva organización!
+    create-success-notification: ¡Has creado una nueva organización!
+  switch-organization:
+    modal-title: ¿Estás seguro de que quieres cambiar la organización a {organizationName}?
+    modal-body: Al confirmar, tu cuenta permanecerá iniciada, pero tu organización principal será cambiada.
+    modal-accept-button-text: Sí, quiero cambiar de organización
+    success-notification: Has cambiado de organización
+  account:
+    index:
+      upload-new: Subir nuevo
+      phone: Tu número de teléfono.
+      photos: fotos
+      timezone: Selecciona tu zona horaria.
+  admin:
+    menu:
+      overview: Resumen
+      organizations: Organizaciones
+      branding: Marca
+      2fa-config: Configuración 2FA
+      schedule-monitor: Monitor de programación
+      services: Servicios
+      mail: Correo
+      filesystem: Sistema de archivos
+      queue: Cola
+      socket: Socket
+      push-notifications: Notificaciones push
+      platform-api-token: Token de API de la plataforma
+    schedule-monitor:
+      schedule-monitor: Monitor de programación
+      task-logs-for: 'Registros de tareas para: '
+      showing-last-count: Mostrando los últimos {count} registros
+      name: Nombre
+      type: Tipo
+      timezone: Zona horaria
+      last-started: Último inicio
+      last-finished: Última finalización
+      last-failure: Último fallo
+      date: Fecha
+      memory: Memoria
+      runtime: Tiempo de ejecución
+      output: Salida
+      no-output: Sin salida
+    config:
+      database:
+        title: Configuración de la base de datos
+      filesystem:
+        title: Configuración del sistema de archivos
+      mail:
+        title: Configuración de correo
+      notification-channels:
+        title: Configuración de notificaciones push
+      queue:
+        title: Configuración de la cola
+      services:
+        title: Configuración de servicios
+      socket:
+        title: Configuración de socket
+    branding:
+      title: Marca
+      icon-text: Ícono
+      upload-new: Subir nuevo
+      reset-default: Restablecer a predeterminado
+      logo-text: Logo
+      theme: Tema predeterminado
+    index:
+      total-users: Total de usuarios
+      total-organizations: Total de organizaciones
+      total-transactions: Total de transacciones
+    notifications:
+      title: Notificaciones
+      notification-settings: Configuración de notificaciones
+    organizations:
+      index:
+        title: Organizaciones
+        owner-name-column: Propietario
+        owner-phone-column: Teléfono del propietario
+        owner-email-column: Correo electrónico del propietario
+        users-count-column: Usuarios
+        phone-column: Teléfono
+        email-column: Correo electrónico
+      users:
+        title: Usuarios
+    platform-api-token:
+      title: Token de API de la plataforma
+      description: Administra el token API de plataforma que usan las integraciones de confianza para acceder a endpoints protegidos, como el
+        directorio de organizaciones.
+      loading: Cargando platform API token estado...
+      status: Estado
+      configured: Configurado
+      not-configured: Not configurado
+      last-rotated: Última rotación
+      last-used: Último uso
+      never: Nunca
+      generate-token: Generar Token
+      rotate-token: Rotar Token
+      revoke-token: Revocar Token
+      one-time-warning: Copia este token ahora. No se volverá a mostrar.
+      rotate-confirm-title: Rotar platform API token?
+      rotate-warning: Rotar este token invalida de inmediato las integraciones que usan el token anterior.
+      revoke-confirm-title: Revocar platform API token?
+      revoke-warning: Revocar desactiva el acceso con token de plataforma a los endpoints protegidos.
+      generated: Token API de plataforma generado.
+      rotated: Token API de plataforma rotado.
+      revoked: Token API de plataforma revocado.
+      copied: Token API de plataforma copiado al portapapeles.
+  settings:
+    index:
+      title: Configuración de la organización
+      organization-name: Nombre de la organización
+      organization-description: Descripción de la organización
+      organization-phone: Número de teléfono de la organización
+      organization-currency: Moneda de la organización
+      organization-id: ID de la organización
+      organization-branding: Marca de la organización
+      logo: Logo
+      logo-help-text: Logo para tu organización.
+      upload-new-logo: Subir nuevo logo
+      backdrop: Fondo
+      backdrop-help-text: Banner o imagen de fondo opcional para tu organización.
+      upload-new-backdrop: Subir nuevo fondo
+      organization-timezone: Selecciona la zona horaria predeterminada para tu organización.
+      select-timezone: Selecciona zona horaria.
+  extensions:
+    title: ¡Las extensiones llegarán pronto!
+    message: Por favor, vuelve a consultar en las próximas versiones mientras preparamos el lanzamiento del repositorio y mercado de Extensiones.
+  notifications:
+    select-all: Seleccionar todo
+    mark-as-read: Marcar como leído
+    received: 'Recibido:'
+    message: No hay notificaciones para mostrar.
+invite:
+  for-users:
+    invitation-message: Has sido invitado a unirte a {companyName}
+    invitation-sent-message: Has sido invitado a unirte a la organización {companyName} en {appName}. Para aceptar esta invitación, introduce
+      tu código de invitación recibido por correo electrónico y haz clic en continuar.
+    invitation-code-sent-text: Tu código de invitación
+    accept-invitation-text: Aceptar invitación
+onboard:
+  index:
+    title: Crea tu cuenta
+    welcome-title: <strong>¡Bienvenido a {companyName}!</strong><br />
+    welcome-text: Completa los detalles requeridos a continuación para comenzar.
+    full-name: Nombre completo
+    full-name-help-text: Tu nombre completo
+    your-email: Dirección de correo electrónico
+    your-email-help-text: Tu dirección de correo electrónico
+    phone: Número de teléfono
+    phone-help-text: Tu número de teléfono
+    organization-name: Nombre de la organización
+    organization-help-text: El nombre de tu organización, todos tus servicios y recursos serán gestionados bajo esta organización, más adelante
+      podrás crear tantas organizaciones como quieras o necesites.
+    password: Introduce una contraseña
+    password-help-text: Tu contraseña, asegúrate de que sea buena.
+    confirm-password: Confirma tu contraseña
+    confirm-password-help-text: Solo para confirmar la contraseña que introdujiste arriba.
+    continue-button-text: Continuar
+  verify-email:
+    header-title: Verificación de cuenta
+    title: Verifica tu dirección de correo electrónico
+    message-text: <strong>¡Casi terminado!</strong><br> Revisa tu correo electrónico para un código de verificación.
+    verification-code-text: Introduce el código de verificación que recibiste por correo electrónico.
+    verification-input-label: Código de verificación
+    verify-button-text: Verificar y continuar
+    didnt-receive-a-code: ¿No has recibido un código todavía?
+    not-sent:
+      message: ¿No has recibido un código todavía?
+      alternative-choice: Usa las opciones alternativas a continuación para verificar tu cuenta.
+      resend-email: Reenviar correo electrónico
+      send-by-sms: Enviar por SMS
+install:
+  not-configured-title: Fleetbase no está instalado o configurado
+  not-configured-message: Completa la instalación desde el CLI de Fleetbase o el contenedor de la aplicación y recarga esta página cuando la base
+    de datos, las migraciones y los datos semilla estén listos.
+  running-locally-docs: Ver documentación de ejecución local
+  cloud-docs: Ver documentación de despliegue en la nube
+  refreshing: Instalación completa, actualizando...
+layout:
+  header:
+    menus:
+      organization:
+        settings: Configuración de la organización
+        create-or-join: Crear o unirse a organizaciones
+        explore-extensions: Explorar extensiones
+      user:
+        view-profile: Ver perfil
+        keyboard-shortcuts: Mostrar atajos de teclado
+        changelog: Registro de cambios
+modals:
+  set-password:
+    message: Tu cuenta se creó por invitación y todavía no tiene contraseña. Define una ahora para protegerla.
+    new-password: Nueva contraseña
+    confirm-password: Confirmar contraseña
+    help-text: Escribe una contraseña de al menos 6 caracteres para continuar.
+
+literal:
+  console:
+    account-auth: "Autenticación de la cuenta"
+    actions: "Acciones"
+    activate: "Activar"
+    active-admins: "Administradores activos"
+    activity: "Actividad"
+    activity-stream: "Flujo de actividad"
+    adjust-the-search-filters-or-saved-view-to-find-f7b45: "Ajusta la búsqueda, los filtros o la vista guardada para encontrar otra organización."
+    adjust-the-search-or-filters-to-find-another-org-78aab: "Ajusta la búsqueda o los filtros para encontrar otro usuario de la organización."
+    admin-controls: "Controles de administración de {title}."
+    admin-dashboard: "Panel de administración"
+    admin-overview: "Resumen de administración"
+    admin-summary: "Resumen de administración"
+    advanced-settings: "Ajustes avanzados"
+    alpha-numeric-sender-id: "ID de remitente alfanumérico"
+    alphanumeric-sender-ids-allow-your-organization-0c4e1: "Los ID de remitente alfanuméricos permiten a tu organización reemplazar un número telefónico tradicional por un nombre de remitente de texto personalizado al enviar notificaciones SMS (p. ej., Fleetbase, MiTienda, DespachoHQ). Esto puede mejorar el reconocimiento de marca, aumentar la confianza en los mensajes y mejorar la entregabilidad en regiones donde las operadoras restringen los remitentes numéricos."
+    apn-app-bundle-id: "ID de paquete de la app (APN)"
+    apn-configutation: "Configuración de APN"
+    apn-device-token: "Token de dispositivo APN"
+    apn-device-token-47e14: "Token de dispositivo APN:"
+    apn-key-id: "ID de clave APN"
+    apn-production: "APN en producción"
+    apn-team-id: "ID de equipo APN"
+    are-you-sure-you-want-to-delete-the-organization: "¿Seguro que deseas eliminar la organización {name}?"
+    are-you-sure-you-want-to-leave-the-organization: "¿Seguro que quieres salir de la organización"
+    are-you-sure-you-want-to-proceed: "¿Seguro que quieres continuar?"
+    as-the-owner-of: "Como propietario de"
+    assigned: "Asignado"
+    auth: "Autenticación"
+    auth-header: "Encabezado de autenticación"
+    auth-token: "Token de autenticación"
+    awaiting-events: "Esperando eventos..."
+    aws-access-key: "Clave de acceso AWS"
+    aws-access-secret: "Secreto de acceso AWS"
+    aws-region: "Región AWS"
+    aws-secret: "Secreto AWS"
+    back: "Atrás"
+    beanstalk-host: "Host de Beanstalk"
+    beanstalk-queue: "Cola de Beanstalk"
+    billing: "Facturación"
+    bind-npi: "NPI de enlace"
+    bind-ton: "TON de enlace"
+    body-template-json: "Plantilla del cuerpo (JSON)"
+    branding-settings-saved: "Ajustes de marca guardados."
+    by-leaving-the-organization-will-be-permanently-f8792: "Al salir, la organización se eliminará permanentemente junto con todos sus datos."
+    callpro-api-key: "Clave API de CallPro"
+    callpro-base-url: "URL base de CallPro"
+    callpro-from: "Remitente de CallPro"
+    change-email: "Cambiar correo electrónico"
+    change-password: "Cambiar contraseña"
+    choose-an-authentication-method: "Elige un método de autenticación"
+    clear-view: "Limpiar vista"
+    client-id: "ID de cliente"
+    client-secret: "Secreto de cliente"
+    complete: "Completar"
+    configure-administrator-two-factor-authenticatio-9259a: "Configura la política de autenticación de dos factores para administradores."
+    configure-background-queue-workers: "Configura los trabajadores de la cola en segundo plano."
+    configure-console-branding-logos-colors-and-them-27e10: "Configura la marca de la consola, logos, colores y tema predeterminado."
+    configure-core-platform-services-mail-storage-qu-c48e8: "Configura los servicios centrales de la plataforma, correo, almacenamiento, colas, sockets y notificaciones."
+    configure-file-storage: "Configura el almacenamiento de archivos."
+    configure-mail-delivery: "Configura la entrega de correo."
+    configure-notification-channels: "Configura los canales de notificación."
+    configure-platform-service-providers: "Configura los proveedores de servicios de la plataforma."
+    configure-provider: "Configurar proveedor"
+    configure-realtime-socket-settings: "Configura los ajustes de sockets en tiempo real."
+    confirm-change-password: "Confirmar y cambiar contraseña"
+    confirm-password: "Confirmar contraseña"
+    copied-to-clipboard: "{label} copiado al portapapeles."
+    copy-public-id: "Copiar ID público"
+    copy-uuid: "Copiar UUID"
+    core-organization-profile-phone-and-currency-fie-adf6b: "Campos principales de perfil, teléfono y moneda de la organización."
+    country: "País"
+    create-organization: "Crear organización"
+    created: "Creado:"
+    currency: "Moneda"
+    current-email: "Correo actual"
+    current-password: "Contraseña actual"
+    custom-http-gateway: "Pasarela HTTP personalizada"
+    danger-zone: "Zona de peligro"
+    dashboard-name: "Nombre del tablero"
+    data-coding: "Codificación de datos"
+    deactivate: "Desactivar"
+    deactivate-for-this-organization: "¿Desactivar a {value} en esta organización?"
+    deactivate-user: "Desactivar usuario"
+    default-provider: "Proveedor predeterminado"
+    delete: "Eliminar"
+    delete-organization: "Eliminar organización"
+    delivery-of-sms-using-alphanumeric-sender-ids-de-03d71: "La entrega de SMS con ID de remitente alfanuméricos depende de las políticas de las operadoras locales. Algunas regiones pueden restringir o bloquear remitentes numéricos o exigir remitentes alfanuméricos para una entrega exitosa. Aunque Fleetbase intentará entregar todos los mensajes con tu ID de remitente configurado, no se puede garantizar la entrega en países con filtrado por operadora o restricciones regulatorias. Tu organización es responsable de cumplir con la normativa local de mensajería en los países a los que envía SMS."
+    description: "Descripción"
+    destination-npi: "NPI de destino"
+    destination-ton: "TON de destino"
+    destructive-organization-deletion-and-data-purge-4db8a: "Las acciones destructivas de eliminación de organización y purga de datos permanecen deshabilitadas intencionalmente hasta que se agreguen contratos de purga y flujos de confirmación independientes."
+    driver: "Conductor"
+    edit: "Editar"
+    edit-organization: "Editar organización"
+    edit-settings: "Editar ajustes"
+    email-change-verification-sent-confirm-the-new-a-93e55: "Verificación de cambio de correo enviada. Confirma la nueva dirección antes de que cambie tu correo de acceso."
+    email-successfully-verified: "¡Correo verificado con éxito!"
+    enable-alpha-numeric-sender-id: "Habilitar ID de remitente alfanumérico"
+    enable-two-factor-authentication: "Habilitar autenticación de dos factores"
+    enabled-tls-encryption: "Cifrado TLS habilitado"
+    end-impersonation: "Finalizar suplantación"
+    enter-a-new-email-address-and-your-current-passw-ac53d: "Ingresa un nuevo correo electrónico y tu contraseña actual. Tu correo de inicio de sesión cambiará solo cuando confirmes el correo de verificación enviado a la nueva dirección."
+    enter-new-password: "Ingresa la nueva contraseña"
+    enter-the-name-of-your-dashboard: "Ingresa el nombre de tu panel"
+    export: "Exportar"
+    export-selected: "Exportar seleccionados"
+    extension: "Extensión"
+    extension-footprint-for-this-organization-packag-13cad: "Huella de extensiones de esta organización. Los controles específicos de cada paquete pueden montar paneles adicionales a través del registro de administración."
+    extensions: "Extensiones"
+    fcm-device-token: "Token de dispositivo FCM"
+    fcm-device-token-94e7a: "Token de dispositivo FCM:"
+    filesystem: "Sistema de archivos"
+    filesystem-configuration-saved: "Configuración del sistema de archivos guardada."
+    filter-organization-users-and-open-row-actions-f-494d6: "Filtra los usuarios de la organización y abre las acciones de fila para suplantación o soporte de contraseña."
+    firebase-configutation: "Configuración de Firebase"
+    fleetbase-blog: "Blog de Fleetbase"
+    forks: "Forks"
+    from: "Desde"
+    from-address: "Dirección de origen"
+    from-name: "Nombre de origen"
+    gateway-url: "URL de la pasarela"
+    gcs-bucket: "Bucket de GCS"
+    gcs-service-account-key-file: "Archivo de clave de cuenta de servicio GCS"
+    google-maps-api-key: "Clave API de Google Maps"
+    google-maps-locale: "Idioma de Google Maps"
+    headers-json: "Encabezados (JSON)"
+    hide-advanced-settings: "Ocultar configuración avanzada"
+    ids: "IDs"
+    impersonate: "Suplantar"
+    impersonate-owner: "Suplantar al propietario"
+    in-addition-to-your-username-and-password-you-ll-f3917: "Además de tu usuario y contraseña, deberás ingresar un código (enviado por app o SMS) para iniciar sesión en tu cuenta"
+    inactive: "Inactivo"
+    inactive-status: "Estado inactivo"
+    incomplete: "Incompleto"
+    incomplete-onboarding: "Incorporación incompleta"
+    input-the-email-address-for-fleetbase-to-send-em-b0968: "Ingresa la dirección de correo desde la que Fleetbase enviará correos."
+    input-the-name-for-fleetbase-to-send-emails-from: "Ingresa el nombre con el que Fleetbase enviará correos."
+    installed-extensions: "Extensiones instaladas"
+    invitation-accepted-welcome-to-fleetbase: "Invitación aceptada, ¡bienvenido a Fleetbase!"
+    ip-info: "Información de IP"
+    ip-info-api-key: "Clave API de IP Info"
+    last-activity: "Última actividad"
+    latest-release: "Última versión:"
+    leave: "Salir"
+    leave-organization: "Salir de la organización"
+    leaving-the-organization-requires-you-to-nominat-bf301: ", para salir de la organización debes nominar a un nuevo propietario."
+    legacy-overview-widget: "Widget de resumen (legado)"
+    lifecycle-controls: "Controles de ciclo de vida"
+    loading-2fa-config: "Cargando la configuración 2FA..."
+    loading-user-2fa-settings: "Cargando la configuración 2FA del usuario..."
+    mail: "Correo"
+    mail-configuration-saved: "Configuración de correo guardada."
+    mailer: "Servicio de correo"
+    mailgun-domain: "Dominio de Mailgun"
+    mailgun-endpoint: "Endpoint de Mailgun"
+    mailgun-secret: "Secreto de Mailgun"
+    manage-organizations-users-extensions-activity-a-b445b: "Administra organizaciones, usuarios, extensiones, actividad y ajustes."
+    manage-the-platform-api-token-used-by-trusted-pl-d5c5d: "Administra el token de API de la plataforma usado por integraciones de confianza."
+    manually-correct-onboarding-state-for-support-wo-d03a7: "Corrige manualmente el estado de incorporación para flujos de soporte."
+    mark-complete: "Marcar como completo"
+    mark-incomplete: "Marcar como incompleto"
+    mark-onboarding-complete: "Marcar incorporación como completa"
+    mark-onboarding-incomplete: "Marcar incorporación como incompleta"
+    mark-this-organization-onboarding-as-complete: "¿Marcar la incorporación de esta organización como completa?"
+    mark-this-organization-onboarding-as-incomplete: "¿Marcar la incorporación de esta organización como incompleta?"
+    member-since: "Miembro desde:"
+    message: "Mensaje:"
+    messagebird-access-key: "Clave de acceso de MessageBird"
+    messagebird-originator: "Remitente de MessageBird"
+    method: "Método"
+    metric: "Métrica"
+    missing: "Faltante"
+    missing-owner: "Sin propietario"
+    name: "Nombre"
+    needs-assignment: "Requiere asignación"
+    needs-attention: "Requiere atención"
+    needs-attention-80e48: "Requiere atención"
+    needs-review: "Requiere revisión"
+    new-email: "Nuevo correo"
+    no-blog-posts-are-available-right-now: "No hay publicaciones del blog disponibles por ahora."
+    no-email-address-provided: "No se proporcionó dirección de correo."
+    no-email-number-provided: "No se proporcionó correo electrónico."
+    no-items-require-attention: "Ningún elemento requiere atención."
+    no-organization-specific-extensions-are-installe-89c9a: "No hay extensiones específicas de la organización instaladas."
+    no-organizations-found: "No se encontraron organizaciones"
+    no-organizations-match-the-current-admin-view: "Ninguna organización coincide con la vista de administración actual."
+    no-organizations-match-your-filters: "Ninguna organización coincide con tus filtros"
+    no-owner-assigned: "Sin propietario asignado"
+    no-owner-is-assigned-to-this-organization: "Esta organización no tiene propietario asignado."
+    no-phone-number-provided: "No se proporcionó número de teléfono."
+    no-users-found: "No se encontraron usuarios"
+    no-users-match-your-filters: "Ningún usuario coincide con tus filtros"
+    notification-channel-s-configuration-saved: "Configuración del canal de notificaciones guardada."
+    notification-marked-as-read: "Notificación marcada como leída."
+    notification-settings-successfully-saved: "Ajustes de notificaciones guardados con éxito."
+    notifications-deleted: "{length} notificaciones eliminadas"
+    notifications-marked-as-read: "{length} notificaciones marcadas como leídas"
+    onboard-failed: "Falló la incorporación"
+    onboarding: "Incorporación"
+    onboarding-state: "Estado de incorporación"
+    open-activity: "Abrir actividad"
+    open-issues: "Incidencias abiertas"
+    operational-state: "Estado operativo"
+    organization-actions: "Acciones de organización"
+    organization-admin-sections: "Secciones de administración de la organización"
+    organization-changes-successfully-saved: "Cambios de la organización guardados con éxito."
+    organization-currency: "Moneda de la organización"
+    organization-description: "Descripción de la organización"
+    organization-members: "Miembros de la organización"
+    organization-name: "Nombre de la organización"
+    organization-onboarding-updated: "Incorporación de la organización actualizada."
+    organization-ownership-transferred: "Propiedad de la organización transferida."
+    organization-phone-number: "Teléfono de la organización"
+    organization-settings: "Ajustes de la organización"
+    organization-status: "Estado de la organización"
+    organization-status-updated: "Estado de la organización actualizado."
+    organization-updated: "Organización actualizada."
+    organization-users: "Usuarios de la organización"
+    organizations: "Organizaciones"
+    output: "Salida"
+    overview: "Resumen"
+    owner: "Propietario"
+    owner-13c5c: "Propietario:"
+    password: "Contraseña"
+    password-change-successfully: "Contraseña cambiada con éxito."
+    phone: "Teléfono"
+    platform-access: "Acceso a la plataforma"
+    please-select-a-member-from-the-dropdown-below-t-77936: "Selecciona un miembro en la lista desplegable para transferir la propiedad antes de continuar."
+    postmark-token: "Token de Postmark"
+    profile: "Perfil"
+    profile-changes-saved: "Cambios del perfil guardados."
+    push-notification-message: "Mensaje de la notificación push"
+    push-notification-title: "Título de la notificación push"
+    query-params-json: "Parámetros de consulta (JSON)"
+    queue: "Cola"
+    queue-configuration-saved: "Configuración de la cola guardada."
+    ready-for-operations: "Lista para operar"
+    recent-activity: "Actividad reciente"
+    recommended: "Recomendado"
+    refresh: "Actualizar"
+    registered-delivery: "Entrega registrada"
+    remove-from-organization: "Quitar de la organización"
+    remove-from-this-organization: "¿Quitar a {value} de esta organización?"
+    remove-user: "Quitar usuario"
+    require-users-to-set-up-2fa: "Exigir a los usuarios configurar 2FA"
+    resend-api-key: "Clave API de Resend"
+    resend-verification-code: "Reenviar código de verificación"
+    review-admin-dashboard-metrics-and-platform-heal-bd6da: "Revisa las métricas del panel de administración y la salud de la plataforma."
+    review-organization-wide-activity-captured-for-t-59a8e: "Revisa la actividad de toda la organización registrada para este UUID de empresa."
+    review-scheduled-tasks-and-their-recent-executio-b86fa: "Revisa las tareas programadas y sus registros de ejecución recientes."
+    s-2fa: "2FA"
+    s-2fa-config: "Configuración de 2FA"
+    s-2fa-settings: "Ajustes de 2FA"
+    s3-bucket: "Bucket S3"
+    s3-endpoint: "Endpoint S3"
+    s3-url: "URL S3"
+    save-2fa-settings: "Guardar ajustes de 2FA"
+    save-changes: "Guardar cambios"
+    save-to-sent-items: "Guardar en enviados"
+    search-admin: "Buscar en administración..."
+    search-members-review-access-state-and-manage-us-aa85b: "Busca miembros, revisa el estado de acceso y gestiona las acciones de soporte de usuarios de esta organización."
+    select-a-member: "Seleccionar un miembro"
+    select-a-new-owner: "Seleccionar un nuevo propietario"
+    select-filesystem-driver: "Seleccionar controlador del sistema de archivos"
+    select-mailer: "Seleccionar servicio de correo"
+    select-notifiables: "Seleccionar destinatarios..."
+    select-queue-driver: "Seleccionar controlador de cola"
+    select-the-default-filesystem-driver-for-fleetba-138aa: "Selecciona el controlador de sistema de archivos predeterminado que usará Fleetbase."
+    select-the-default-mailer-for-fleetbase-to-use: "Selecciona el servicio de correo predeterminado que usará Fleetbase."
+    select-the-default-queue-driver-for-fleetbase-to-24511: "Selecciona el controlador de cola predeterminado que usará Fleetbase."
+    send: "Enviar"
+    send-test-sms-here: "Enviar SMS de prueba aquí"
+    send-verification-email: "Enviar correo de verificación"
+    sendgrid-api-key: "Clave API de Sendgrid"
+    sentry-dsn: "DSN de Sentry"
+    set-a-new-password: "Establecer una nueva contraseña"
+    set-the-custom-alphanumeric-name-that-will-appea-71cca: "Define el nombre alfanumérico personalizado que aparecerá como remitente de todos los SMS enviados por tu organización. Hasta 11 letras o números. No está disponible en todos los países."
+    set-this-organization-status-to: "¿Cambiar el estado de esta organización a {status}?"
+    settings: "Ajustes"
+    smpp-address-range: "Rango de direcciones SMPP"
+    smpp-bind-type: "Tipo de enlace SMPP"
+    smpp-gateway: "Pasarela SMPP"
+    smpp-host: "Host SMPP"
+    smpp-password: "Contraseña SMPP"
+    smpp-port: "Puerto SMPP"
+    smpp-service-type: "Tipo de servicio SMPP"
+    smpp-source-address: "Dirección de origen SMPP"
+    smpp-system-id: "ID de sistema SMPP"
+    sms-notification-settings: "Ajustes de notificaciones SMS"
+    sms-providers: "Proveedores de SMS"
+    smtp-auth-mode: "Modo de autenticación SMTP"
+    smtp-encryption: "Cifrado SMTP"
+    smtp-host: "Host SMTP"
+    smtp-password: "Contraseña SMTP"
+    smtp-port: "Puerto SMTP"
+    smtp-timeout: "Tiempo de espera SMTP"
+    smtp-username: "Usuario SMTP"
+    sns-sender-id: "ID de remitente SNS"
+    sns-sms-type: "Tipo de SMS de SNS"
+    socket-connection-error: "¡Error de conexión del socket!"
+    socket-is-connected: "El socket está conectado"
+    socket-subscribed-to-test-channel: "Socket suscrito al canal de prueba"
+    socketcluster-connection: "Conexión SocketCluster"
+    some-countries-require-or-enforce-specific-messa-04fea: "Algunos países exigen reglas específicas de mensajería y ciertas operadoras solo admiten remitentes alfanuméricos. Usar un ID de remitente puede mejorar significativamente la entrega de mensajes en esas regiones."
+    source-npi: "NPI de origen"
+    source-ton: "TON de origen"
+    sqs-prefix: "Prefijo SQS"
+    sqs-queue: "Cola SQS"
+    sqs-suffix: "Sufijo SQS"
+    star-on-github: "Dar estrella en GitHub"
+    stars: "Estrellas"
+    status: "Estado"
+    status-and-onboarding-changes-are-recorded-in-or-79be8: "Los cambios de estado e incorporación se registran en la actividad de la organización."
+    suspend: "Suspender"
+    suspend-reactivate-or-flag-inactive-access: "Suspende, reactiva o marca accesos inactivos."
+    switch: "Cambiar"
+    system-config: "Configuración del sistema"
+    tenant-id: "ID de tenant"
+    test-config: "Probar configuración"
+    test-message: "Mensaje de prueba"
+    test-push-notification: "Probar notificación push"
+    test-sentry-config: "Probar configuración de Sentry"
+    test-sms-provider: "Probar proveedor de SMS"
+    test-socket-connection: "Probar conexión de socket"
+    the-socketcluster-configuration-cannot-be-change-c4ec9: "La configuración de SocketCluster no se puede cambiar en este momento."
+    this-action-cannot-be-undone: "Esta acción no se puede deshacer."
+    this-admin-extension-tab-is-unavailable: "Esta pestaña de extensión de administración no está disponible."
+    this-organization-does-not-have-an-owner-to-impe-42078: "Esta organización no tiene un propietario al que suplantar."
+    this-organization-does-not-have-users-matching-t-e4445: "Esta organización no tiene usuarios que coincidan con la vista actual."
+    timezone: "Zona horaria"
+    title: "Título:"
+    transfer-organization-ownership-to: "¿Transferir la propiedad de la organización a {value}?"
+    transfer-ownership: "Transferir propiedad"
+    transfer-ownership-and-leave: "Transferir propiedad y salir"
+    twilio-from: "Remitente de Twilio"
+    twilio-sid: "SID de Twilio"
+    twilio-token: "Token de Twilio"
+    unable-to-delete-your-only-organization: "No puedes eliminar tu única organización."
+    unable-to-leave-your-only-organization: "No puedes abandonar tu única organización."
+    unable-to-load-admin-overview: "No se pudo cargar el resumen de administración."
+    unable-to-load-dashboard-widget: "No se pudo cargar el widget del panel."
+    unable-to-load-metric: "No se pudo cargar la métrica."
+    update-organization-status: "Actualizar estado de la organización"
+    update-status: "Actualizar estado"
+    upload-p8-key-file: "Subir archivo de clave P8"
+    upload-service-account-json: "Subir JSON de la cuenta de servicio"
+    use-tls: "Usar TLS"
+    user-actions: "Acciones de usuario"
+    user-deactivated: "Usuario desactivado."
+    user-removed: "Usuario eliminado."
+    users: "Usuarios"
+    users-3beec: "Usuarios:"
+    verification-code: "Código de verificación"
+    verification-code-email-sent: "¡Correo con código de verificación enviado!"
+    verification-code-sms-sent: "¡SMS con código de verificación enviado!"
+    verify: "Verificar"
+    verify-account-by-phone: "Verificar cuenta por teléfono"
+    verify-continue: "Verificar y continuar"
+    view-all: "Ver todo"
+    view-organization: "Ver organización"
+    views: "Vistas"
+    visit-blog: "Visitar el blog"
+    vonage-api-key: "Clave API de Vonage"
+    vonage-api-secret: "Secreto API de Vonage"
+    vonage-from: "Remitente de Vonage"
+    vs-previous-30d: "vs. 30 días anteriores"
+    warning-gcs-is-already-configured-in-the-server-6599c: "¡Atención! GCS ya está configurado en el entorno del servidor. Cambiar los valores de abajo puede romperlo."
+    watchers: "Observadores"
+    welcome-to-fleetbase: "¡Bienvenido a Fleetbase!"
+    when-enabled-fleetbase-will-use-this-sender-id-f-10b9a: "Cuando está habilitado, Fleetbase usará este ID de remitente para todos los SMS salientes enviados en nombre de tu organización, incluidas actualizaciones de pedidos, códigos de verificación, notificaciones a conductores y otras alertas automáticas. Los ID de remitente pueden tener hasta 11 caracteres entre letras y números."
+    you-are-the-sole-owner-of: "Eres el único propietario de"
+    you-do-not-have-authorization-to-access-admin: "¡No tienes autorización para acceder a la administración!"
+    you-do-not-have-rights-to-delete-this-organizati-b4e04: "No tienes permisos para eliminar esta organización."
+    you-must-validate-your-current-password-before-i-80d4c: "Debes validar tu contraseña actual antes de poder cambiarla."
+    you-will-no-longer-have-access-to-its-resources-d0c51: "Ya no tendrás acceso a sus recursos ni ajustes."
+    your-browser-storage-is-full-your-onboarding-pro-38afd: "El almacenamiento de tu navegador está lleno. Tu progreso de incorporación se guardará temporalmente, pero podría perderse si cierras esta pestaña. Completa el proceso de incorporación en esta sesión."
+    your-organizations: "Tus organizaciones"
+  ember-ui:
+    a3-297-420-mm: "A3 (297 × 420 mm)"
+    a4-210-297-mm: "A4 (210 × 297 mm)"
+    a5-148-210-mm: "A5 (148 × 210 mm)"
+    actions: "Acciones"
+    active-groupings: "Agrupaciones activas"
+    add: "Agregar"
+    add-111e7: "+ Agregar"
+    add-a: "+ Agregar"
+    add-attachment: "Agregar adjunto"
+    add-column: "Agregar columna"
+    add-column-after: "Agregar columna después"
+    add-column-before: "Agregar columna antes"
+    add-computed-column: "Agregar columna calculada"
+    add-condition: "Agregar condición"
+    add-conditions-to-filter-your-data: "Agrega condiciones para filtrar tus datos"
+    add-extensions-from-the-list-on-the-right: "Agrega extensiones desde la lista de la derecha."
+    add-grouping: "Agregar agrupación"
+    add-inner-group: "Agregar grupo interno"
+    add-language: "Agregar idioma"
+    add-new-option: "Agregar nueva opción"
+    add-new-tab: "Agregar nueva pestaña"
+    add-new-translation: "Agregar nueva traducción"
+    add-query: "Agregar consulta"
+    add-row: "Agregar fila"
+    add-row-after: "Agregar fila después"
+    add-row-before: "Agregar fila antes"
+    add-sort: "Agregar orden"
+    add-sort-0d01d: "Agregar orden"
+    add-tags-to-the-report: "Agrega etiquetas al reporte"
+    add-the-first-computed-column: "Agrega la primera columna calculada"
+    add-values: "Agregar valores..."
+    add-your-first-field-group-to-start-adding-custo-8c82e: "Agrega tu primer grupo de campos para empezar a añadir campos personalizados para"
+    added: "Agregado ×{n}"
+    added-f29dd: "Agregado"
+    address-search: "Búsqueda de direcciones"
+    admin: "Administrador"
+    aggregate-functions-calculate-values-for-each-gr-0e45b: "• Las funciones de agregación calculan valores para cada grupo"
+    alias: "Alias:"
+    alias-optional: "Alias (opcional)"
+    align-center: "Centrar"
+    align-left: "Alinear a la izquierda"
+    align-right: "Alinear a la derecha"
+    alignment: "Alineación"
+    all-extensions: "Todas las extensiones"
+    all-records: "Todos los registros"
+    allowed-functions: "Funciones permitidas"
+    alt-text: "Texto alternativo"
+    always-available: "Siempre disponible"
+    apply: "Aplicar"
+    are-you-sure-you-want-to: "¿Seguro que quieres"
+    are-you-sure-you-want-to-delete-these: "¿Seguro que quieres eliminar estos"
+    are-you-sure-you-wish-to-end-this-chat: "¿Seguro que deseas finalizar este chat ({title})?"
+    are-you-sure-you-wish-to-remove-this-participant-8f66b: "¿Seguro que deseas quitar a este participante ({name}) del chat?"
+    are-you-sure-you-would-like-to-leave-this-chat: "¿Seguro que deseas salir de este chat?"
+    ascending: "Ascendente"
+    astonomical-unit: "Unidad astronómica"
+    attachment: "Adjunto"
+    attribute: "Atributo"
+    auto-derived-from-label-if-left-blank: "Se deriva automáticamente de la etiqueta si se deja en blanco."
+    available-relationships: "Relaciones disponibles"
+    average: "Promedio"
+    background: "Fondo"
+    background-color: "Color de fondo"
+    barcode: "Código de barras"
+    basic-info: "Información básica"
+    between-dates: "entre fechas"
+    black: "Negra"
+    blockquote: "Cita"
+    bold: "Negrita"
+    boolean: "Booleano"
+    border: "Borde"
+    border-color: "Color del borde"
+    border-radius: "Radio del borde"
+    both-regular-and-aggregated-columns-can-be-sorte-06389: "• Se pueden ordenar tanto columnas regulares como agregadas"
+    bulk-search: "Búsqueda masiva"
+    calculate: "Calcular"
+    calculate-days-between-dates: "Calcular días entre fechas"
+    calculate-the-number-of-days-between-two-dates: "Calcula el número de días entre dos fechas"
+    cancel: "Cancelar"
+    canvas-settings: "Ajustes del lienzo"
+    category: "Categoría"
+    cell-padding: "Relleno de celda"
+    change-variable: "Cambiar variable"
+    changed-attributes: "Atributos modificados"
+    changelog: "Registro de cambios"
+    channel-name: "Nombre del canal"
+    chat-name: "Nombre del chat"
+    choose-a-table-to-see-available-fields: "Elige una tabla para ver los campos disponibles"
+    choose-columns-to-enable-filtering: "Elige columnas para habilitar el filtrado"
+    circle: "Círculo"
+    clear: "Limpiar"
+    clear-all: "Limpiar todo"
+    clear-all-e77fe: "Limpiar todo"
+    clear-color: "Quitar color"
+    clear-search: "Limpiar búsqueda"
+    click-to-copy: "Haz clic para copiar"
+    click-to-download-attachment: "Haz clic para descargar el adjunto"
+    click-to-pin-to-bar: "Clic para fijar en la barra"
+    click-to-reveal: "Clic para revelar"
+    click-to-unpin: "Clic para desfijar"
+    click-to-upload-image: "Haz clic para subir una imagen"
+    close: "Cerrar"
+    close-chat-inbox: "Cerrar bandeja de chat"
+    close-documentation: "Cerrar documentación"
+    close-new-chat: "Cerrar nuevo chat"
+    close-search: "Cerrar búsqueda"
+    codeblock: "Bloque de código"
+    color: "Color"
+    column-label: "Etiqueta de la columna"
+    column-name: "Nombre de la columna"
+    column-span-size: "Ancho de columna: {size}"
+    columns: "Columnas:"
+    columns-168b8: "Columnas"
+    combine-multiple-text-fields: "Combina varios campos de texto"
+    comma-separated-relationship-names-to-eager-load: "Nombres de relaciones separados por comas para precargar."
+    commercial-license: "Licencia comercial"
+    commercial-use: "uso comercial."
+    company-address: "Dirección de la empresa"
+    company-email: "Correo de la empresa"
+    company-logo-url: "URL del logo de la empresa"
+    company-name: "Nombre de la empresa"
+    company-phone: "Teléfono de la empresa"
+    computed-columns: "Columnas calculadas"
+    computed-columns-allow-you-to-create-calculated-0a42b: "Las columnas calculadas te permiten crear campos calculados con expresiones SQL"
+    concatenate: "Concatenar"
+    concatenate-fields: "Concatenar campos"
+    conditional-value: "Valor condicional"
+    conditions: "Condiciones"
+    configuration: "Configuración"
+    configure-the-report-and-press-the-execute-butto-8cd9a: "Configura el reporte y presiona el botón ejecutar para previsualizar los resultados."
+    confirm: "Confirmar"
+    confirm-your-phone-number-below-and-click-send-t-03555: "Confirma tu número de teléfono abajo y haz clic en enviar para recibir un código de verificación por SMS."
+    contact: "Contacto"
+    contacts: "Contactos"
+    contain: "Contener"
+    contains: "~ contiene"
+    content: "Contenido"
+    copied: "¡Copiado!"
+    count: "Cantidad"
+    cover: "Cubrir"
+    create-chat: "Crear chat"
+    create-model: "Crear {model}"
+    create-new: "Crear nuevo {resourceType}"
+    create-new-49e58: "Crear nuevo"
+    create-new-custom-field: "Crear nuevo campo personalizado"
+    create-new-organization: "Crear nueva organización"
+    create-or-join-organizations: "Crear o unirse a organizaciones"
+    create-query: "Crear consulta"
+    create-resource: "Crear {resource}"
+    created: "Creado"
+    csv-export-options: "Opciones de exportación CSV"
+    current-datetime: "Fecha y hora actual"
+    current-user: "Usuario actual"
+    current-year: "Año actual"
+    custom: "Personalizado"
+    custom-fields-manager: "Gestor de campos personalizados"
+    customise-navigation: "Personalizar navegación"
+    customise-navigation-265ac: "Personalizar navegación"
+    dark-mode: "Modo oscuro"
+    dashed: "Discontinuo"
+    data-input: "Entrada de datos"
+    data-source: "Fuente de datos"
+    data-type: "Tipo de dato"
+    data-variable: "Variable de datos"
+    data-will-be-exported-as-comma-separated-values-d02bd: "Los datos se exportarán como valores separados por comas, aptos para Excel y otras hojas de cálculo."
+    data-will-be-exported-as-structured-json-suitabl-cbfba: "Los datos se exportarán como JSON estructurado, apto para consumo por API y procesamiento de datos."
+    date: "Fecha"
+    date-created: "Fecha de creación"
+    date-input: "Entrada de fecha"
+    date-time: "Fecha y hora"
+    decimal: "Decimal"
+    define-columns-first: "Define las columnas primero."
+    delete: "Eliminar"
+    delete-column: "Eliminar columna"
+    delete-element: "Eliminar elemento"
+    delete-query: "Eliminar consulta"
+    delete-row: "Eliminar fila"
+    delete-table: "Eliminar tabla"
+    delete-this-custom-field: "¿Eliminar este campo personalizado?"
+    delete-this-field-group: "¿Eliminar este grupo de campos?"
+    deleted: "Eliminado"
+    descending: "Descendente"
+    description: "Descripción"
+    developers: "Desarrolladores"
+    direction: "Dirección"
+    directory: "Directorio"
+    display-label: "Etiqueta visible"
+    divide-with-protection-against-division-by-zero: "Divide con protección contra la división por cero"
+    documentation: "Documentación"
+    does-not-contain: "no contiene"
+    done: "Listo"
+    dotted: "Punteado"
+    double-click-to-rename: "Doble clic para renombrar"
+    download-import-template-xlsx: "Descargar plantilla de importación (XLSX)"
+    drag-to-reorder: "Arrastra para reordenar"
+    draggable-map-marker: "Marcador de mapa arrastrable"
+    driver: "Conductor"
+    e-g-datediff-end-date-start-date-1: "p. ej., DATEDIFF(end_date, start_date) + 1"
+    e-g-driver-vehicle: "p. ej. driver,vehicle"
+    e-g-order-number: "p. ej. order_number"
+    e-g-recent-orders: "p. ej. Pedidos recientes"
+    eager-load-with: "Precarga (with)"
+    edit-chat-channel-name: "Editar nombre del canal de chat"
+    edit-computed-column: "Editar columna calculada"
+    edit-computed-column-fc8f0: "Editar columna calculada"
+    edit-query: "Editar consulta"
+    edit-query-afdc1: "Editar consulta"
+    element: "Elemento"
+    end-chat: "Finalizar chat"
+    ends-with: "termina con"
+    enter: "Ingresa {unitName}"
+    enter-address: "Ingresa la dirección"
+    enter-limit-e-g-100: "Ingresa el límite (p. ej., 100)"
+    enter-report-title: "Ingresa el título del reporte..."
+    enter-the-code-you-received-in-your-email-please-6e798: "Ingresa el código que recibiste por correo; revisa el spam si no está en la bandeja de entrada."
+    enter-the-id-of-the-organization-you-wish-to-joi-631e4: "Ingresa el ID de la organización a la que quieres unirte."
+    enter-value: "Ingresa un valor..."
+    enter-verification-code: "Ingresa el código de verificación"
+    equals: "= igual a"
+    esc: "Esc"
+    example-expressions: "Expresiones de ejemplo"
+    excel-xlsx: "Excel (XLSX)"
+    execute: "Ejecutar"
+    execute-query: "Ejecutar consulta"
+    executing-query: "Ejecutando consulta..."
+    explore-extensions: "Explorar extensiones"
+    export: "Exportar"
+    export-format: "Formato de exportación..."
+    export-format-fbbff: "Formato de exportación"
+    expression: "Expresión"
+    expression-is-valid: "La expresión es válida"
+    extension-list: "Lista de extensiones"
+    extension-navigation: "Navegación de extensiones"
+    extensions: "Extensiones"
+    extra-bold: "Extra negrita"
+    failed-to-load-data-sources: "No se pudieron cargar las fuentes de datos"
+    failed-to-load-record: "No se pudo cargar el registro."
+    failed-to-update-schedule-item: "No se pudo actualizar el elemento de la programación"
+    "false": "Falso"
+    field-description: "Descripción del campo"
+    field-e-g-created-at: "campo (p. ej. created_at)"
+    field-group-name: "Nombre del grupo de campos"
+    field-help-text: "Texto de ayuda del campo"
+    field-is-editable: "El campo es editable"
+    field-is-required: "El campo es obligatorio"
+    field-label: "Etiqueta del campo"
+    field-model-type: "Tipo de modelo del campo"
+    field-options: "Opciones del campo"
+    field-type: "Tipo de campo"
+    file-extension-will-be-added-automatically: "La extensión del archivo se agregará automáticamente"
+    file-name: "Nombre del archivo"
+    fill: "Rellenar"
+    fill-color: "Color de relleno"
+    filter-conditions: "Condiciones de filtro"
+    filter-input: "Entrada de filtro"
+    filter-keys: "Filtrar claves…"
+    fleetbase-documentation: "Documentación de Fleetbase"
+    fleetbase-is-licensed-under-the-gnu-affero-gener-e3733: "Fleetbase se distribuye bajo la licencia GNU Affero General Public License v3.0 o posterior, salvo que tengas una licencia comercial independiente de Fleetbase."
+    fleetbase-legal-notices: "Avisos legales de Fleetbase"
+    fleetbase-user: "Usuario de Fleetbase"
+    font: "Fuente"
+    font-family: "Familia tipográfica"
+    for-deletion: "para eliminar."
+    format: "Formato"
+    formula: "Fórmula"
+    formula-syntax: "Sintaxis de fórmula"
+    frequency: "Frecuencia"
+    from: "Desde"
+    fuel-report: "Reporte de combustible"
+    gallon-us: "Galón (EE. UU.)"
+    general: "General"
+    global: "Global"
+    greater-or-equal: "≥ mayor o igual"
+    greater-than: "mayor que"
+    greater-than-b8972: "> mayor que"
+    greater-than-or-equal: "mayor o igual que"
+    grid-size: "Tamaño de cuadrícula: {size}"
+    group: "Grupo"
+    group-by: "Agrupar por"
+    group-by-0abdc: "Agrupar por"
+    group-by-column: "Columna de agrupación"
+    grouping-rules: "Reglas de agrupación:"
+    have-a-second-look-and-confirm-your-email-addres-8d7e8: "Revisa de nuevo y confirma que tu correo electrónico es correcto."
+    have-a-second-look-and-confirm-your-phone-number-17e89: "Revisa de nuevo y confirma que tu número de teléfono es correcto."
+    header-bg: "Fondo del encabezado"
+    header-text: "Texto del encabezado"
+    heading: "Encabezado"
+    heading-1: "Título 1"
+    heading-2: "Título 2"
+    heading-3: "Título 3"
+    height: "Alto"
+    help-support: "Ayuda y soporte"
+    hide-element: "Ocultar elemento"
+    hide-raw-metadata: "Ocultar metadatos sin procesar"
+    home: "Inicio"
+    image: "Imagen"
+    image-source: "Origen de la imagen"
+    in-list: "en la lista"
+    input-a-new-name-for-your-chat-channel: "Ingresa un nuevo nombre para tu canal de chat."
+    input-comma-delimited-id-s-to-perform-a-bulk-sea-d15d7: "Ingresa IDs separados por comas para realizar una búsqueda masiva"
+    insert-a-table: "Insertar una tabla"
+    insert-a-youtube-video: "Insertar un video de YouTube"
+    insert-formula: "Insertar fórmula"
+    insert-horizontal-rule: "Insertar línea horizontal"
+    insert-image: "Insertar imagen"
+    insert-table: "Insertar tabla"
+    insert-variable: "Insertar variable"
+    insert-variable-or-formula: "Insertar variable o fórmula"
+    insert-variable-or-formula-082e6: "Insertar variable o fórmula"
+    insert-youtube-video: "Insertar video de YouTube"
+    integer: "Entero"
+    is-empty: "está vacío"
+    is-not-empty: "no está vacío"
+    is-not-null: "no es nulo"
+    is-not-one-of: "no es uno de"
+    is-null: "es nulo"
+    is-one-of: "es uno de"
+    issue: "Incidencia"
+    italic: "Cursiva"
+    item-count: "{count, plural, one {# {resource}} other {# {resources}}}"
+    join-an-organization: "Unirse a una organización"
+    join-discord-community: "Unirse a la comunidad de Discord"
+    joined-columns-selected-consider-selecting-only-98ac4: "columnas unidas seleccionadas. Considera seleccionar solo las columnas que necesitas para mejorar el rendimiento."
+    joins: "Uniones"
+    json-export-options: "Opciones de exportación JSON"
+    kanban-board: "Tablero Kanban"
+    key: "Clave"
+    key-is-required: "La clave es obligatoria"
+    key-must-be-unique: "La clave debe ser única"
+    label-is-required: "La etiqueta es obligatoria."
+    landscape: "Horizontal"
+    large-result-sets-may-take-longer-to-process-and-1f391: "Los conjuntos de resultados grandes pueden tardar más en procesarse y mostrarse."
+    latitude: "Latitud"
+    layers: "Capas"
+    legal: "Legal"
+    legal-216-356-mm: "Legal (216 × 356 mm)"
+    less-or-equal: "≤ menor o igual"
+    less-than: "menor que"
+    less-than-58e55: "< menor que"
+    less-than-or-equal: "menor o igual que"
+    let-s-verify-your-phone-number-instead: "Verifiquemos tu número de teléfono en su lugar."
+    letter-216-279-mm: "Carta (216 × 279 mm)"
+    letter-spacing: "Espaciado de letras"
+    light: "Ligera"
+    light-year: "Año luz"
+    limit: "Límite"
+    limit-results: "Limitar resultados"
+    line: "Línea"
+    line-height: "Altura de línea"
+    list: "Lista"
+    loading: "Cargando..."
+    loading-activity: "Cargando actividad..."
+    loading-contacts: "Cargando contactos"
+    loading-conversations: "Cargando conversaciones"
+    loading-documentation: "Cargando documentación..."
+    loading-report: "Cargando reporte..."
+    logout: "Cerrar sesión"
+    longitude: "Longitud"
+    lookup: "Buscar"
+    manual: "Manual"
+    max-n-rows: "Máx. {limit} filas"
+    max-number-of-rows-to-return: "Número máximo de filas a devolver."
+    maximum: "Máximo"
+    maximum-rows: "Filas máximas:"
+    medium: "Media"
+    menu: "Menú"
+    messages: "Mensajes"
+    meta-column-span: "Meta: columnas que ocupa"
+    metadata: "Metadatos"
+    minimum: "Mínimo"
+    modify-current-table: "Modificar tabla actual"
+    more-extensions: "Más extensiones"
+    more-tabs: "Más pestañas"
+    move-layer-down: "Bajar capa"
+    move-layer-up: "Subir capa"
+    must-be-snake-case-start-with-a-letter-a-z0-9: "Debe estar en snake_case (empezar con una letra, a-z0-9_)"
+    name-required-to-save-changes: "Se requiere un nombre para guardar los cambios."
+    navigation-search-results: "Resultados de búsqueda de navegación"
+    need-to-keep-proprietary-modifications-private-b-c2546: "¿Necesitas mantener privadas tus modificaciones propietarias, crear un producto SaaS o usar Fleetbase con tu marca? Una licencia comercial de Fleetbase elimina las obligaciones copyleft de la AGPL para el"
+    new-chat: "Nuevo chat"
+    new-custom-field-group: "Nuevo grupo de campos personalizados"
+    new-field-group: "Nuevo grupo de campos"
+    new-query: "Nueva consulta"
+    new-value: "Nuevo valor"
+    next: "Siguiente"
+    "no": "No"
+    no-activity-yet: "Aún no hay actividad"
+    no-columns-defined: "No hay columnas definidas"
+    no-columns-defined-add-one-below: "No hay columnas definidas. Agrega una abajo."
+    no-computed-columns-defined-yet: "Aún no hay columnas calculadas definidas"
+    no-conditions: "Sin condiciones"
+    no-conditions-all-records-will-be-returned: "Sin condiciones — se devolverán todos los registros."
+    no-conditions-set: "No hay condiciones definidas"
+    no-contacts-found: "No se encontraron contactos"
+    no-conversations-found: "No se encontraron conversaciones"
+    no-custom-field-groups: "No hay grupos de campos personalizados"
+    no-driver-assigned: "Sin conductor asignado"
+    no-elements-yet: "Aún no hay elementos."
+    no-email: "Sin correo electrónico"
+    no-extensions-match: "Ninguna extensión coincide"
+    no-extensions-pinned-yet: "Aún no hay extensiones fijadas."
+    no-grouping: "Sin agrupación"
+    no-joins: "Sin uniones"
+    no-limit: "Sin límite"
+    no-messages-yet: "Aún no hay mensajes"
+    no-metadata: "Sin metadatos"
+    no-metadata-click: "Sin metadatos. Haz clic en"
+    no-metadata-to-display: "No hay metadatos para mostrar"
+    no-navigation-results-found: "No se encontraron resultados de navegación."
+    no-non-aggregated-columns-available-for-grouping: "No hay columnas sin agregación disponibles para agrupar"
+    no-queries-yet: "Aún no hay consultas."
+    no-records-found: "No se encontraron registros"
+    no-records-yet: "Aún no hay registros"
+    no-relationships-available: "No hay relaciones disponibles"
+    no-report: "Sin reporte"
+    no-report-preview: "Sin vista previa del reporte"
+    no-reports-available: "No hay reportes disponibles"
+    no-resources-to-display: "No hay {resources} para mostrar"
+    no-results-found: "No se encontraron resultados"
+    no-rows-yet: "Aún no hay filas."
+    no-selected-columns-available-for-filtering: "No hay columnas seleccionadas disponibles para filtrar"
+    no-sort-default-model-order-will-be-used: "Sin orden — se usará el orden predeterminado del modelo."
+    no-sorting: "Sin ordenamiento"
+    no-source-selected: "Ninguna fuente seleccionada"
+    no-subject-yet: "Aún no hay {subject}"
+    no-unread-notifications: "No hay notificaciones sin leer"
+    no-user: "Sin usuario"
+    no-warranty: "Sin garantía"
+    none: "Ninguno"
+    none-selected: "Ninguno seleccionado"
+    not-between: "no está entre"
+    not-between-dates: "no entre fechas"
+    not-contains: "!~ no contiene"
+    not-equals: "no es igual a"
+    not-equals-aba81: "≠ distinto de"
+    not-in-list: "no en la lista"
+    number: "Número"
+    object-fit: "Ajuste del objeto"
+    of-column: "De la columna"
+    on-dashboard: "En el panel ×{n}"
+    on-dashboard-d66b2: "En el panel"
+    on-or-after: "en o después de"
+    on-or-before: "en o antes de"
+    once-this-chat-is-ended-it-will-no-longer-be-acc-ab693: "Una vez finalizado este chat, nadie podrá acceder a él."
+    once-this-custom-field-is-deleted-it-will-not-be-35d93: "Una vez eliminado este campo personalizado no se podrá recuperar y perderás todos los datos asociados."
+    once-this-field-group-is-deleted-it-will-not-be-c32b6: "Una vez eliminado este grupo de campos no se podrá recuperar y perderás todos los campos personalizados que contiene."
+    once-you-leave-this-chat-you-will-not-be-able-to-653a5: "Una vez que salgas de este chat no podrás acceder a él a menos que te agreguen como participante de nuevo"
+    opacity: "Opacidad"
+    open-chat-inbox: "Abrir bandeja de chat"
+    open-documentation: "Abrir documentación"
+    open-documentation-in-a-new-tab: "Abrir documentación en una nueva pestaña"
+    open-fleetbase-documentation: "Abrir documentación de Fleetbase"
+    open-source-and-commercial-licensing: "Licencias de código abierto y comercial"
+    open-source-license: "Licencia de código abierto"
+    operator: "Operador..."
+    optional: "Opcional"
+    optional-description: "Descripción opcional..."
+    optional-description-d196d: "Descripción opcional"
+    optional-description-of-what-this-column-calcula-b4d2d: "Descripción opcional de lo que calcula esta columna"
+    order: "Pedido"
+    ordered-list: "Lista ordenada"
+    organization-currency: "Moneda de la organización"
+    organization-description: "Descripción de la organización"
+    organization-id: "ID de la organización"
+    organization-name: "Nombre de la organización"
+    organization-phone-number: "Teléfono de la organización"
+    organization-settings: "Ajustes de la organización"
+    orientation: "Orientación"
+    padding-px: "Relleno (px)"
+    paper-size: "Tamaño de papel"
+    paragraph: "Párrafo"
+    performance-notice: "Aviso de rendimiento"
+    performance-warning: "Advertencia de rendimiento"
+    pin-to-navigation-bar: "Fijar en la barra de navegación"
+    pinned-to-bar: "Fijado en la barra"
+    pint-us: "Pinta (EE. UU.)"
+    place: "Lugar"
+    please-fix-invalid-duplicate-keys-above: "Corrige las claves inválidas o duplicadas de arriba."
+    please-select-a-resource-type: "Selecciona un tipo de recurso."
+    portrait: "Vertical"
+    position: "Posición"
+    preview: "Vista previa"
+    preview-metadata: "Vista previa de metadatos"
+    preview-template: "Previsualizar plantilla"
+    previous: "Anterior"
+    previous-value: "Valor anterior"
+    primary-table: "Tabla principal"
+    proceeding-remove-this-participant-from-the-chat: "Al continuar se quitará a este participante del chat."
+    properties: "Propiedades"
+    purchase-rate: "Tarifa de compra"
+    qr-code: "Código QR"
+    quart-us: "Cuarto (EE. UU.)"
+    queries: "Consultas"
+    queries-load-data-from-fleetbase-models-at-rende-28298: "Las consultas cargan datos de los modelos de Fleetbase al renderizar y se guardan con la plantilla."
+    query-builder: "Constructor de consultas"
+    query-operations: "Operaciones de consulta"
+    quick-insert-variable: "Insertar variable rápida"
+    quick-options: "Opciones rápidas:"
+    radius-px: "Radio (px)"
+    re-verify-your-email-address-and-click-send-to-c-cff5d: "Vuelve a verificar tu correo electrónico y haz clic en Enviar para continuar."
+    read-at: "Leído a las {time}"
+    read-guide: "Leer la guía"
+    received: "Recibido:"
+    rectangle: "Rectángulo"
+    redo: "Rehacer"
+    regular: "Normal"
+    relationships: "Relaciones:"
+    remove: "Quitar"
+    remove-column: "Quitar columna"
+    remove-computed-column: "Quitar columna calculada"
+    remove-condition: "Quitar condición"
+    remove-from-bar: "Quitar de la barra"
+    remove-limit: "Quitar límite"
+    remove-name: "Quitar a {name}"
+    remove-row: "Quitar fila"
+    remove-sort: "Quitar orden"
+    remove-widget-from-the-dashboard: "Quitar widget del panel"
+    replace-image: "Reemplazar imagen"
+    report-details: "Detalles del reporte"
+    report-title: "Título del reporte"
+    reset-to-default: "Restablecer valores predeterminados"
+    reset-zoom: "Restablecer zoom"
+    resource: "Recurso"
+    resource-type: "Tipo de recurso"
+    restored: "Restaurado"
+    return-different-values-based-on-conditions: "Devuelve distintos valores según condiciones"
+    rotate-left-90: "Girar 90° a la izquierda"
+    rotate-right-90: "Girar 90° a la derecha"
+    rotation: "Rotación"
+    row: "Fila"
+    row-alt-color: "Color de fila alterna"
+    rows: "Filas"
+    rows-of-data-in-your-preferred-format: "filas de datos en el formato que prefieras."
+    safe-division: "División segura"
+    save: "Guardar"
+    save-changes: "Guardar cambios"
+    save-report: "Guardar reporte"
+    saved-successfully: "{resourceType} {value} guardado correctamente."
+    schedule-this-report: "Programar este reporte"
+    scheduled-item: "Elemento programado"
+    search: "Buscar"
+    search-by-currency-code: "Buscar por código de moneda"
+    search-conversations: "Buscar conversaciones"
+    search-extensions: "Buscar extensiones"
+    search-extensions-0557e: "Buscar extensiones..."
+    search-for-a-column: "Buscar una columna"
+    search-input: "Campo de búsqueda"
+    search-navigation: "Buscar en la navegación"
+    search-or-jump-to: "Buscar o ir a..."
+    search-reports-by-keyword: "Buscar reportes por palabra clave..."
+    search-teammates: "Buscar compañeros"
+    search-variables: "Buscar variables..."
+    searching: "Buscando..."
+    select: "Seleccionar"
+    select-a-data-source: "Selecciona una fuente de datos"
+    select-a-report-to-view: "Selecciona un reporte para verlo."
+    select-a-table: "Selecciona una tabla..."
+    select-all: "Seleccionar todo"
+    select-category: "Seleccionar categoría..."
+    select-column: "Seleccionar columna..."
+    select-columns: "Seleccionar columnas"
+    select-columns-first-to-enable-filtering: "Selecciona columnas primero para habilitar el filtrado"
+    select-columns-first-to-enable-grouping: "Selecciona columnas primero para habilitar la agrupación"
+    select-columns-first-to-enable-sorting: "Selecciona columnas primero para habilitar el ordenamiento"
+    select-columns-from: "Selecciona columnas de"
+    select-columns-in-the-select-fields-section-firs-948cd: "Primero selecciona columnas en la sección \"Seleccionar campos\""
+    select-data-source: "Seleccionar fuente de datos..."
+    select-data-type: "Seleccionar tipo de dato"
+    select-direction: "Seleccionar dirección..."
+    select-export-format: "Seleccionar formato de exportación..."
+    select-field: "Seleccionar campo..."
+    select-field-type: "Seleccionar tipo de campo..."
+    select-fields: "Seleccionar campos"
+    select-fields-first: "Selecciona campos primero"
+    select-from-map: "Seleccionar en el mapa"
+    select-function: "Seleccionar función..."
+    select-model-type: "Seleccionar tipo de modelo"
+    select-none: "No seleccionar ninguno"
+    select-one-or-more-teammates: "Selecciona uno o más compañeros"
+    select-report: "Seleccionar reporte"
+    select-report-f83c2: "Seleccionar reporte"
+    select-resource: "Seleccionar {resource}"
+    select-the-fleetbase-model-this-query-runs-again-51b2b: "Selecciona el modelo de Fleetbase sobre el que se ejecuta esta consulta."
+    select-value: "Seleccionar valor..."
+    select-values: "Seleccionar valores..."
+    selected-fields: "Campos seleccionados:"
+    semi-bold: "Seminegrita"
+    send: "Enviar"
+    sent-a-message: "Envió un mensaje"
+    shape: "Forma"
+    show-element: "Mostrar elemento"
+    show-keyboard-shortcuts: "Mostrar atajos de teclado"
+    showing: "Mostrando"
+    showing-from-to-of-results: "Mostrando <span class=\"font-medium\">{from}</span> a <span class=\"font-medium\">{to}</span> de <span class=\"font-medium\">{total}</span> resultados"
+    size: "Tamaño"
+    size-px: "Tamaño (px)"
+    solid: "Sólido"
+    some-extensions-require-access-to-your-resources: "Algunas extensiones requieren acceso a tus recursos."
+    someone: "Alguien"
+    sort: "Ordenar"
+    sort-by: "Ordenar por"
+    sort-column: "Columna de orden"
+    sort-order-drag-to-reorder: "Orden (arrastra para reordenar)"
+    sort-order-matters-drag-to-reorder-priority: "• El orden importa: arrastra para cambiar la prioridad"
+    sorting-rules: "Reglas de ordenamiento:"
+    sql-expression-using-allowed-functions-and-colum-c5169: "Expresión SQL con funciones permitidas y referencias a columnas"
+    start-a-new-chat-or-adjust-your-search: "Inicia un nuevo chat o ajusta tu búsqueda."
+    start-typing-to-search: "Empieza a escribir para buscar"
+    starts-with: "comienza con"
+    strikethrough: "Tachado"
+    style: "Estilo"
+    subscript: "Subíndice"
+    successfully: "{ResourceName} {value} correctamente."
+    sum: "Suma"
+    superscript: "Superíndice"
+    supported-round-abs-ceil-floor: "Compatibles: + − × ÷ ( ) round() abs() ceil() floor()"
+    system-found-no-reports-available: "El sistema no encontró reportes disponibles."
+    table: "Tabla"
+    table-information: "Información de la tabla"
+    table-style: "Estilo de tabla"
+    tags: "Etiquetas"
+    template-name: "Nombre de la plantilla"
+    text: "Texto"
+    the-expected-data-type-of-the-computed-value: "El tipo de dato esperado del valor calculado"
+    the-height-of-the-youtube-video: "La altura del video de YouTube"
+    the-human-readable-label-shown-in-reports: "La etiqueta legible que se muestra en los reportes"
+    the-internal-name-for-this-column-lowercase-unde-015b0: "El nombre interno de esta columna (minúsculas y guiones bajos)"
+    the-number-of-columns-for-the-table: "El número de columnas de la tabla"
+    the-number-of-rows-for-the-table: "El número de filas de la tabla"
+    the-url-to-the-youtube-video-you-want-to-insert: "La URL del video de YouTube que quieres insertar"
+    the-variable-must-resolve-to-an-array-of-objects-5fb92: "La variable debe resolver a un arreglo de objetos. Las claves de cada objeto deben coincidir con las claves de columna definidas arriba."
+    the-width-of-the-youtube-video: "El ancho del video de YouTube"
+    this-page-cannot-be-embedded-here-but-you-can-op-27851: "Esta página no se puede incrustar aquí, pero puedes abrirla en una nueva pestaña."
+    this-program-is-distributed-without-warranty-you-7178a: "Este programa se distribuye sin garantía. Puedes distribuirlo y modificarlo bajo los términos de la AGPL-3.0 o posterior."
+    this-table-has-no-defined-relationships-to-join-96e6c: "Esta tabla no tiene relaciones definidas para unirse con otras tablas"
+    time: "Hora"
+    time-input: "Entrada de hora"
+    title: "Título"
+    to: "Hasta"
+    to-create-one: "para crear uno."
+    today-s-date: "Fecha de hoy"
+    toggle-sort-direction: "Cambiar dirección del orden"
+    translation-key: "Clave de traducción"
+    translation-value: "Valor de traducción"
+    translations: "Traducciones"
+    "true": "Verdadero"
+    true-false: "Verdadero / Falso"
+    try-a-different-name-email-or-phone-number: "Prueba con otro nombre, correo o número de teléfono."
+    try-adjusting-your-query-filters: "Prueba ajustando los filtros de la consulta"
+    type: "Tipo"
+    type-your-message-here: "Escribe tu mensaje aquí"
+    unable-to-create-chat: "No se pudo crear el chat."
+    unbalanced-curly-braces-in-formula: "Llaves desbalanceadas en la fórmula."
+    underline: "Subrayado"
+    undo: "Deshacer"
+    unknown: "Desconocido"
+    unread-conversation-count: "{count, plural, one {# conversación sin leer} other {# conversaciones sin leer}}"
+    unset: "Sin definir"
+    untitled-chat: "Chat sin título"
+    untitled-column: "Columna sin título"
+    untitled-field: "Campo sin título"
+    update: "Actualizar"
+    updated: "Actualizado"
+    upload-new: "Subir nuevo"
+    uploading: "Subiendo..."
+    use: "Usar"
+    use-count-to-count-records-in-each-group: "• Usa COUNT(*) para contar registros en cada grupo"
+    use-the-toolbar-to-add-elements: "Usa la barra de herramientas para agregar elementos."
+    use-variable-e-g-company-logo: "Usar variable (p. ej. '{company.logo}')"
+    use-variables-inside-the-expression: "Usa variables dentro de la expresión:"
+    user-email: "Correo del usuario"
+    validating-expression: "Validando expresión..."
+    value: "Valor"
+    variable: "Variable"
+    variable-name: "Nombre de la variable"
+    variables: "Variables"
+    vehicle: "Vehículo"
+    vendor: "Proveedor"
+    verify-your-email-address: "Verifica tu correo electrónico."
+    verify-your-email-address-90e9a: "Verifica tu correo electrónico"
+    verify-your-phone-number: "Verifica tu número de teléfono"
+    view-agpl-license: "Ver licencia AGPL"
+    view-all-notifications: "Ver todas las notificaciones"
+    view-commercial-license: "Ver licencia comercial"
+    view-licensing-options: "Ver opciones de licencia"
+    view-profile: "Ver perfil"
+    view-raw-metadata: "Ver metadatos sin procesar"
+    view-source-code: "Ver código fuente"
+    weight: "Peso"
+    width: "Ancho"
+    width-px: "Ancho (px)"
+    you-can-only-group-by-columns-that-are-selected: "• Solo puedes agrupar por columnas seleccionadas"
+    you-can-only-sort-by-columns-that-are-selected: "• Solo puedes ordenar por columnas seleccionadas"
+    you-have: "Tienes"
+    you-have-selected: "Has seleccionado"
+    youtube-video-url: "URL de video de YouTube"
+    youtube-video-url-is-invalid: "La URL del video de YouTube no es válida."
+    z-index: "Z-Index"
+    zoom-in: "Acercar"
+    zoom-out: "Alejar"
+  registry:
+    a-chronological-record-of-every-transaction: "Un registro cronológico de cada transacción."
+    access-extensions-you-have-purchased-from-the-registry: "Accede a las extensiones que has comprado en el registro."
+    access-risk: "Riesgo de acceso"
+    account: "Cuenta"
+    active-admins: "Administradores activos"
+    active-api-credentials-in-this-organization: "Credenciales de API activas en esta organización."
+    active-api-keys: "Claves de API activas"
+    active-orders: "Pedidos activos"
+    active-system-administrators: "Administradores del sistema activos."
+    active-users: "Usuarios activos"
+    active-users-who-can-currently-access-the-organization: "Usuarios activos que actualmente pueden acceder a la organización."
+    active-wallet-balances-grouped-by-currency-when-needed: "Saldos de billeteras activas, agrupados por moneda cuando sea necesario."
+    active-wallets: "Billeteras activas"
+    active-webhooks: "Webhooks activos"
+    admin-access: "acceso de administrador"
+    admin-activity: "Actividad administrativa"
+    ai-config: "Configuración de IA"
+    api-error-rate: "Tasa de errores de la API"
+    api-key: "Clave API"
+    api-keys: "Claves de API"
+    api-keys-webhooks-socket-channels-event-logs-and-developer-tooling: "Claves de API, webhooks, canales de socket, registros de eventos y herramientas para desarrolladores."
+    api-metrics: "Métricas de la API"
+    api-request-volume-successes-and-errors-over-time: "Volumen de solicitudes a la API, éxitos y errores a lo largo del tiempo."
+    api-requests: "Solicitudes a la API"
+    api-traffic: "Tráfico de la API"
+    ar-aging-risk: "Riesgo por antigüedad de CxC"
+    average-api-response-duration-for-the-current-period: "Duración promedio de respuesta de la API en el período actual."
+    average-order-value: "Valor promedio del pedido"
+    average-order-value-for-non-canceled-storefront-orders: "Valor promedio de los pedidos de Storefront no cancelados."
+    average-revenue-per-completed-order-with-trend: "Ingreso promedio por pedido completado con tendencia."
+    avg-api-latency: "Latencia promedio de la API"
+    avg-order-value-30d: "Valor promedio del pedido (30 d)"
+    awaiting-review: "En espera de revisión"
+    best-selling-products-by-revenue: "Productos más vendidos por ingresos."
+    browse-and-create-double-entry-journal-entries: "Explora y crea asientos de partida doble."
+    browse-and-discover-extensions-available-in-the-registry: "Explora y descubre extensiones disponibles en el registro."
+    browse-and-manage-your-storefront-customer-accounts: "Explora y administra las cuentas de clientes de tu tienda."
+    browse-the-full-history-of-platform-events-and-payloads: "Explora el historial completo de eventos y cargas de la plataforma."
+    cache: "Caché"
+    canceled-orders-as-a-percentage-of-current-period-order-volume: "Pedidos cancelados como porcentaje del volumen de pedidos del período actual."
+    cancellation-rate: "Tasa de cancelación"
+    cart-conversion: "Conversión del carrito"
+    cash-flow-summary: "Resumen de flujo de caja"
+    catalogs: "Catálogos"
+    chart-of-accounts: "Catálogo de cuentas"
+    compartment: "Compartimiento"
+    compartment-aware-lpg-and-white-oil-tank-dispatch: "Despacho de cisternas de GLP y combustibles blancos por compartimientos."
+    compartments: "Compartimientos"
+    completed-orders: "Pedidos completados"
+    completed-orders-for-the-current-period: "Pedidos completados en el período actual."
+    condensed-accounts-receivable-aging-buckets: "Antigüedad resumida de cuentas por cobrar."
+    configuration-gaps: "Brechas de configuración"
+    configuration-health-for-mail-queue-filesystem-socket-notifications-and-scheduler: "Estado de configuración de correo, cola, sistema de archivos, socket, notificaciones y programador."
+    configure-and-manage-payment-gateway-integrations: "Configura y administra integraciones de pasarelas de pago."
+    configure-pricing-rules-and-service-rate-cards: "Configura reglas de precios y tarifas de servicio."
+    configure-webhook-endpoints-to-receive-real-time-event-notifications: "Configura endpoints de webhooks para recibir notificaciones de eventos en tiempo real."
+    configured: "configurado"
+    connect-and-manage-multi-store-networks-and-marketplaces: "Conecta y administra redes multitienda y marketplaces."
+    contact: "Contacto"
+    contacts: "Contactos"
+    core-service-configuration-state: "Estado de configuración de los servicios principales"
+    count-of-active-wallets-with-current-balances: "Cantidad de billeteras activas con saldos actuales."
+    counts-and-balances-by-invoice-status: "Conteos y saldos por estado de factura."
+    create-and-manage-api-keys-for-authenticating-your-integrations: "Crea y administra claves de API para autenticar tus integraciones."
+    create-dispatch-and-track-delivery-orders-in-real-time: "Crea, despacha y rastrea pedidos de entrega en tiempo real."
+    create-fine-grained-access-control-policies-for-resources: "Crea políticas de control de acceso detalladas para los recursos."
+    create-push-notifications-and-promotional-campaigns: "Crea notificaciones push y campañas promocionales."
+    create-send-and-manage-customer-invoices: "Crea, envía y administra facturas de clientes."
+    created: "creado"
+    current: "Actual"
+    custom-field: "Campo personalizado"
+    custom-fields: "Campos personalizados"
+    customer: "Cliente"
+    customer-insights: "Análisis de clientes"
+    customer-portal: "Portal de clientes"
+    customer-tank: "Tanque de cliente"
+    customer-tanks: "Tanques de cliente"
+    customer-visible-orders-that-are-not-yet-completed-or-canceled: "Pedidos visibles para el cliente que aún no están completados ni cancelados."
+    customers: "Clientes"
+    daily-stacked-bars-of-order-counts-by-status: "Barras diarias apiladas de pedidos por estado."
+    database: "Base de datos"
+    default-dashboard: "Panel predeterminado"
+    define-named-roles-that-bundle-sets-of-permissions: "Define roles con nombre que agrupan conjuntos de permisos."
+    deleted: "eliminado"
+    delivery-ticket: "Ticket de entrega"
+    delivery-tickets: "Tickets de entrega"
+    deprecated-replaced-by-individual-kpi-tile-widgets-will-be-removed-in-the-next-major-release: "OBSOLETO — reemplazado por widgets KPI individuales. Se eliminará en la próxima versión mayor."
+    developer-activity: "Actividad de desarrollador"
+    developer-api-metrics-legacy: "Métricas de API para desarrolladores (legado)"
+    device: "Dispositivo"
+    devices: "Dispositivos"
+    discover-install-and-publish-extensions-to-the-fleetbase-extension-registry: "Descubre, instala y publica extensiones en el registro de extensiones de Fleetbase."
+    dispatch-fleet-management-driver-tracking-and-logistics-operations: "Despacho, gestión de flota, rastreo de conductores y operaciones logísticas."
+    display-a-saved-report: "Muestra un reporte guardado"
+    displays-current-github-stats-from-the-official-fleetbase-repo: "Muestra estadísticas actuales de GitHub del repositorio oficial de Fleetbase."
+    distance-travelled-30d: "Distancia recorrida (30 d)"
+    distribution-of-storefront-orders-by-status: "Distribución de pedidos de Storefront por estado."
+    dormant-users: "Usuarios inactivos"
+    draft-sent-and-overdue-invoices-still-requiring-action: "Facturas en borrador, enviadas y vencidas que aún requieren acción."
+    driver: "Conductor"
+    driver-leaderboard-sortable-by-orders-on-time-or-distance: "Ranking de conductores ordenable por pedidos, % a tiempo o distancia."
+    drivers: "Conductores"
+    drivers-online: "Conductores en línea"
+    dwell-time-outliers-and-geofence-event-hotspots: "Tiempos de permanencia atípicos y puntos críticos de eventos de geocerca."
+    earnings-30d: "Ingresos (30 d)"
+    enabled-webhook-endpoints-in-this-organization: "Endpoints de webhooks habilitados en esta organización."
+    endpoint-health: "Salud de endpoints"
+    energy-compartment: "Compartimiento"
+    energy-compartments: "Compartimientos"
+    energy-compatibility-rule: "Regla de compatibilidad"
+    energy-compatibility-rules: "Reglas de compatibilidad"
+    energy-customer-tank: "Tanque de cliente"
+    energy-customer-tanks: "Tanques de cliente"
+    energy-delivery-ticket: "Ticket de entrega"
+    energy-delivery-tickets: "Tickets de entrega"
+    energy-load-line: "Línea de carga"
+    energy-load-plan: "Plan de carga"
+    energy-load-plans: "Planes de carga"
+    energy-operation: "Operación"
+    energy-operations: "Operaciones"
+    energy-ops: "Energy Ops"
+    energy-ops-metrics: "Métricas de Energy Ops"
+    energy-product: "Producto"
+    energy-product-catalog: "Catálogo de productos energéticos."
+    energy-products: "Productos"
+    energy-stop-draw: "Descarga por parada"
+    energy-vehicle-profile: "Perfil de vehículo"
+    energy-vehicle-profiles: "Perfiles de vehículo"
+    entities: "Artículos"
+    entity: "Artículo"
+    equipment: "Equipo"
+    event-stream: "Flujo de eventos"
+    events: "Eventos"
+    events-emitted: "Eventos emitidos"
+    explore: "Explorar"
+    extensions-registry: "Registro de extensiones"
+    failed-jobs: "Trabajos fallidos"
+    failed-queue-jobs-waiting-for-review: "Trabajos de cola fallidos en espera de revisión."
+    failed-webhook-deliveries-for-the-current-period: "Entregas de webhooks fallidas en el período actual."
+    filesystem: "Sistema de archivos"
+    financial-overview: "Resumen financiero"
+    financial-overview-legacy: "Resumen financiero (legado)"
+    financial-reports: "Reportes financieros"
+    fleet: "Flota"
+    fleet-ops-config: "Configuración de Fleet-Ops"
+    fleet-ops-metrics-legacy: "Métricas de Fleet-Ops (legado)"
+    fleetbase-blog: "Blog de Fleetbase"
+    fleets: "Flotas"
+    fuel-cost-efficiency: "Costo y eficiencia de combustible"
+    fuel-integrations: "Integraciones de combustible"
+    fuel-report: "Reporte de combustible"
+    fuel-reports: "Reportes de combustible"
+    general-ledger: "Libro mayor"
+    generate-and-review-operational-analytics-reports: "Genera y revisa reportes analíticos operativos."
+    geofence-violations: "Violaciones de geocercas"
+    geofences: "Geocercas"
+    github-card: "Tarjeta de GitHub"
+    glp: "GLP"
+    glp-delivery: "Entrega GLP"
+    group: "Grupo"
+    groups: "Grupos"
+    iam-metrics: "Métricas de IAM"
+    iam-metrics-legacy: "Métricas de IAM (legado)"
+    iam-quick-actions: "Acciones rápidas de IAM"
+    identity-and-access-management-users-roles-policies-and-permissions: "Gestión de identidad y acceso: usuarios, roles, políticas y permisos."
+    inactive-users: "Usuarios inactivos"
+    inspect-api-request-and-response-logs-for-debugging: "Inspecciona registros de solicitudes y respuestas de la API para depurar."
+    installed: "Instalado"
+    integrated-vendor: "Proveedor integrado"
+    intelligently-allocate-and-dispatch-orders-to-available-drivers: "Asigna y despacha pedidos de forma inteligente a los conductores disponibles."
+    invoice: "Factura"
+    invoice-pipeline: "Flujo de facturas"
+    invoice-summary: "Resumen de la factura"
+    invoice-summary-legacy: "Resumen de facturas (legado)"
+    invoices: "Facturas"
+    invoices-tickets-and-orders-that-need-customer-attention: "Facturas, tickets y pedidos que requieren atención del cliente."
+    invoicing-payments-accounting-and-real-time-financial-reporting: "Facturación, pagos, contabilidad y reportes financieros en tiempo real."
+    issue: "Incidencia"
+    issues: "Incidencias"
+    issues-insights: "Análisis de incidencias"
+    journal: "Diario"
+    journal-entries: "Asientos contables"
+    kpi-tiles: "Mosaicos KPI"
+    last-30d: "últimos 30 d"
+    legacy-daily-revenue-bar-widget-replaced-by-revenue-trend: "Widget de barras de ingresos diarios (legado). Reemplazado por Tendencia de ingresos."
+    legacy-grouped-iam-usage-metrics: "Métricas de uso de IAM agrupadas (legado)."
+    legacy-grouped-kpi-widget-replaced-by-individual-ledger-kpi-tiles: "Widget KPI agrupado (legado). Reemplazado por indicadores KPI individuales de Ledger."
+    legacy-grouped-monitoring-widget-replaced-by-individual-developer-dashboard-widgets: "Widget de monitoreo agrupado (legado). Reemplazado por widgets individuales del panel de desarrollador."
+    legacy-grouped-storefront-metrics: "Métricas de Storefront agrupadas (legado)."
+    legacy-invoice-counts-widget-replaced-by-invoice-pipeline: "Widget de conteo de facturas (legado). Reemplazado por Flujo de facturas."
+    legacy-storefront-order-customer-store-and-earnings-metrics: "Métricas legado de pedidos, clientes, tiendas e ingresos de Storefront."
+    lists-latest-news-and-events-from-the-fleetbase-official-team: "Muestra las últimas noticias y eventos del equipo oficial de Fleetbase."
+    live-count-of-drivers-currently-active-on-a-job: "Conteo en vivo de conductores activos en un trabajo."
+    live-count-of-orders-currently-in-flight: "Conteo en vivo de pedidos actualmente en curso."
+    live-feed-of-the-most-recent-double-entry-journal-entries-in-the-ledger: "Flujo en vivo de los asientos de partida doble más recientes del libro mayor."
+    live-fleet-map: "Mapa de flota en vivo"
+    live-operational-snapshot-with-day-over-day-deltas: "Instantánea operativa en vivo con variaciones día a día."
+    load-plan: "Plan de carga"
+    load-plans: "Planes de carga"
+    login: "inicio de sesión"
+    logout: "cierre de sesión"
+    logs: "Registros"
+    mail: "Correo"
+    maintenance: "Mantenimiento"
+    maintenance-overview: "Resumen de mantenimiento"
+    manage-connected-telematics-devices-and-their-sensor-data: "Administra dispositivos telemáticos conectados y sus datos de sensores."
+    manage-console-user-accounts-and-their-access-levels: "Administra las cuentas de usuario de la consola y sus niveles de acceso."
+    manage-driver-customer-and-company-wallets-and-balances: "Administra billeteras y saldos de conductores, clientes y la empresa."
+    manage-driver-profiles-assignments-and-live-locations: "Administra perfiles de conductores, asignaciones y ubicaciones en vivo."
+    manage-saved-locations-addresses-and-points-of-interest: "Administra ubicaciones guardadas, direcciones y puntos de interés."
+    manage-your-product-catalogue-categories-and-inventory: "Administra tu catálogo de productos, categorías e inventario."
+    map: "Mapa"
+    meter-fill-delivery-tickets: "Tickets de entrega por medidor."
+    mfa-coverage: "Cobertura de MFA"
+    missing: "Faltante"
+    missing-configuration-that-can-affect-operators: "Configuración faltante que puede afectar a los operadores"
+    missing-or-risky-system-configuration-detected-by-the-console-host: "Configuración del sistema faltante o riesgosa detectada por el host de la consola."
+    modular-logistics-and-supply-chain-operating-system-lsos: "Sistema operativo modular de logística y cadena de suministro (LSOS)"
+    monitor-active-websocket-channels-and-connected-clients: "Monitorea canales WebSocket activos y clientes conectados."
+    most-recent-orders-for-the-active-portal-customer-account: "Pedidos más recientes de la cuenta de cliente activa del portal."
+    navigator-app: "App Navigator"
+    needs-review: "requiere revisión"
+    net-income: "Utilidad neta"
+    networks: "Redes"
+    new-and-returning-customer-mix: "Mezcla de clientes nuevos y recurrentes."
+    new-identities-created-by-user-type-over-the-selected-period: "Nuevas identidades creadas por tipo de usuario en el período seleccionado."
+    new-organizations: "Organizaciones nuevas"
+    new-users: "Usuarios nuevos"
+    no-configuration-gaps-detected: "No se detectaron brechas de configuración."
+    no-diagnostics-available: "No hay diagnósticos disponibles."
+    no-organizations-currently-need-review: "Ninguna organización requiere revisión actualmente."
+    no-recent-sensitive-admin-activity: "Sin actividad administrativa sensible reciente."
+    not-configured: "no configurado"
+    notifications: "Notificaciones"
+    ok: "OK"
+    on-time-delivery: "Entregas a tiempo"
+    online-store-management-products-orders-customers-and-promotions: "Gestión de tienda en línea: productos, pedidos, clientes y promociones."
+    open-customer-support-issues-backed-by-fleetops-issues: "Incidencias de soporte abiertas respaldadas por Incidencias de FleetOps."
+    open-invoices: "Facturas abiertas"
+    open-issues: "Incidencias abiertas"
+    open-load-plans-tickets-issued-and-fleet-compartment-capacity: "Planes de carga abiertos, tickets emitidos y capacidad de compartimientos de la flota."
+    open-resolved-issues-category-breakdown-and-average-resolution-time: "Incidencias abiertas/resueltas, desglose por categoría y tiempo promedio de resolución."
+    open-support-tickets: "Tickets de soporte abiertos"
+    operating-financing-and-investing-cash-movement: "Movimiento de efectivo operativo, de financiamiento y de inversión."
+    operation: "Operación"
+    operations: "Operaciones"
+    operations-pulse: "Pulso de operaciones"
+    orchestrator: "Orquestador"
+    order: "Pedido"
+    order-status-mix: "Distribución de estados de pedidos"
+    order-volume-by-status: "Volumen de pedidos por estado"
+    order-volume-for-the-current-period-with-trend: "Volumen de pedidos del período actual con tendencia."
+    orders: "Pedidos"
+    orders-as-a-percentage-of-carts-created-in-the-current-period: "Pedidos como porcentaje de los carritos creados en el período actual."
+    orders-completed-for-the-active-portal-customer-account: "Pedidos completados para la cuenta de cliente activa del portal."
+    orders-currently-moving-through-fulfillment: "Pedidos actualmente en proceso de cumplimiento."
+    organise-drivers-and-vehicles-into-operational-fleets: "Organiza conductores y vehículos en flotas operativas."
+    organise-products-into-shareable-catalogs: "Organiza productos en catálogos compartibles."
+    organise-users-into-groups-for-bulk-permission-management: "Organiza usuarios en grupos para gestionar permisos en bloque."
+    organization-managed-access-policies: "Políticas de acceso gestionadas por la organización."
+    organization-managed-iam-roles: "Roles de IAM gestionados por la organización."
+    organization-risk-queue: "Cola de riesgo de organizaciones"
+    organizations: "Organizaciones"
+    organizations-created-in-the-last-30-days: "Organizaciones creadas en los últimos 30 días."
+    organizations-needing-operator-review: "Organizaciones que requieren revisión del operador"
+    organizations-that-need-support-ownership-onboarding-or-status-review: "Organizaciones que requieren revisión de soporte, propiedad, incorporación o estado."
+    outstanding-ar: "CxC pendientes"
+    outstanding-customer-invoices-when-ledger-is-installed: "Facturas pendientes del cliente cuando Ledger está instalado."
+    overdue-ar: "CxC vencidas"
+    overdue-receivables-requiring-collection-attention: "Cuentas por cobrar vencidas que requieren gestión de cobro."
+    overdue-scheduled-and-ytd-maintenance-spend: "Mantenimiento vencido, programado y gasto acumulado del año."
+    packed-compartment-load-plans: "Planes de carga por compartimiento."
+    part: "Pieza"
+    parts: "Piezas"
+    payload: "Carga"
+    payment-gateways: "Pasarelas de pago"
+    pending-actions: "Acciones pendientes"
+    pending-attention: "Atención pendiente"
+    pending-invites: "Invitaciones pendientes"
+    pending-issues-across-the-fleet-lower-is-better: "Incidencias pendientes en la flota (menos es mejor)."
+    pending-publish: "Publicación pendiente"
+    percentage-of-api-requests-returning-an-error: "Porcentaje de solicitudes a la API que devuelven un error."
+    percentage-of-deliveries-completed-within-the-sla-window: "Porcentaje de entregas completadas dentro de la ventana del SLA."
+    percentage-of-webhook-deliveries-returning-a-2xx-response: "Porcentaje de entregas de webhooks con respuesta 2xx."
+    place: "Lugar"
+    places: "Lugares"
+    platform-events-emitted-in-the-current-period: "Eventos de la plataforma emitidos en el período actual."
+    platform-growth-trend: "Tendencia de crecimiento de la plataforma"
+    policies: "Políticas"
+    policies-grouped-by-service-and-ownership: "Políticas agrupadas por servicio y propiedad."
+    policy: "Política"
+    policy-surface: "Superficie de políticas"
+    positions: "Posiciones"
+    previous: "Anterior"
+    privileged-roles-wildcard-policies-and-direct-privileged-grants: "Roles privilegiados, políticas comodín y concesiones privilegiadas directas."
+    product: "Producto"
+    products: "Productos"
+    promotions: "Promociones"
+    proof: "Comprobante"
+    provider-settings: "Ajustes del proveedor"
+    provider-spend-unmatched-transactions-and-sync-health: "Gasto por proveedor, transacciones sin coincidencia y estado de sincronización."
+    purchased: "Comprado"
+    queue: "Cola"
+    queue-health: "salud de la cola"
+    quick-resources: "Recursos rápidos"
+    real-time-driver-positions-and-active-routes: "Posiciones de conductores y rutas activas en tiempo real."
+    recent-api-requests-webhook-deliveries-and-events: "Solicitudes a la API, entregas de webhooks y eventos recientes."
+    recent-financial-activity: "Actividad financiera reciente"
+    recent-iam-activity: "Actividad reciente de IAM"
+    recent-orders: "Pedidos recientes"
+    recent-sensitive-activity-across-admin-managed-resources: "Actividad sensible reciente en recursos administrados por administradores."
+    recent-sensitive-admin-events: "Eventos administrativos sensibles recientes"
+    recent-sensitive-admin-or-auth-activity: "Actividad reciente sensible de administración o autenticación."
+    recent-storefront-customers: "Clientes recientes de Storefront."
+    recent-storefront-orders: "Pedidos recientes de Storefront."
+    recent-user-group-role-and-policy-changes: "Cambios recientes en usuarios, grupos, roles y políticas."
+    registry-config: "Configuración del registro"
+    report: "Reporte"
+    reports: "Reportes"
+    restored: "restaurado"
+    revenue-and-expense-trend-over-selectable-periods: "Tendencia de ingresos y gastos en períodos seleccionables."
+    revenue-and-order-volume-over-time: "Ingresos y volumen de pedidos a lo largo del tiempo."
+    revenue-chart: "Gráfico de ingresos"
+    revenue-chart-legacy: "Gráfico de ingresos (legado)"
+    revenue-less-expenses-for-the-current-period: "Ingresos menos gastos del período actual."
+    revenue-over-time-with-period-comparison: "Ingresos a lo largo del tiempo con comparación de períodos."
+    revenue-trend: "Tendencia de ingresos"
+    review-all-posted-transactions-across-every-account: "Revisa todas las transacciones contabilizadas en todas las cuentas."
+    role: "Rol"
+    roles: "Roles"
+    routing: "Enrutamiento"
+    scheduler: "Programador"
+    sensor: "Sensor"
+    sensors: "Sensores"
+    service-area: "Área de servicio"
+    service-areas: "Áreas de servicio"
+    service-rate: "Tarifa de servicio"
+    service-rates: "Tarifas de servicio"
+    share-of-users-with-two-factor-authentication-enabled-when-available: "Proporción de usuarios con autenticación de dos factores habilitada cuando está disponible."
+    shortcuts-for-common-iam-management-tasks: "Atajos para tareas comunes de gestión de IAM."
+    shortcuts-into-api-keys-webhooks-logs-events-and-sockets: "Atajos a claves de API, webhooks, registros, eventos y sockets."
+    shortcuts-into-ledger-financial-reports: "Atajos a los reportes financieros de Ledger."
+    socket: "Socket"
+    sockets: "Sockets"
+    storefront: "Tienda"
+    storefront-customers: "Clientes de Storefront"
+    storefront-metrics: "Métricas de Storefront"
+    storefront-metrics-legacy: "Métricas de Storefront (legado)"
+    storefront-orders: "Pedidos de Storefront"
+    storefront-revenue-for-the-current-period-with-trend: "Ingresos de Storefront del período actual con tendencia."
+    suspicious-activity: "Actividad sospechosa"
+    system-diagnostics: "Diagnóstico del sistema"
+    taler-refund: "Reembolso Taler"
+    tank: "Tanque"
+    tank-configuration: "Configuración de tanques"
+    tanks: "Tanques"
+    task-chat-logs: "Registros de tareas y chat"
+    telematic: "Telemática"
+    top-drivers: "Mejores conductores"
+    top-event-types-and-event-sources-in-the-selected-period: "Principales tipos y fuentes de eventos en el período seleccionado."
+    top-products: "Productos principales"
+    total-api-requests-for-the-current-period: "Total de solicitudes a la API en el período actual."
+    total-earnings-over-the-last-30-days-with-trend: "Ingresos totales de los últimos 30 días con tendencia."
+    total-expenses-for-the-current-period-with-comparison: "Gastos totales del período actual con comparación."
+    total-kilometres-delivered-over-the-last-30-days: "Kilómetros totales recorridos en los últimos 30 días."
+    total-organizations-with-30-day-trend: "Organizaciones totales con tendencia de 30 días."
+    total-platform-users-with-30-day-trend: "Usuarios totales de la plataforma con tendencia de 30 días."
+    total-revenue-for-the-current-period-with-comparison: "Ingresos totales del período actual con comparación."
+    total-wallet-balances-grouped-by-currency-across-all-driver-and-customer-wallets: "Saldos totales de billeteras agrupados por moneda en todas las billeteras de conductores y clientes."
+    track-order: "Rastrear pedido"
+    transaction: "Transacción"
+    transactions: "Transacciones"
+    transport: "Transporte"
+    unique-customers-ordering-during-the-current-period: "Clientes únicos que compraron en el período actual."
+    unpaid-invoices: "Facturas sin pagar"
+    unpaid-receivables-balance-across-open-invoices: "Saldo de cuentas por cobrar pendientes en facturas abiertas."
+    updated: "actualizado"
+    usage-analytics: "Analítica de uso"
+    user: "Usuario"
+    user-and-organization-creation-trend-for-the-current-and-previous-30-day-windows: "Tendencia de creación de usuarios y organizaciones en los últimos 30 días y el período anterior."
+    users: "Usuarios"
+    users-by-type-created-over-time: "Usuarios creados por tipo a lo largo del tiempo"
+    users-created-in-the-last-30-days: "Usuarios creados en los últimos 30 días."
+    users-invited-or-awaiting-verification: "Usuarios invitados o en espera de verificación."
+    users-whose-organization-access-is-inactive: "Usuarios cuyo acceso a la organización está inactivo."
+    users-with-no-recent-login-activity: "Usuarios sin actividad de inicio de sesión reciente."
+    vehicle: "Vehículo"
+    vehicle-compartments-and-energy-profiles: "Compartimientos de vehículos y perfiles energéticos."
+    vehicles: "Vehículos"
+    vendor: "Proveedor"
+    vendors: "Proveedores"
+    view-and-fulfil-incoming-storefront-orders: "Consulta y cumple los pedidos entrantes de la tienda."
+    view-and-manage-customer-accounts-linked-to-your-organisation: "Consulta y administra las cuentas de clientes vinculadas a tu organización."
+    view-and-manage-driver-accounts-linked-to-your-organisation: "Consulta y administra las cuentas de conductores vinculadas a tu organización."
+    view-and-manage-extensions-currently-installed-in-your-console: "Consulta y administra las extensiones instaladas en tu consola."
+    view-and-manage-the-full-chart-of-accounts: "Consulta y administra el catálogo de cuentas completo."
+    view-and-manage-your-vehicle-fleet-and-telematics: "Consulta y administra tu flota de vehículos y telemática."
+    vs-previous-30d: "vs. 30 días anteriores"
+    wallet: "Billetera"
+    wallet-balance: "Saldo de la billetera"
+    wallet-balances: "Saldos de billeteras"
+    wallets: "Billeteras"
+    waypoint: "Punto de ruta"
+    waypoints: "Puntos de ruta"
+    webhook: "Webhook"
+    webhook-delivery-health: "Salud de entrega de webhooks"
+    webhook-delivery-volume-success-failure-and-retry-health: "Volumen de entregas de webhooks, éxitos, fallos y reintentos."
+    webhook-endpoint-delivery-health-and-recent-failures: "Salud de entrega por endpoint de webhook y fallos recientes."
+    webhook-failures: "Fallos de webhooks"
+    webhook-success-rate: "Tasa de éxito de webhooks"
+    webhooks: "Webhooks"
+    weekly-fuel-cost-and-cost-per-km-trend: "Tendencia semanal de costo de combustible y costo por km."
+    wop: "WOP"
+    wop-delivery: "Entrega WOP"
+    work-order: "Orden de trabajo"
+    work-orders: "Órdenes de trabajo"
+    zone: "Zona"
+    zones: "Zonas"
+  status:
+    accepted: "Aceptado"
+    active: "Activo"
+    allocated: "Asignado"
+    approved: "Aprobado"
+    archived: "Archivado"
+    arrived: "Llegó"
+    assigned: "Asignado"
+    automatic: "Automático"
+    available: "Disponible"
+    awaiting-review: "En espera de revisión"
+    beta: "Beta"
+    bobtail: "Bobtail"
+    bulk-product: "Producto a granel"
+    busy: "Ocupado"
+    butane: "Butano"
+    canceled: "Cancelado"
+    cancelled: "Cancelado"
+    capacity-pending: "Capacidad pendiente"
+    closed: "Cerrado"
+    company: "Empresa"
+    completed: "Completado"
+    configured: "Configurado"
+    confirmed: "Confirmado"
+    connected: "Conectado"
+    contact: "Contacto"
+    contamination: "Contaminación"
+    counted: "Contado"
+    created: "Creado"
+    critical: "Crítica"
+    custom: "Personalizado"
+    customer: "Cliente"
+    danger: "Peligro"
+    declined: "Rechazado"
+    default: "Predeterminado"
+    default-order-configuration-for-transport: "Configuración de pedido predeterminada para transporte"
+    degraded: "Degradado"
+    delayed: "Retrasado"
+    deleted: "Eliminado"
+    delivered: "Entregado"
+    delivering: "Entregando"
+    delivery: "Entrega"
+    delivery-ticketed-and-closed: "Entrega con ticket emitido y cerrada."
+    deprecated: "Obsoleto"
+    diesel: "Diésel"
+    disabled: "Deshabilitado"
+    disconnected: "Desconectado"
+    dispatched: "Despachado"
+    draft: "Borrador"
+    driver: "Conductor"
+    driver-arrived: "Conductor llegó"
+    driver-assigned: "Conductor asignado"
+    driver-enroute: "Conductor en ruta"
+    driver-is-en-route: "El conductor va en ruta."
+    dropoff: "Entrega"
+    due: "Vencido"
+    due-soon: "Próximo a vencer"
+    enabled: "Habilitado"
+    energy-product-line-with-volume-and-unit: "Línea de producto energético con volumen y unidad"
+    enroute: "En camino"
+    entity: "Artículo"
+    entity-created: "Artículo creado"
+    error: "Error"
+    exception: "Excepción"
+    expired: "Expirado"
+    external: "Externo"
+    failed: "Fallido"
+    false: "No"
+    flb-managed: "Gestionado por FLB"
+    fleet: "Flota"
+    fleetbase: "Fleetbase"
+    fleetbase-managed: "Gestionado por Fleetbase"
+    frozen: "Congelado"
+    fulfilled: "Cumplido"
+    gasoline: "Gasolina"
+    glp: "GLP"
+    glp-delivery: "Entrega GLP"
+    glp-delivery-1: "Entrega GLP"
+    group: "Grupo"
+    healthy: "Saludable"
+    high: "Alta"
+    idle: "Inactivo"
+    imported: "Importado"
+    in-progress: "En progreso"
+    in-review: "En revisión"
+    in-service: "En servicio"
+    in-transit: "En tránsito"
+    in-transit-load-plan: "Plan de carga en tránsito"
+    inactive: "Inactivo"
+    info: "Info"
+    installed: "Instalado"
+    internal: "Interno"
+    invited: "Invitado"
+    issued: "Emitido"
+    kerosene: "Queroseno"
+    live: "En vivo"
+    load-plan-packed-and-vehicle-assigned: "Plan de carga empacado y vehículo asignado."
+    loaded: "Cargado"
+    loaded-load-plan: "Plan de carga cargado"
+    loading: "Cargando"
+    locked: "Bloqueado"
+    low: "Baja"
+    lpg: "GLP"
+    maintenance: "Mantenimiento"
+    major: "Mayor"
+    manual: "Manual"
+    matched: "Coincidente"
+    medium: "Media"
+    meter-fill-glp-bulk-delivery: "Entrega a granel de GLP por medidor"
+    meter-fill-in-progress-at-the-site: "Llenado por medidor en curso en el sitio."
+    meter-fill-white-oil-bulk-delivery: "Entrega a granel de combustibles blancos por medidor"
+    minor: "Menor"
+    moving: "En movimiento"
+    neutral: "Neutral"
+    new: "Nuevo"
+    new-energy-delivery-was-created: "Se creó una nueva entrega de energía."
+    new-entity-created: "Nuevo artículo creado."
+    new-order-created: "Nuevo pedido creado."
+    new-order-was-created: "Se creó un nuevo pedido."
+    new-payload-created: "Nueva carga creada."
+    new-waypoint-created: "Nueva parada creada."
+    no: "No"
+    no-compartments: "Sin compartimientos"
+    no-profile: "Sin perfil"
+    none: "Ninguno"
+    not-configured: "No configurado"
+    off-duty: "Fuera de turno"
+    offline: "Fuera de línea"
+    ok: "OK"
+    on-duty: "En turno"
+    on-hold: "En espera"
+    on-route: "En ruta"
+    onboarding: "Incorporación"
+    online: "En línea"
+    open: "Abierto"
+    open-load-plan: "Plan de carga abierto"
+    operational: "Operativo"
+    optional: "Opcional"
+    order: "Orden"
+    order-accepted: "Pedido aceptado"
+    order-canceled: "Pedido cancelado"
+    order-completed: "Pedido completado"
+    order-created: "Pedido creado"
+    order-dispatched: "Pedido despachado"
+    order-driver-assigned: "Conductor asignado"
+    order-enroute: "Pedido en camino"
+    order-has-been-canceled: "El pedido fue cancelado."
+    order-has-been-completed: "El pedido se completó."
+    order-has-been-dispatched: "El pedido fue despachado."
+    order-has-been-started: "El pedido se inició"
+    order-has-started: "El pedido ha iniciado"
+    order-nearby: "Pedido cerca"
+    order-preparing: "Preparando pedido"
+    order-ready: "Pedido listo"
+    order-started: "Pedido iniciado"
+    order-was-canceled: "El pedido fue cancelado"
+    order-was-completed: "El pedido fue completado"
+    order-was-dispatched: "El pedido fue despachado."
+    organization-managed: "Gestionado por la organización"
+    out-of-service: "Fuera de servicio"
+    overage: "Sobrante"
+    overdue: "Vencido"
+    packed: "Empacado"
+    packed-load-plan: "Plan de carga empacado"
+    packing: "Empacando"
+    paid: "Pagado"
+    parked: "Estacionado"
+    partial: "Parcial"
+    partially-delivered: "Entregado parcialmente"
+    partially-delivered-load-plan: "Plan de carga entregado parcialmente"
+    partially-paid: "Pagado parcialmente"
+    partially-refunded: "Reembolsado parcialmente"
+    payload-created: "Carga creada"
+    pending: "Pendiente"
+    picked: "Recogido"
+    pickup: "Recogida"
+    pickup-ready: "Listo para recoger"
+    place: "Lugar"
+    planned: "Planificado"
+    plant-confirmed-the-loaded-volumes: "La planta confirmó los volúmenes cargados."
+    policy: "Política"
+    posted: "Contabilizado"
+    preparing: "Preparando"
+    primary: "Principal"
+    private: "Privado"
+    processing: "Procesando"
+    propane: "Propano"
+    public: "Público"
+    published: "Publicado"
+    queued: "En cola"
+    re-opened: "Reabierto"
+    ready: "Listo"
+    received: "Recibido"
+    reconciled: "Conciliado"
+    refunded: "Reembolsado"
+    reject: "Rechazado"
+    rejected: "Rechazado"
+    released: "Liberado"
+    requested: "Solicitado"
+    required: "Requerido"
+    requires-update: "Requiere actualización"
+    resolved: "Resuelto"
+    restored: "Restaurado"
+    return: "Devolución"
+    returned: "Devuelto"
+    reversed: "Revertido"
+    rigid: "Rígido"
+    role: "Rol"
+    running: "En ejecución"
+    scheduled: "Programado"
+    secondary: "Secundario"
+    sent: "Enviado"
+    settled: "Liquidado"
+    short-fill: "Entrega parcial"
+    shortage: "Faltante"
+    skipped: "Omitido"
+    stable: "Estable"
+    started: "Iniciado"
+    stopped: "Detenido"
+    storefront-order-configuration-for-hyperlocal-delivery-and-pickup: "Configuración de pedido de Storefront para entrega y recogida hiperlocal"
+    succeeded: "Exitoso"
+    success: "Éxito"
+    suspended: "Suspendido"
+    synced: "Sincronizado"
+    synchronizing: "Sincronizando"
+    syncing: "Sincronizando"
+    system: "Sistema"
+    tanker: "Cisterna"
+    test: "Prueba"
+    trailer: "Remolque"
+    transport: "Transporte"
+    trial: "Prueba"
+    true: "Sí"
+    unassigned: "Sin asignar"
+    unhealthy: "Con problemas"
+    uninstalled: "Desinstalado"
+    unknown: "Desconocido"
+    unloading: "Descargando"
+    unmatched: "Sin coincidencia"
+    unpaid: "No pagado"
+    unreconciled: "Sin conciliar"
+    unverified: "Sin verificar"
+    upcoming: "Próximo"
+    updated: "Actualizado"
+    urgent: "Urgente"
+    user: "Usuario"
+    vehicle: "Vehículo"
+    vehicle-is-enroute-to-the-customer: "El vehículo va en ruta hacia el cliente."
+    vendor: "Proveedor"
+    verified: "Verificado"
+    viewed: "Visto"
+    void: "Anulado"
+    voided: "Anulado"
+    warning: "Advertencia"
+    waypoint: "Parada"
+    waypoint-created: "Parada creada"
+    white-oil: "Aceite blanco"
+    within-tolerance: "Dentro de tolerancia"
+    wop: "WOP"
+    wop-delivery: "Entrega WOP"
+    wop-delivery-1: "Entrega WOP"
+    yes: "Sí"
+  data:
+    accountant: "Contador"
+    administrator: "Administrador"
+    billing-specialist: "Especialista de facturación"
+    customer-service: "Servicio al cliente"
+    driver: "Conductor"
+    driver-coordinator: "Coordinador de conductores"
+    energy-ops-administrator: "Administrador de Energy Ops"
+    energy-ops-dispatcher: "Despachador de Energy Ops"
+    energy-ops-viewer: "Visualizador de Energy Ops"
+    extension-admin: "Administrador de extensiones"
+    extension-auditor: "Auditor de extensiones"
+    extension-developer: "Desarrollador de extensiones"
+    finance-viewer: "Visualizador de finanzas"
+    fleet-ops-contact: "Contacto de Fleet-Ops"
+    fleet-ops-customer: "Cliente de Fleet-Ops"
+    fleet-supervisor: "Supervisor de flota"
+    fleetbase-developer: "Desarrollador de Fleetbase"
+    full-access-to-energy-ops-compartment-dispatch: "Acceso completo al despacho por compartimientos de Energy Ops."
+    full-administrative-access-to-all-ledger-billing-payments-accounting-and-settings: "Acceso administrativo completo a toda la facturación, pagos, contabilidad y ajustes de Ledger."
+    iam-administrator: "Administrador de IAM"
+    iam-policy-manager: "Gestor de políticas de IAM"
+    iam-user-manager: "Gestor de usuarios de IAM"
+    inventory-manager: "Gestor de inventario"
+    ledger-administrator: "Administrador de Ledger"
+    maintenance-technician: "Técnico de mantenimiento"
+    navigator-app-manager: "Gestor de la app Navigator"
+    operations-administrator: "Administrador de operaciones"
+    operations-manager: "Gerente de operaciones"
+    packs-load-plans-confirms-loads-and-issues-delivery-tickets: "Arma planes de carga, confirma cargas y emite tickets de entrega."
+    payments-operator: "Operador de pagos"
+    policy-for-complete-management-of-extensions: "Política para la gestión completa de extensiones."
+    policy-for-coordinating-and-managing-orders-without-full-dispatch-capabilities: "Política para coordinar y gestionar órdenes sin capacidades completas de despacho."
+    policy-for-creating-sending-and-managing-invoices-and-invoice-templates: "Política para crear, enviar y gestionar facturas y plantillas de factura."
+    policy-for-developers-to-create-api-credentials-webhooks-and-view-logs: "Política para que los desarrolladores creen credenciales de API, webhooks y vean registros."
+    policy-for-developing-and-publishing-extensions: "Política para desarrollar y publicar extensiones."
+    policy-for-dispatchers-read-the-catalog-and-fleet-manage-load-plans-and-delivery-tickets: "Política para despachadores: leer el catálogo y la flota, gestionar planes de carga y tickets de entrega."
+    policy-for-dispatching-and-managing-orders: "Política para despachar y gestionar órdenes."
+    policy-for-drivers-to-manage-their-assigned-tasks-and-access-necessary-information: "Política para que los conductores gestionen sus tareas asignadas y accedan a la información necesaria."
+    policy-for-full-access-to-developers: "Política de acceso completo a Developers."
+    policy-for-full-access-to-energyops: "Política de acceso completo a EnergyOps."
+    policy-for-full-access-to-fleetbase-extensions-and-resources: "Política de acceso completo a las extensiones y recursos de Fleetbase."
+    policy-for-full-access-to-fleetops: "Política de acceso completo a FleetOps."
+    policy-for-full-access-to-iam: "Política de acceso completo a IAM."
+    policy-for-full-access-to-ledger: "Política de acceso completo a Ledger."
+    policy-for-full-access-to-registrybridge: "Política de acceso completo a RegistryBridge."
+    policy-for-full-access-to-storefront: "Política de acceso completo a Storefront."
+    policy-for-managing-energy-ops-products-compartments-load-plans-and-tickets: "Política para gestionar productos, compartimientos, planes de carga y tickets de Energy Ops."
+    policy-for-managing-finance-and-accounting-for-extensions: "Política para gestionar finanzas y contabilidad de extensiones."
+    policy-for-managing-ledger-invoice-payment-and-accounting-settings: "Política para gestionar los ajustes de facturación, pagos y contabilidad de Ledger."
+    policy-for-managing-maintenance-records-work-orders-equipment-and-parts: "Política para gestionar registros de mantenimiento, órdenes de trabajo, equipos y repuestos."
+    policy-for-managing-networks: "Política para gestionar redes."
+    policy-for-managing-order: "Política para gestionar órdenes."
+    policy-for-managing-payment-gateways-processing-charges-and-refunds-and-reviewing-transactions: "Política para gestionar pasarelas de pago, procesar cargos y reembolsos, y revisar transacciones."
+    policy-for-managing-policies-and-roles: "Política para gestionar políticas y roles."
+    policy-for-managing-products-and-categories: "Política para gestionar productos y categorías."
+    policy-for-managing-sales-reports-of-extensions: "Política para gestionar reportes de ventas de extensiones."
+    policy-for-managing-service-rates-including-importing-rate-information: "Política para gestionar tarifas de servicio, incluida la importación de información de tarifas."
+    policy-for-managing-settings-related-to-the-navigator-mobile-app-used-by-drivers: "Política para gestionar los ajustes de la app móvil Navigator usada por los conductores."
+    policy-for-managing-the-chart-of-accounts-and-journal-entries: "Política para gestionar el plan de cuentas y los asientos contables."
+    policy-for-managing-users-roles-and-groups: "Política para gestionar usuarios, roles y grupos."
+    policy-for-managing-vehicles-drivers-and-fleets: "Política para gestionar vehículos, conductores y flotas."
+    policy-for-managing-wallets-including-top-ups-transfers-payouts-and-freezing: "Política para gestionar billeteras, incluidas recargas, transferencias, pagos y congelamientos."
+    policy-for-managing-zones-and-service-areas: "Política para gestionar zonas y áreas de servicio."
+    policy-for-monitoring-activities-issues-and-fuel-reports-within-the-fleet-operations: "Política para monitorear actividades, incidencias y reportes de combustible dentro de las operaciones de flota."
+    policy-for-providing-support-to-customers: "Política para brindar soporte a los clientes."
+    policy-for-read-only-access-to-all-ledger-resources: "Política de acceso de solo lectura a todos los recursos de Ledger."
+    policy-for-read-only-access-to-developers: "Política de acceso de solo lectura a Developers."
+    policy-for-read-only-access-to-energy-ops: "Política de acceso de solo lectura a Energy Ops."
+    policy-for-read-only-access-to-fleetops: "Política de acceso de solo lectura a FleetOps."
+    policy-for-read-only-access-to-iam: "Política de acceso de solo lectura a IAM."
+    policy-for-read-only-access-to-registrybridge: "Política de acceso de solo lectura a RegistryBridge."
+    policy-for-read-only-access-to-storefront: "Política de acceso de solo lectura a Storefront."
+    policy-for-view-and-read-access-to-development-resources: "Política de acceso de visualización y lectura a los recursos de desarrollo."
+    policy-for-viewing-all-financial-reports-and-the-accounting-dashboard: "Política para ver todos los reportes financieros y el panel de contabilidad."
+    policy-to-provide-insight-for-marketing-extensions: "Política para brindar información de marketing de extensiones."
+    quality-assurance: "Control de calidad"
+    read-only-access-to-energy-ops: "Acceso de solo lectura a Energy Ops."
+    read-only-role-for-stakeholders-who-need-visibility-into-financial-data-without-the-ability-to-make-changes: "Rol de solo lectura para interesados que necesitan visibilidad de los datos financieros sin poder realizar cambios."
+    role-dedicated-to-managing-service-rates-and-zones: "Rol dedicado a gestionar tarifas de servicio y zonas."
+    role-for-accountants-who-manage-the-chart-of-accounts-journal-entries-and-financial-reports: "Rol para contadores que gestionan el plan de cuentas, los asientos contables y los reportes financieros."
+    role-for-auditing-and-creating-reports-for-extensions: "Rol para auditar y crear reportes de extensiones."
+    role-for-contacts: "Rol para contactos."
+    role-for-customers-with-the-necessary-access-to-view-their-orders: "Rol para clientes con el acceso necesario para ver sus órdenes."
+    role-for-developers-to-create-api-credentials-webhooks-and-view-real-time-events-and-logs: "Rol para desarrolladores que crean credenciales de API, webhooks y ven eventos y registros en tiempo real."
+    role-for-developing-and-publishing-extensions: "Rol para desarrollar y publicar extensiones."
+    role-for-drivers-with-the-necessary-access-to-manage-their-daily-tasks-including-order-management-and-vehicle-assignment: "Rol para conductores con el acceso necesario para gestionar sus tareas diarias, incluida la gestión de órdenes y la asignación de vehículos."
+    role-for-full-administrator-access-to-an-organization: "Rol con acceso de administrador completo a una organización"
+    role-for-full-control-of-extensions: "Rol con control total de las extensiones."
+    role-for-managing-all-of-storefront-resources: "Rol para gestionar todos los recursos de Storefront."
+    role-for-managing-all-products: "Rol para gestionar todos los productos."
+    role-for-managing-all-users-roles-groups-and-policies: "Rol para gestionar todos los usuarios, roles, grupos y políticas."
+    role-for-managing-users-roles-and-groups: "Rol para gestionar usuarios, roles y grupos."
+    role-for-providing-support-to-customers: "Rol para brindar soporte a los clientes."
+    role-for-staff-responsible-for-creating-and-managing-invoices-and-following-up-on-payments: "Rol para el personal responsable de crear y gestionar facturas y dar seguimiento a los pagos."
+    role-for-staff-who-process-payments-manage-gateways-and-handle-wallet-operations: "Rol para el personal que procesa pagos, gestiona pasarelas y maneja operaciones de billetera."
+    role-for-technicians-responsible-for-managing-maintenance-records-work-orders-equipment-and-parts-inventory: "Rol para técnicos responsables de gestionar registros de mantenimiento, órdenes de trabajo, equipos e inventario de repuestos."
+    role-for-testing-extensions: "Rol para probar extensiones."
+    role-responsible-for-coordinating-drivers-vehicles-and-orders: "Rol responsable de coordinar conductores, vehículos y órdenes."
+    role-responsible-for-managing-the-navigator-mobile-app-settings: "Rol responsable de gestionar los ajustes de la app móvil Navigator."
+    role-responsible-for-overseeing-all-operations-including-dispatch-fleet-management-and-order-coordination: "Rol responsable de supervisar todas las operaciones, incluidos el despacho, la gestión de flota y la coordinación de órdenes."
+    role-with-complete-administrative-access-to-all-operational-aspects-of-fleet-ops: "Rol con acceso administrativo completo a todos los aspectos operativos de Fleet-Ops."
+    role-with-responsibilities-focused-on-fleet-and-driver-management: "Rol con responsabilidades centradas en la gestión de flota y conductores."
+    service-coordinator: "Coordinador de servicio"
+    storefront-administrator: "Administrador de Storefront"
+  fleet-ops:
+    stops: "paradas"

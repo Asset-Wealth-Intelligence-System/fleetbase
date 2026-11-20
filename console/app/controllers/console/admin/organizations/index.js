@@ -105,22 +105,22 @@ export default class ConsoleAdminOrganizationsController extends Controller {
             {
                 icon: 'filter',
                 prefix: 'fas',
-                text: 'Views',
+                text: this.intl.t('literal.console.views'),
                 type: 'magic',
                 size: 'sm',
                 triggerClass: 'admin-organization-resource-action-button',
                 items: [
-                    { label: 'Needs Attention', icon: 'building-circle-exclamation', onClick: () => this.applySavedView('needs_attention') },
-                    { label: 'Missing Owner', icon: 'user-slash', onClick: () => this.applySavedView('missing_owner') },
-                    { label: 'Incomplete Onboarding', icon: 'triangle-exclamation', onClick: () => this.applySavedView('incomplete_onboarding') },
-                    { label: 'Inactive Status', icon: 'circle-exclamation', onClick: () => this.applySavedView('inactive_status') },
+                    { label: this.intl.t('literal.console.needs-attention-80e48'), icon: 'building-circle-exclamation', onClick: () => this.applySavedView('needs_attention') },
+                    { label: this.intl.t('literal.console.missing-owner'), icon: 'user-slash', onClick: () => this.applySavedView('missing_owner') },
+                    { label: this.intl.t('literal.console.incomplete-onboarding'), icon: 'triangle-exclamation', onClick: () => this.applySavedView('incomplete_onboarding') },
+                    { label: this.intl.t('literal.console.inactive-status'), icon: 'circle-exclamation', onClick: () => this.applySavedView('inactive_status') },
                     { separator: true },
-                    { label: 'Clear View', icon: 'filter-circle-xmark', onClick: this.clearSavedView },
+                    { label: this.intl.t('literal.console.clear-view'), icon: 'filter-circle-xmark', onClick: this.clearSavedView },
                 ],
             },
             {
                 icon: 'long-arrow-up',
-                text: 'Export',
+                text: this.intl.t('literal.console.export'),
                 size: 'sm',
                 iconClass: 'rotate-icon-45',
                 onClick: this.exportOrganization,
@@ -131,7 +131,7 @@ export default class ConsoleAdminOrganizationsController extends Controller {
     get bulkActions() {
         return [
             {
-                label: 'Export selected',
+                label: this.intl.t('literal.console.export-selected'),
                 icon: 'long-arrow-up',
                 fn: this.exportOrganization,
             },
@@ -143,136 +143,138 @@ export default class ConsoleAdminOrganizationsController extends Controller {
      *
      * @memberof ConsoleAdminOrganizationsController
      */
-    columns = [
-        {
-            sticky: true,
-            label: this.intl.t('common.name'),
-            valuePath: 'name',
-            width: '320px',
-            cellComponent: 'admin/table/cell/company',
-            resizable: true,
-            sortable: true,
-            filterable: true,
-            filterComponent: 'filter/string',
-        },
-        {
-            label: this.intl.t('common.status'),
-            valuePath: 'status',
-            width: '140px',
-            resizable: true,
-            sortable: true,
-            filterable: true,
-            filterComponent: 'filter/string',
-            cellComponent: 'table/cell/status',
-        },
-        {
-            label: 'Owner',
-            valuePath: 'owner_uuid',
-            width: '260px',
-            cellComponent: 'admin/table/cell/owner',
-            resizable: true,
-            sortable: false,
-            filterable: true,
-            filterParam: 'owner_email',
-            filterComponent: 'filter/string',
-        },
-        {
-            label: this.intl.t('console.admin.organizations.index.users-count-column'),
-            valuePath: 'users_count',
-            width: '110px',
-            resizable: true,
-            sortable: true,
-        },
-        {
-            label: 'Country',
-            valuePath: 'country',
-            width: '120px',
-            resizable: true,
-            sortable: true,
-            filterable: true,
-            filterComponent: 'filter/string',
-        },
-        {
-            label: 'Timezone',
-            valuePath: 'timezone',
-            width: '180px',
-            resizable: true,
-            sortable: true,
-        },
-        {
-            label: 'Onboarding',
-            valuePath: 'onboardingStatus',
-            width: '150px',
-            cellComponent: 'table/cell/status',
-            resizable: true,
-            sortable: true,
-            filterable: true,
-            filterParam: 'onboarding_completed',
-        },
-        {
-            label: 'Billing',
-            valuePath: 'billing_status',
-            width: '140px',
-            cellComponent: 'table/cell/status',
-            resizable: true,
-            sortable: true,
-            filterable: true,
-            filterParam: 'billing_status',
-        },
-        {
-            label: this.intl.t('common.created-at'),
-            valuePath: 'createdAt',
-            width: '180px',
-            resizable: true,
-            sortable: true,
-        },
-        {
-            label: 'Last Activity',
-            valuePath: 'updatedAt',
-            width: '180px',
-            resizable: true,
-            sortable: true,
-        },
-        {
-            label: '',
-            cellComponent: 'table/cell/dropdown',
-            ddButtonText: false,
-            ddButtonIcon: 'ellipsis-h',
-            ddButtonIconPrefix: 'fas',
-            ddMenuLabel: 'Organization Actions',
-            cellClassNames: 'overflow-visible',
-            wrapperClass: 'flex items-center justify-end mx-2',
-            sticky: 'right',
-            width: 60,
-            actions: [
-                {
-                    label: 'View Organization',
-                    icon: 'eye',
-                    fn: this.goToCompany,
-                },
-                {
-                    label: 'Open Activity',
-                    icon: 'clock-rotate-left',
-                    fn: this.openActivity,
-                },
-                {
-                    label: 'Impersonate Owner',
-                    icon: 'user-secret',
-                    fn: this.impersonateOwner,
-                },
-                {
-                    label: 'Copy Public ID',
-                    icon: 'copy',
-                    fn: (company) => this.copyId(company.public_id, 'Public ID'),
-                },
-                {
-                    label: 'Copy UUID',
-                    icon: 'fingerprint',
-                    fn: (company) => this.copyId(company.uuid, 'UUID'),
-                },
-            ],
-        },
-    ];
+    get columns() {
+        return [
+            {
+                sticky: true,
+                label: this.intl.t('common.name'),
+                valuePath: 'name',
+                width: '320px',
+                cellComponent: 'admin/table/cell/company',
+                resizable: true,
+                sortable: true,
+                filterable: true,
+                filterComponent: 'filter/string',
+            },
+            {
+                label: this.intl.t('common.status'),
+                valuePath: 'status',
+                width: '140px',
+                resizable: true,
+                sortable: true,
+                filterable: true,
+                filterComponent: 'filter/string',
+                cellComponent: 'table/cell/status',
+            },
+            {
+                label: this.intl.t('literal.console.owner'),
+                valuePath: 'owner_uuid',
+                width: '260px',
+                cellComponent: 'admin/table/cell/owner',
+                resizable: true,
+                sortable: false,
+                filterable: true,
+                filterParam: 'owner_email',
+                filterComponent: 'filter/string',
+            },
+            {
+                label: this.intl.t('console.admin.organizations.index.users-count-column'),
+                valuePath: 'users_count',
+                width: '110px',
+                resizable: true,
+                sortable: true,
+            },
+            {
+                label: this.intl.t('literal.console.country'),
+                valuePath: 'country',
+                width: '120px',
+                resizable: true,
+                sortable: true,
+                filterable: true,
+                filterComponent: 'filter/string',
+            },
+            {
+                label: this.intl.t('literal.console.timezone'),
+                valuePath: 'timezone',
+                width: '180px',
+                resizable: true,
+                sortable: true,
+            },
+            {
+                label: this.intl.t('literal.console.onboarding'),
+                valuePath: 'onboardingStatus',
+                width: '150px',
+                cellComponent: 'table/cell/status',
+                resizable: true,
+                sortable: true,
+                filterable: true,
+                filterParam: 'onboarding_completed',
+            },
+            {
+                label: this.intl.t('literal.console.billing'),
+                valuePath: 'billing_status',
+                width: '140px',
+                cellComponent: 'table/cell/status',
+                resizable: true,
+                sortable: true,
+                filterable: true,
+                filterParam: 'billing_status',
+            },
+            {
+                label: this.intl.t('common.created-at'),
+                valuePath: 'createdAt',
+                width: '180px',
+                resizable: true,
+                sortable: true,
+            },
+            {
+                label: this.intl.t('literal.console.last-activity'),
+                valuePath: 'updatedAt',
+                width: '180px',
+                resizable: true,
+                sortable: true,
+            },
+            {
+                label: '',
+                cellComponent: 'table/cell/dropdown',
+                ddButtonText: false,
+                ddButtonIcon: 'ellipsis-h',
+                ddButtonIconPrefix: 'fas',
+                ddMenuLabel: this.intl.t('literal.console.organization-actions'),
+                cellClassNames: 'overflow-visible',
+                wrapperClass: 'flex items-center justify-end mx-2',
+                sticky: 'right',
+                width: 60,
+                actions: [
+                    {
+                        label: this.intl.t('literal.console.view-organization'),
+                        icon: 'eye',
+                        fn: this.goToCompany,
+                    },
+                    {
+                        label: this.intl.t('literal.console.open-activity'),
+                        icon: 'clock-rotate-left',
+                        fn: this.openActivity,
+                    },
+                    {
+                        label: this.intl.t('literal.console.impersonate-owner'),
+                        icon: 'user-secret',
+                        fn: this.impersonateOwner,
+                    },
+                    {
+                        label: this.intl.t('literal.console.copy-public-id'),
+                        icon: 'copy',
+                        fn: (company) => this.copyId(company.public_id, 'Public ID'),
+                    },
+                    {
+                        label: this.intl.t('literal.console.copy-uuid'),
+                        icon: 'fingerprint',
+                        fn: (company) => this.copyId(company.uuid, 'UUID'),
+                    },
+                ],
+            },
+        ];
+    }
 
     /**
      * Update search query param and reset page to 1
@@ -304,7 +306,7 @@ export default class ConsoleAdminOrganizationsController extends Controller {
         const ownerId = owner?.id || owner?.uuid || company?.owner_uuid;
 
         if (!ownerId) {
-            return this.notifications.error('This organization does not have an owner to impersonate.');
+            return this.notifications.error(this.intl.t('literal.console.this-organization-does-not-have-an-owner-to-impe-42078'));
         }
 
         try {
@@ -340,7 +342,7 @@ export default class ConsoleAdminOrganizationsController extends Controller {
         }
 
         navigator.clipboard?.writeText(value);
-        this.notifications.success(`${label} copied to clipboard.`);
+        this.notifications.success(this.intl.t('literal.console.copied-to-clipboard', { label: label }));
     }
 
     /**

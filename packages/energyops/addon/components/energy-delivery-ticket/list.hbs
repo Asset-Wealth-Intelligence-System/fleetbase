@@ -1,0 +1,32 @@
+{{#if @tickets.length}}
+    <table class="energy-table w-full text-xs" ...attributes>
+        <thead>
+            <tr class="text-left text-gray-500">
+                <th class="py-1 pr-2">{{t "column.id"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.ticket.fields.compartment"}}</th>
+                <th class="py-1 pr-2">{{t "energyops.ticket.fields.product"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.common.metered"}}</th>
+                <th class="py-1 pr-2 text-right">{{t "energyops.common.variance"}}</th>
+                <th class="py-1">{{t "energyops.common.status"}}</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+            {{#each @tickets as |ticket|}}
+                <tr class="{{if ticket.isVoid 'opacity-50 line-through'}}">
+                    <td class="py-1 pr-2">
+                        <a href="javascript:;" class="font-mono text-blue-500 hover:underline" {{on "click" (fn this.deliveryTicketActions.panel.view ticket)}}>{{ticket.public_id}}</a>
+                    </td>
+                    <td class="py-1 pr-2 font-semibold">{{n-a ticket.compartmentCode}}</td>
+                    <td class="py-1 pr-2">{{n-a ticket.productName}}</td>
+                    <td class="py-1 pr-2 text-right">{{format-number ticket.planned_qty maximumFractionDigits=1}}</td>
+                    <td class="py-1 pr-2 text-right">{{format-number ticket.metered_qty maximumFractionDigits=1}}</td>
+                    <td class="py-1 pr-2 text-right {{if (lt ticket.variance_qty 0) 'text-red-500' (if (gt ticket.variance_qty 0) 'text-green-600')}}">{{format-number ticket.variance_qty maximumFractionDigits=1}}</td>
+                    <td class="py-1"><Badge @status={{ticket.status}} /></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{else}}
+    <p class="text-xs text-gray-500">{{or @emptyText (t "energyops.ticket.none-for-order")}}</p>
+{{/if}}

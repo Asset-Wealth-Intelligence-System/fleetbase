@@ -1,0 +1,17 @@
+<Layout::Resource::Tabular
+    @resource="energy-operation"
+    @controller={{this}}
+    @title={{t "energyops.nav.operations"}}
+    @data={{@model}}
+    @columns={{this.columns}}
+    @actionButtons={{this.actionButtons}}
+    @bulkActions={{this.bulkActions}}
+    @searchQuery={{this.query}}
+    @onSearch={{perform this.operationActions.controllerSearchTask this}}
+    @page={{this.page}}
+    @onPageChange={{fn (mut this.page)}}
+    @emptyStateTitle={{t "energyops.nav.operations"}}
+    @emptyStateIcon="industry"
+    @emptyStateAction={{hash label=(t "common.new") onClick=this.operationActions.transition.create}}
+/>
+{{outlet}}

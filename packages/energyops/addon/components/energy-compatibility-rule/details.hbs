@@ -1,0 +1,42 @@
+<div class="details-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.compatibility.fields.from-product"}}</div>
+                <div class="field-value">{{@resource.fromLabel}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.compatibility.fields.to-product"}}</div>
+                <div class="field-value">{{@resource.toLabel}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.compatibility.fields.action"}}</div>
+                <div class="field-value"><Badge @status={{@resource.action}} /></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.compatibility.fields.flush-volume"}}</div>
+                <div class="field-value">{{n-a @resource.flush_volume}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.compatibility.fields.same-family"}}</div>
+                <div class="field-value">{{if @resource.same_family_only (t "energyops.common.yes") (t "energyops.common.no")}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.common.status"}}</div>
+                <div class="field-value"><Badge @status={{@resource.status}} /></div>
+            </div>
+            <div class="field-info-container col-span-2">
+                <div class="field-name">{{t "energyops.compatibility.fields.notes"}}</div>
+                <div class="field-value">{{n-a @resource.notes}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.created-at"}}</div>
+                <div class="field-value">{{n-a @resource.createdAt}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.id"}}</div>
+                <div class="field-value"><ClickToCopy @value={{@resource.public_id}}>{{@resource.public_id}}</ClickToCopy></div>
+            </div>
+        </div>
+    </ContentPanel>
+</div>

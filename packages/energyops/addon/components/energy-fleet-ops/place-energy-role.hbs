@@ -1,0 +1,15 @@
+{{#if this.canSee}}
+    <ContentPanel @title={{t "energyops.place.panel-title"}} @titleIcon="warehouse" @open={{true}} @wrapperClass="bordered-top" ...attributes>
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-2 lg:gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.place.role.label"}} @wrapperClass="col-span-2" @helpText={{t "energyops.place.role.help"}}>
+                <Select @options={{this.roleOptions}} @optionLabel="label" @optionValue="value" @value={{this.role}} @onSelect={{this.setRole}} @disabled={{this.disabled}} class="w-full" />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.place.receiving-hours.start"}} @helpText={{t "energyops.place.receiving-hours.help"}}>
+                <input type="time" class="w-full form-input" value={{this.receivingHours.start}} disabled={{this.disabled}} {{on "change" (fn this.setHour "start")}} aria-label={{t "energyops.place.receiving-hours.start"}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.place.receiving-hours.end"}}>
+                <input type="time" class="w-full form-input" value={{this.receivingHours.end}} disabled={{this.disabled}} {{on "change" (fn this.setHour "end")}} aria-label={{t "energyops.place.receiving-hours.end"}} />
+            </InputGroup>
+        </div>
+    </ContentPanel>
+{{/if}}

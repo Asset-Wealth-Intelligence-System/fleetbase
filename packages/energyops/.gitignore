@@ -1,0 +1,29 @@
+# compiled output
+/dist/
+/declarations/
+
+# dependencies
+/node_modules/
+
+# misc
+/.env*
+/.pnp*
+/.eslintcache
+/coverage/
+/npm-debug.log*
+/testem.log
+/yarn-error.log
+
+# broccoli-debug
+/DEBUG/
+
+.idea/*
+composer.lock
+/server_vendor
+/server/vendor/
+.phpunit.result.cache
+.php_cs.cache
+.php-cs-fixer.cache
+*.swp
+*.swo
+.DS_Store

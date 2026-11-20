@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { format } from 'date-fns';
 
 export default class ConfigureSocketComponent extends Component {
+    @service intl;
     /**
      * Inject the `router` service
      *
@@ -110,7 +111,7 @@ export default class ConfigureSocketComponent extends Component {
                 // Push an event or notification for socket connection here
                 this.events.pushObject({
                     time: format(new Date(), this.consoleDateFormat),
-                    content: 'Socket connection error!',
+                    content: this.intl.t('literal.console.socket-connection-error'),
                     color: 'red',
                 });
             }
@@ -123,7 +124,7 @@ export default class ConfigureSocketComponent extends Component {
                 // Push an event or notification for socket connection here
                 this.events.pushObject({
                     time: format(new Date(), this.consoleDateFormat),
-                    content: 'Socket is connected',
+                    content: this.intl.t('literal.console.socket-is-connected'),
                     color: 'green',
                 });
             }
@@ -139,7 +140,7 @@ export default class ConfigureSocketComponent extends Component {
                 // Push an event or notification for channel subscription here
                 this.events.pushObject({
                     time: format(new Date(), this.consoleDateFormat),
-                    content: `Socket subscribed to test channel`,
+                    content: this.intl.t('literal.console.socket-subscribed-to-test-channel', {}),
                     color: 'blue',
                 });
             }

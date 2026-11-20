@@ -1,0 +1,54 @@
+{{#if (and this.canSee this.isEnergyOrder)}}
+    <ContentPanel @title={{t "energyops.order.panel-title"}} @titleIcon="gas-pump" @open={{true}} @wrapperClass="bordered-top" @actionButtons={{this.actionButtons}} ...attributes>
+        {{#if this.load.isRunning}}
+            <div class="flex items-center justify-center py-6"><Spinner /></div>
+        {{else}}
+            <div class="text-xs space-y-3">
+                <div>
+                    <div class="font-semibold text-gray-600 dark:text-gray-300 mb-1">{{t "energyops.order.load-plan"}}</div>
+                    {{#if this.loadPlan}}
+                        <div class="flex items-center justify-between rounded border border-gray-200 dark:border-gray-700 p-2">
+                            <div class="flex items-center space-x-3">
+                                <a href="javascript:;" class="font-mono font-semibold text-blue-500 hover:underline" {{on "click" this.viewLoadPlan}}>{{this.loadPlan.public_id}}</a>
+                                <Badge @status={{this.loadPlan.status}} />
+                                <span class="text-gray-500">{{this.loadPlan.vehicleName}}</span>
+                            </div>
+                            <span class="text-gray-500">{{format-number this.loadPlan.plannedVolume maximumFractionDigits=0}} L</span>
+                        </div>
+                        {{#if this.orderLines.length}}
+                            <table class="energy-table w-full mt-2">
+                                <thead>
+                                    <tr class="text-left text-gray-500">
+                                        <th class="py-1 pr-2">{{t "energyops.resource.compartment"}}</th>
+                                        <th class="py-1 pr-2">{{t "energyops.resource.product"}}</th>
+                                        <th class="py-1 pr-2 text-right">{{t "energyops.common.planned"}}</th>
+                                        <th class="py-1 text-right">{{t "energyops.common.loaded"}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+                                    {{#each this.orderLines as |line|}}
+                                        <tr>
+                                            <td class="py-1 pr-2 font-semibold">{{n-a line.compartmentCode}}</td>
+                                            <td class="py-1 pr-2">{{n-a line.productName}}</td>
+                                            <td class="py-1 pr-2 text-right">{{format-number line.planned_volume maximumFractionDigits=1}}</td>
+                                            <td class="py-1 text-right">{{if (is-not-empty line.loaded_volume) (format-number line.loaded_volume maximumFractionDigits=1) "-"}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        {{/if}}
+                    {{else}}
+                        <p class="text-gray-500">{{t "energyops.load-plan.none-for-order"}}</p>
+                    {{/if}}
+                </div>
+
+                <div>
+                    <div class="font-semibold text-gray-600 dark:text-gray-300 mb-1">{{t "energyops.order.tickets"}}</div>
+                    <div class="overflow-x-auto">
+                        <EnergyDeliveryTicket::List @tickets={{this.tickets}} />
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+    </ContentPanel>
+{{/if}}

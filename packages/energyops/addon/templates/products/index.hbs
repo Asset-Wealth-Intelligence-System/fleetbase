@@ -1,0 +1,17 @@
+<Layout::Resource::Tabular
+    @resource="energy-product"
+    @controller={{this}}
+    @title={{t "energyops.nav.products"}}
+    @data={{@model}}
+    @columns={{this.columns}}
+    @actionButtons={{this.actionButtons}}
+    @bulkActions={{this.bulkActions}}
+    @searchQuery={{this.query}}
+    @onSearch={{perform this.productActions.controllerSearchTask this}}
+    @page={{this.page}}
+    @onPageChange={{fn (mut this.page)}}
+    @emptyStateTitle={{t "energyops.nav.products"}}
+    @emptyStateIcon="flask"
+    @emptyStateAction={{hash label=(t "common.new") onClick=this.productActions.transition.create}}
+/>
+{{outlet}}

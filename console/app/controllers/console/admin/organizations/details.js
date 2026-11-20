@@ -7,6 +7,7 @@ import { task } from 'ember-concurrency';
 import window from 'ember-window-mock';
 
 export default class ConsoleAdminOrganizationsDetailsController extends Controller {
+    @service intl;
     @service router;
     @service fetch;
     @service notifications;
@@ -16,11 +17,11 @@ export default class ConsoleAdminOrganizationsDetailsController extends Controll
 
     get tabs() {
         const coreTabs = [
-            { route: 'console.admin.organizations.details.index', label: 'Overview', icon: 'chart-simple', priority: 0 },
-            { route: 'console.admin.organizations.details.users', label: 'Users', icon: 'users', priority: 10 },
-            { route: 'console.admin.organizations.details.extensions', label: 'Extensions', icon: 'puzzle-piece', priority: 20 },
-            { route: 'console.admin.organizations.details.activity', label: 'Activity', icon: 'clock-rotate-left', priority: 30 },
-            { route: 'console.admin.organizations.details.settings', label: 'Settings', icon: 'gear', priority: 40 },
+            { route: 'console.admin.organizations.details.index', label: this.intl.t('literal.console.overview'), icon: 'chart-simple', priority: 0 },
+            { route: 'console.admin.organizations.details.users', label: this.intl.t('literal.console.users'), icon: 'users', priority: 10 },
+            { route: 'console.admin.organizations.details.extensions', label: this.intl.t('literal.console.extensions'), icon: 'puzzle-piece', priority: 20 },
+            { route: 'console.admin.organizations.details.activity', label: this.intl.t('literal.console.activity'), icon: 'clock-rotate-left', priority: 30 },
+            { route: 'console.admin.organizations.details.settings', label: this.intl.t('literal.console.settings'), icon: 'gear', priority: 40 },
         ];
         const registeredTabs = this.visibleRegisteredTabs.map((tab) => ({
             ...tab,
@@ -77,28 +78,28 @@ export default class ConsoleAdminOrganizationsDetailsController extends Controll
     get actionMenuItems() {
         return [
             {
-                label: 'Impersonate Owner',
+                label: this.intl.t('literal.console.impersonate-owner'),
                 icon: 'user-secret',
                 perform: this.impersonateOwner,
                 disabled: !this.ownerId,
             },
             {
-                label: 'Copy Public ID',
+                label: this.intl.t('literal.console.copy-public-id'),
                 icon: 'copy',
                 onClick: () => this.copyId(this.organization?.public_id, 'Public ID'),
             },
             {
-                label: 'Copy UUID',
+                label: this.intl.t('literal.console.copy-uuid'),
                 icon: 'fingerprint',
                 onClick: () => this.copyId(this.organization?.uuid, 'UUID'),
             },
             {
-                label: 'Refresh',
+                label: this.intl.t('literal.console.refresh'),
                 icon: 'refresh',
                 onClick: this.refresh,
             },
             {
-                label: 'Edit Settings',
+                label: this.intl.t('literal.console.edit-settings'),
                 icon: 'edit',
                 onClick: this.editOrganization,
             },
@@ -188,13 +189,13 @@ export default class ConsoleAdminOrganizationsDetailsController extends Controll
         }
 
         navigator.clipboard?.writeText(value);
-        this.notifications.success(`${label} copied to clipboard.`);
+        this.notifications.success(this.intl.t('literal.console.copied-to-clipboard', { label: label }));
     }
 
     @action editOrganization() {
         this.modalsManager.show('modals/edit-organization', {
-            title: 'Edit Organization',
-            acceptButtonText: 'Save Changes',
+            title: this.intl.t('literal.console.edit-organization'),
+            acceptButtonText: this.intl.t('literal.console.save-changes'),
             acceptButtonIcon: 'save',
             organization: this.organization,
             confirm: async (modal) => {
@@ -202,7 +203,7 @@ export default class ConsoleAdminOrganizationsDetailsController extends Controll
 
                 try {
                     await this.organization.save();
-                    this.notifications.success('Organization updated.');
+                    this.notifications.success(this.intl.t('literal.console.organization-updated'));
                     return this.router.refresh();
                 } catch (error) {
                     this.notifications.serverError(error);
@@ -227,7 +228,7 @@ export default class ConsoleAdminOrganizationsDetailsController extends Controll
 
     @task *impersonateOwner() {
         if (!this.ownerId) {
-            return this.notifications.error('This organization does not have an owner to impersonate.');
+            return this.notifications.error(this.intl.t('literal.console.this-organization-does-not-have-an-owner-to-impe-42078'));
         }
 
         try {

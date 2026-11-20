@@ -4,39 +4,39 @@
             {{#if @options.hasOtherMembers}}
                 <p>
                     <div class="text-base mb-2">
-                        As the owner of
-                        <strong>{{@options.organization.name}}</strong>, leaving the organization requires you to nominate a new owner.
+                        {{t "literal.console.as-the-owner-of"}}
+                        <strong>{{@options.organization.name}}</strong>{{t "literal.console.leaving-the-organization-requires-you-to-nominat-bf301"}}
                     </div>
-                    <div>Please select a member from the dropdown below to transfer ownership before you can proceed.</div>
+                    <div>{{t "literal.console.please-select-a-member-from-the-dropdown-below-t-77936"}}</div>
                 </p>
-                <InputGroup @name="Select a New Owner" @wrapperClass="mt-2 mb-0i">
+                <InputGroup @name={{t "literal.console.select-a-new-owner"}} @wrapperClass="mt-2 mb-0i">
                     <Select
                         @options={{@options.organization.users}}
                         @value={{@options.newOwnerId}}
                         @onSelect={{@options.selectNewOwner}}
                         @optionLabel="name"
                         @optionValue="id"
-                        @placeholder="Select a member"
+                        @placeholder={{t "literal.console.select-a-member"}}
                     />
                 </InputGroup>
             {{else if @options.willBeDeleted}}
                 <p>
                     <div class="text-base mb-2">
-                        You are the sole owner of
+                        {{t "literal.console.you-are-the-sole-owner-of"}}
                         <strong>{{@options.organization.name}}</strong>.
                     </div>
-                    <div>By leaving, the organization will be permanently deleted along with all its data.</div>
-                    <div>Are you sure you want to proceed?</div>
+                    <div>{{t "literal.console.by-leaving-the-organization-will-be-permanently-f8792"}}</div>
+                    <div>{{t "literal.console.are-you-sure-you-want-to-proceed"}}</div>
                 </p>
-                <p class="mt-3"><em>This action cannot be undone.</em></p>
+                <p class="mt-3"><em>{{t "literal.console.this-action-cannot-be-undone"}}</em></p>
             {{/if}}
         {{else}}
             <p>
                 <div class="text-base mb-2">
-                    Are you sure you want to leave the organization
+                    {{t "literal.console.are-you-sure-you-want-to-leave-the-organization"}}
                     <strong>{{@options.organization.name}}</strong>?
                 </div>
-                <div>You will no longer have access to its resources and settings.</div>
+                <div>{{t "literal.console.you-will-no-longer-have-access-to-its-resources-d0c51"}}</div>
             </p>
         {{/if}}
     </div>

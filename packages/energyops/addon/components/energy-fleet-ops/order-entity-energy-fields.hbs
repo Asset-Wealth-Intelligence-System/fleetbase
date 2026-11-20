@@ -1,0 +1,58 @@
+{{#if this.canSee}}
+    <div class="energy-entity-fields mt-2 p-2 rounded border border-dashed border-gray-300 dark:border-gray-700" ...attributes>
+        <div class="flex items-center text-xs font-semibold text-gray-600 dark:text-gray-300 mb-2">
+            <FaIcon @icon="gas-pump" class="mr-1" />
+            {{t "energyops.order.energy-line"}}
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 no-input-group-padding text-xs">
+            <InputGroup @name={{t "energyops.order.product"}} @wrapperClass="md:col-span-2" @helpText={{if this.productLocked (t "energyops.order.product-locked-help")}}>
+                {{#if this.productLocked}}
+                    <div class="form-input form-input-sm bg-gray-50 dark:bg-gray-800 flex items-center justify-between">
+                        <span><span class="font-semibold">{{this.product.code}}</span> <span class="text-gray-500 ml-1">{{this.product.name}}</span></span>
+                        <FaIcon @icon="lock" @size="xs" class="text-gray-400" />
+                    </div>
+                {{else}}
+                    <ModelSelect
+                        @modelName="energy-product"
+                        @selectedModel={{this.product}}
+                        @query={{hash status="active"}}
+                        @placeholder={{t "energyops.common.select-product"}}
+                        @triggerClass="form-select form-input form-input-sm"
+                        @infiniteScroll={{false}}
+                        @renderInPlace={{true}}
+                        @allowClear={{true}}
+                        @onChange={{this.setProduct}}
+                        as |model|
+                    >
+                        <span class="font-semibold">{{model.code}}</span> <span class="text-gray-500 ml-1">{{model.name}}</span>
+                    </ModelSelect>
+                {{/if}}
+            </InputGroup>
+            <InputGroup @name={{t "energyops.order.volume"}}>
+                <input type="number" min="0" step="0.1" class="w-full form-input form-input-sm" value={{this.meta.volume}} {{on "input" this.setVolume}} />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.order.unit"}}>
+                <Select @options={{this.unitOptions}} @value={{or this.meta.unit "L"}} @onSelect={{this.setUnit}} class="w-full form-select-sm" />
+            </InputGroup>
+            <InputGroup @name={{t "energyops.order.tank"}} @wrapperClass="md:col-span-4" @helpText={{t "energyops.order.tank-help"}}>
+                {{#if this.dropoffPlaceId}}
+                    {{#if this.loadTanks.isRunning}}
+                        <Spinner />
+                    {{else}}
+                        <Select
+                            @options={{this.tankOptions}}
+                            @optionLabel="label"
+                            @optionValue="id"
+                            @value={{this.tank.id}}
+                            @onSelect={{this.setTankById}}
+                            @placeholder={{t "energyops.common.select-tank"}}
+                            class="w-full"
+                        />
+                    {{/if}}
+                {{else}}
+                    <p class="text-gray-500">{{t "energyops.order.no-dropoff"}}</p>
+                {{/if}}
+            </InputGroup>
+        </div>
+    </div>
+{{/if}}

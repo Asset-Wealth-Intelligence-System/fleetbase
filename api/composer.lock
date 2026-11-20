@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81278a981aaa4c22fc743050548e7455",
+    "content-hash": "8b3c0c9587b6890d1021cbe123f3e8d7",
     "packages": [
         {
             "name": "appstract/laravel-opcache",
@@ -2551,18 +2551,67 @@
             "time": "2026-08-17T07:11:07+00:00"
         },
         {
+            "name": "fleetbase/energyops-api",
+            "version": "0.0.1",
+            "dist": {
+                "type": "path",
+                "url": "../packages/energyops",
+                "reference": "673b59b018601777294ae0e0dad250ebe7f84a82"
+            },
+            "require": {
+                "fleetbase/core-api": "*",
+                "fleetbase/fleetops-api": "*",
+                "php": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Fleetbase\\EnergyOps\\Providers\\EnergyOpsServiceProvider",
+                        "Fleetbase\\EnergyOps\\Providers\\EventServiceProvider"
+                    ]
+                },
+                "fleetbase": {
+                    "order-config": "Fleetbase\\EnergyOps\\Support\\OrderConfig",
+                    "sandbox-migrations": false
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fleetbase\\EnergyOps\\": "server/src/"
+                }
+            },
+            "license": [
+                "AGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "United Petroleum",
+                    "email": "hello@fleetbase.io"
+                }
+            ],
+            "description": "Compartmentalized oil and gas dispatch extension for Fleetbase",
+            "keywords": [
+                "compartments",
+                "energy",
+                "fleetbase",
+                "fleetbase-extension",
+                "glp",
+                "oil-and-gas",
+                "tank-dispatch"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "fleetbase/fleetops-api",
             "version": "0.6.63",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fleetbase/fleetops.git",
-                "reference": "e3b8cf9833e9d0fb245f5d339a970e3ef0e36985"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fleetbase/fleetops/zipball/e3b8cf9833e9d0fb245f5d339a970e3ef0e36985",
-                "reference": "e3b8cf9833e9d0fb245f5d339a970e3ef0e36985",
-                "shasum": ""
+                "type": "path",
+                "url": "../packages/fleetops",
+                "reference": "035a66295279f4d6ce95608a75427b31e7dd8a8f"
             },
             "require": {
                 "barryvdh/laravel-dompdf": "^3.1",
@@ -2614,7 +2663,47 @@
                     "Fleetbase\\FleetOps\\Seeders\\": "server/seeders/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Fleetbase\\Tests\\": "server/tests/"
+                }
+            },
+            "scripts": {
+                "coverage:baseline": [
+                    "@test:coverage:clover",
+                    "@coverage:summary"
+                ],
+                "coverage:check": [
+                    "@test:coverage:clover",
+                    "php scripts/coverage-summary.php coverage/clover.xml --fail-under=100"
+                ],
+                "coverage:summary": [
+                    "php scripts/coverage-summary.php coverage/clover.xml"
+                ],
+                "lint": [
+                    "php-cs-fixer fix -v"
+                ],
+                "test:lint": [
+                    "php-cs-fixer fix -v --dry-run"
+                ],
+                "test:coverage": [
+                    "php scripts/coverage-runner.php --coverage --coverage-text --colors=always"
+                ],
+                "test:coverage:clover": [
+                    "mkdir -p coverage && php scripts/coverage-file-runner.php --coverage-clover=coverage/clover.xml --colors=always"
+                ],
+                "test:types": [
+                    "phpstan analyse --ansi --memory-limit=4G"
+                ],
+                "test:unit": [
+                    "php scripts/pest-file-runner.php --colors=always"
+                ],
+                "test": [
+                    "@test:lint",
+                    "@test:types",
+                    "@test:unit"
+                ]
+            },
             "license": [
                 "AGPL-3.0-or-later"
             ],
@@ -2636,11 +2725,10 @@
                 "last-mile",
                 "tms"
             ],
-            "support": {
-                "issues": "https://github.com/fleetbase/fleetops/issues",
-                "source": "https://github.com/fleetbase/fleetops/tree/v0.6.63"
-            },
-            "time": "2026-09-06T05:59:27+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "fleetbase/laravel-mysql-spatial",

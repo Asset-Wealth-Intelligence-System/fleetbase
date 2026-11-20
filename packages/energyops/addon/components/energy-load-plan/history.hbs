@@ -1,0 +1,22 @@
+<ContentPanel @title={{or @title (t "energyops.fleet.tabs.load-history")}} @open={{true}} @wrapperClass="bordered-top" @actionButtons={{@actionButtons}} ...attributes>
+    {{#if @loadPlans.length}}
+        <div class="divide-y divide-gray-200 dark:divide-gray-700 text-xs">
+            {{#each @loadPlans as |plan|}}
+                <a href="javascript:;" class="flex items-center justify-between py-2 px-1 hover:bg-gray-50 dark:hover:bg-gray-800" {{on "click" (fn this.loadPlanActions.panel.view plan)}}>
+                    <div class="flex items-center space-x-3">
+                        <span class="font-mono font-semibold">{{plan.public_id}}</span>
+                        <Badge @status={{plan.status}} />
+                        {{#if plan.operationName}}<span class="text-gray-500">{{plan.operationName}}</span>{{/if}}
+                    </div>
+                    <div class="flex items-center space-x-3 text-gray-500">
+                        <span>{{t "energyops.load-plan.lines-count" count=plan.lines.length}}</span>
+                        <span>{{format-number plan.plannedVolume maximumFractionDigits=0}} L</span>
+                        <span>{{plan.createdAt}}</span>
+                    </div>
+                </a>
+            {{/each}}
+        </div>
+    {{else}}
+        <p class="text-xs text-gray-500">{{t "energyops.fleet.no-history"}}</p>
+    {{/if}}
+</ContentPanel>

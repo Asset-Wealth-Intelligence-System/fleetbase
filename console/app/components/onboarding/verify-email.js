@@ -5,6 +5,7 @@ import { next } from '@ember/runloop';
 import { task } from 'ember-concurrency';
 
 export default class OnboardingVerifyEmailComponent extends Component {
+    @service intl;
     @service('session') authSession;
     @service('onboarding-verification') verification;
     @service fetch;
@@ -33,10 +34,10 @@ export default class OnboardingVerifyEmailComponent extends Component {
         try {
             const { status, token } = yield this.fetch.post('onboard/verify-email', { session: this.session, code: this.code });
             if (status === 'ok') {
-                this.notifications.success('Email successfully verified!');
+                this.notifications.success(this.intl.t('literal.console.email-successfully-verified'));
 
                 if (token) {
-                    this.notifications.info('Welcome to Fleetbase!');
+                    this.notifications.info(this.intl.t('literal.console.welcome-to-fleetbase'));
                     this.authSession.manuallyAuthenticate(token);
 
                     return this.router.transitionTo('console');

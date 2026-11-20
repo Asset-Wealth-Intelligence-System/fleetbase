@@ -6,6 +6,7 @@ import createNotificationKey from '@fleetbase/ember-core/utils/create-notificati
 import { task } from 'ember-concurrency';
 
 export default class ConsoleSettingsNotificationsController extends Controller {
+    @service intl;
     @service notifications;
     @service fetch;
     @service store;
@@ -108,7 +109,7 @@ export default class ConsoleSettingsNotificationsController extends Controller {
         try {
             yield this.fetch.post('notifications/save-settings', { notificationSettings: notificationSettings ?? {} });
             yield this.saveCompanyOptions.perform();
-            this.notifications.success('Notification settings successfully saved.');
+            this.notifications.success(this.intl.t('literal.console.notification-settings-successfully-saved'));
         } catch (error) {
             this.notifications.serverError(error);
         }

@@ -1,0 +1,13 @@
+{{#if this.canSee}}
+    <ContentPanel @title={{t "energyops.settings.orchestrator-title"}} @titleIcon="gas-pump" @open={{true}} @wrapperClass="bordered-classic" ...attributes>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">{{t "energyops.settings.orchestrator-help"}}</p>
+        <InputGroup @name={{t "energyops.settings.engine"}} @helpText={{t "energyops.settings.engine-help"}}>
+            <Toggle @isToggled={{this.isActive}} @onToggle={{this.toggle}} @label={{t "energyops.settings.engine"}} />
+        </InputGroup>
+        {{#if this.isActive}}
+            <InputGroup @name={{t "energyops.settings.auto-allocate"}} @helpText={{t "energyops.settings.auto-allocate-help"}}>
+                <Toggle @isToggled={{this.controller.autoAllocateOnCreate}} @onToggle={{fn (mut this.controller.autoAllocateOnCreate)}} @label={{t "energyops.settings.auto-allocate"}} />
+            </InputGroup>
+        {{/if}}
+    </ContentPanel>
+{{/if}}

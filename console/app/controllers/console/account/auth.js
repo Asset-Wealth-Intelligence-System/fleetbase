@@ -12,6 +12,7 @@ import getTwoFaMethods from '@fleetbase/console/utils/get-two-fa-methods';
  * @extends Controller
  */
 export default class ConsoleAccountAuthController extends Controller {
+    @service intl;
     @service currentUser;
     @service fetch;
     @service notifications;
@@ -136,7 +137,7 @@ export default class ConsoleAccountAuthController extends Controller {
                 password: this.currentPassword,
             });
 
-            this.notifications.success('Email change verification sent. Confirm the new address before your login email changes.');
+            this.notifications.success(this.intl.t('literal.console.email-change-verification-sent-confirm-the-new-a-93e55'));
             this.newEmail = undefined;
             this.currentPassword = undefined;
         } catch (error) {
@@ -169,7 +170,7 @@ export default class ConsoleAccountAuthController extends Controller {
                 password_confirmation: this.newConfirmPassword,
             });
 
-            this.notifications.success('Password change successfully.');
+            this.notifications.success(this.intl.t('literal.console.password-change-successfully'));
         } catch (error) {
             this.notifications.serverError(error, 'Failed to change password.');
         }
@@ -187,7 +188,7 @@ export default class ConsoleAccountAuthController extends Controller {
         let isPasswordValid = false;
 
         yield this.modalsManager.show('modals/validate-password', {
-            body: 'You must validate your current password before it can be changed.',
+            body: this.intl.t('literal.console.you-must-validate-your-current-password-before-i-80d4c'),
             onValidated: (isValid) => {
                 isPasswordValid = isValid;
             },

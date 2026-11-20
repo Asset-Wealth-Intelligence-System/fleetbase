@@ -74,7 +74,7 @@ export default class AuthVerificationController extends Controller {
         try {
             const { status, token } = yield this.fetch.post('auth/verify-email', { token: this.token, code: this.code, email: this.email, authenticate: true });
             if (status === 'ok') {
-                this.notifications.success('Email successfully verified!');
+                this.notifications.success(this.intl.t('literal.console.email-successfully-verified'));
 
                 if (token) {
                     this.notifications.info(`Welcome to ${this.intl.t('app.name')}`);
@@ -92,19 +92,19 @@ export default class AuthVerificationController extends Controller {
 
     @action resendBySms() {
         this.modalsManager.show('modals/verify-by-sms', {
-            title: 'Verify Account by Phone',
-            acceptButtonText: 'Send',
+            title: this.intl.t('literal.console.verify-account-by-phone'),
+            acceptButtonText: this.intl.t('literal.console.send'),
             phone: this.currentUser.phone,
             confirm: async (modal) => {
                 modal.startLoading();
                 const phone = modal.getOption('phone');
                 if (!phone) {
-                    this.notifications.error('No phone number provided.');
+                    this.notifications.error(this.intl.t('literal.console.no-phone-number-provided'));
                 }
 
                 try {
                     await this.fetch.post('onboard/send-verification-sms', { phone, session: this.hello });
-                    this.notifications.success('Verification code SMS sent!');
+                    this.notifications.success(this.intl.t('literal.console.verification-code-sms-sent'));
                     modal.done();
                 } catch (error) {
                     this.notifications.serverError(error);
@@ -116,19 +116,19 @@ export default class AuthVerificationController extends Controller {
 
     @action resendEmail() {
         this.modalsManager.show('modals/resend-verification-email', {
-            title: 'Resend Verification Code',
-            acceptButtonText: 'Send',
+            title: this.intl.t('literal.console.resend-verification-code'),
+            acceptButtonText: this.intl.t('literal.console.send'),
             email: this.currentUser.email,
             confirm: async (modal) => {
                 modal.startLoading();
                 const email = modal.getOption('email');
                 if (!email) {
-                    this.notifications.error('No email number provided.');
+                    this.notifications.error(this.intl.t('literal.console.no-email-number-provided'));
                 }
 
                 try {
                     await this.fetch.post('onboard/send-verification-email', { email, session: this.hello });
-                    this.notifications.success('Verification code email sent!');
+                    this.notifications.success(this.intl.t('literal.console.verification-code-email-sent'));
                     modal.done();
                 } catch (error) {
                     this.notifications.serverError(error);

@@ -1,0 +1,9 @@
+{
+    "name": "EnergyOps",
+    "version": "0.0.1",
+    "description": "Compartmentalized oil and gas dispatch for Fleetbase — products, tanks, load plans, and meter-fill tickets.",
+    "license": "AGPL-3.0-or-later",
+    "author": "United Petroleum",
+    "engine": "package.json",
+    "api": "composer.json"
+}

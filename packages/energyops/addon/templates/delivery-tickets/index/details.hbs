@@ -1,0 +1,12 @@
+<Layout::Resource::Panel
+    @resource={{@model}}
+    @controller={{this}}
+    @authSchema="energy-ops"
+    @headerTitle={{@model.displayName}}
+    @actionButtons={{this.actionButtons}}
+    @onPressCancel={{transition-to "delivery-tickets.index"}}
+    @onOverlayReady={{fn (mut this.overlay)}}
+>
+    <EnergyDeliveryTicket::Details @resource={{@model}} @controller={{this}} />
+    <Spacer @height="200px" />
+</Layout::Resource::Panel>

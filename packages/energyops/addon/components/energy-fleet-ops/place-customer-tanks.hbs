@@ -1,0 +1,40 @@
+{{#if this.canSee}}
+    <ContentPanel
+        @title={{t "energyops.fleet-ops.place-panel-title"}}
+        @titleIcon="oil-well"
+        @open={{true}}
+        @wrapperClass="bordered-top"
+        @actionButtons={{if this.placeIsSaved (array (hash text=(t "energyops.tank.add") icon="plus" size="xs" onClick=this.addTank permission="energy-ops create energy-customer-tank"))}}
+        ...attributes
+    >
+        {{#if this.placeIsSaved}}
+            {{#if this.load.isRunning}}
+                <div class="flex items-center justify-center py-6"><Spinner /></div>
+            {{else if this.tanks.length}}
+                <div class="divide-y divide-gray-200 dark:divide-gray-700 text-xs">
+                    {{#each this.tanks as |tank|}}
+                        <div class="flex items-center justify-between py-2">
+                            <div class="flex items-center space-x-3">
+                                <a href="javascript:;" class="font-semibold text-blue-500 hover:underline" {{on "click" (fn this.viewTank tank)}}>{{tank.name}}</a>
+                                <span class="text-gray-500">{{tank.productName}}</span>
+                                <Badge @status={{tank.status}} />
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-32">
+                                    <div class="flex justify-between text-gray-500"><span>{{format-number tank.last_known_volume maximumFractionDigits=0}} / {{format-number tank.capacity_volume maximumFractionDigits=0}} {{tank.unit}}</span></div>
+                                    <div class="h-1.5 bg-gray-200 dark:bg-gray-700 rounded mt-0.5"><div class="h-1.5 rounded {{if tank.needsReorder 'bg-red-500' 'bg-green-500'}}" style={{html-safe (concat "width:" tank.fillPercent "%")}}></div></div>
+                                </div>
+                                <Button @icon="pencil" @size="xs" @onClick={{fn this.editTank tank}} @permission="energy-ops update energy-customer-tank" />
+                                <Button @icon="trash" @size="xs" @type="danger" @onClick={{fn this.deleteTank tank}} @permission="energy-ops delete energy-customer-tank" />
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{else}}
+                <p class="text-xs text-gray-500">{{t "energyops.tank.empty-place"}}</p>
+            {{/if}}
+        {{else}}
+            <p class="text-xs text-gray-500">{{t "energyops.tank.save-place-first"}}</p>
+        {{/if}}
+    </ContentPanel>
+{{/if}}

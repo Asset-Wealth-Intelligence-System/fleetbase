@@ -1,0 +1,103 @@
+<div class="details-wrapper" ...attributes>
+    <ContentPanel @title={{t "common.details"}} @open={{true}} @wrapperClass="bordered-top">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "column.id"}}</div>
+                <div class="field-value"><ClickToCopy @value={{@resource.public_id}}>{{@resource.public_id}}</ClickToCopy></div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.status"}}</div>
+                <div class="field-value flex items-center space-x-2">
+                    <Badge @status={{@resource.status}} />
+                    {{#if @resource.exception_type}}<Badge @status="warning">{{t (concat "energyops.options.ticket-exception-types." (dasherize @resource.exception_type)) default=@resource.exception_type}}</Badge>{{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.order"}}</div>
+                <div class="field-value">
+                    {{#if @resource.order}}
+                        <a href="javascript:;" class="text-blue-500 hover:underline" {{on "click" (fn this.viewOrder @resource.order)}}>{{@resource.orderId}}</a>
+                    {{else}}
+                        {{n-a @resource.orderId}}
+                    {{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.load-plan"}}</div>
+                <div class="field-value">
+                    {{#if @resource.load_plan}}
+                        <a href="javascript:;" class="text-blue-500 hover:underline" {{on "click" (fn (transition-to "load-plans.index.details" @resource.load_plan))}}>{{@resource.load_plan.public_id}}</a>
+                    {{else}}
+                        -
+                    {{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.product"}}</div>
+                <div class="field-value">{{n-a @resource.productName}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.compartment"}}</div>
+                <div class="field-value">{{n-a @resource.compartmentCode}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.customer-tank"}}</div>
+                <div class="field-value">{{n-a @resource.customerTankName}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.issued-at"}}</div>
+                <div class="field-value">{{n-a @resource.issuedAt}}</div>
+            </div>
+        </div>
+    </ContentPanel>
+
+    <ContentPanel @title={{t "energyops.ticket.metering"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-2 text-xs dark:text-gray-100">
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.planned"}}</div>
+                <div class="field-value">{{format-number @resource.planned_qty maximumFractionDigits=2}} {{@resource.unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.metered"}}</div>
+                <div class="field-value">{{format-number @resource.metered_qty maximumFractionDigits=2}} {{@resource.unit}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.variance"}}</div>
+                <div class="field-value {{if (lt @resource.variance_qty 0) 'text-red-500' (if (gt @resource.variance_qty 0) 'text-green-600')}}">
+                    {{format-number @resource.variance_qty maximumFractionDigits=2}} {{@resource.unit}}
+                    {{#if (is-not-empty @resource.variancePercent)}}<span class="text-gray-500 ml-1">({{@resource.variancePercent}}%)</span>{{/if}}
+                </div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.variance-reason"}}</div>
+                <div class="field-value">{{n-a @resource.variance_reason}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.meter-start"}}</div>
+                <div class="field-value">{{n-a @resource.meter_start}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.meter-end"}}</div>
+                <div class="field-value">{{n-a @resource.meter_end}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.seal-in"}}</div>
+                <div class="field-value">{{n-a @resource.seal_in}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.seal-out"}}</div>
+                <div class="field-value">{{n-a @resource.seal_out}}</div>
+            </div>
+            <div class="field-info-container">
+                <div class="field-name">{{t "energyops.ticket.fields.invoice-number"}}</div>
+                <div class="field-value">{{n-a @resource.invoice_number}}</div>
+            </div>
+        </div>
+    </ContentPanel>
+
+    {{#if @resource.meta.exception_reason}}
+        <ContentPanel @title={{t "energyops.ticket.exception-reason"}} @open={{true}} @wrapperClass="bordered-top mt-4">
+            <p class="text-xs">{{@resource.meta.exception_reason}}</p>
+        </ContentPanel>
+    {{/if}}
+</div>

@@ -1,0 +1,7 @@
+<span class="{{@column.cellClassNames}}">
+    {{#if (is-not-empty @value)}}
+        <Badge @status={{@value}} @hideStatusDot={{@column.hideStatusDot}} />
+    {{else}}
+        <span class="text-gray-400">-</span>
+    {{/if}}
+</span>

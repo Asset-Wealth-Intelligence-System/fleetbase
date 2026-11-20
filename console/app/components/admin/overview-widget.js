@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
 
 export default class AdminOverviewWidgetComponent extends Component {
+    @service intl;
     @service fetch;
 
     @tracked metrics = {};
@@ -15,15 +16,15 @@ export default class AdminOverviewWidgetComponent extends Component {
     }
 
     get title() {
-        return 'Admin Overview';
+        return this.intl.t('literal.console.admin-overview');
     }
 
     get items() {
         return [
-            { label: 'Users', value: this.metrics.usersTotal?.value ?? 0 },
-            { label: 'Organizations', value: this.metrics.organizationsTotal?.value ?? 0 },
-            { label: 'Active admins', value: this.metrics.activeAdmins?.value ?? 0 },
-            { label: 'Needs attention', value: this.metrics.organizationsAttention?.value ?? 0 },
+            { label: this.intl.t('literal.console.users'), value: this.metrics.usersTotal?.value ?? 0 },
+            { label: this.intl.t('literal.console.organizations'), value: this.metrics.organizationsTotal?.value ?? 0 },
+            { label: this.intl.t('literal.console.active-admins'), value: this.metrics.activeAdmins?.value ?? 0 },
+            { label: this.intl.t('literal.console.needs-attention'), value: this.metrics.organizationsAttention?.value ?? 0 },
         ];
     }
 
@@ -43,7 +44,7 @@ export default class AdminOverviewWidgetComponent extends Component {
             };
             this.error = null;
         } catch (error) {
-            this.error = error?.message ?? 'Unable to load admin overview.';
+            this.error = error?.message ?? this.intl.t('literal.console.unable-to-load-admin-overview');
         }
     }
 }

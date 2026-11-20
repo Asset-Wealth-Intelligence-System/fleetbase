@@ -7,6 +7,7 @@ import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency';
 
 export default class ConsoleAccountIndexController extends Controller {
+    @service intl;
     /**
      * Inject the `currentUser` service.
      *
@@ -88,7 +89,7 @@ export default class ConsoleAccountIndexController extends Controller {
 
         try {
             const user = yield this.user.save();
-            this.notifications.success('Profile changes saved.');
+            this.notifications.success(this.intl.t('literal.console.profile-changes-saved'));
             this.currentUser.set('user', user);
         } catch (error) {
             this.notifications.serverError(error);
